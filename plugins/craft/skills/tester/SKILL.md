@@ -112,3 +112,4 @@ Job: {JTBD}
 
 ## Reference Files
 - **On-demand:** `references/persona-testing.md` -- Detailed persona creation from JTBD, Playwright MCP patterns, accessibility testing checklist
+- **On-demand:** `references/output-template.md` -- Structured test report template with persona results, accessibility audit, performance metrics

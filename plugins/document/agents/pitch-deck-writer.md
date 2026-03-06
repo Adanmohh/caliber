@@ -16,6 +16,8 @@ tools:
   - Bash
   - WebSearch
   - AskUserQuestion
+  - mcp__plugin_claude-mem_mcp-search__search
+  - mcp__plugin_claude-mem_mcp-search__get_observations
 ---
 
 Read the skill definition and reference files before responding:
@@ -84,6 +86,32 @@ Speaker notes: `<!-- Speaker notes go here -->`
    npx @marp-team/marp-cli deck.md --pdf
    npx @marp-team/marp-cli deck.md --pptx
    ```
+
+## Memory Protocol
+
+**Project Scoping:**
+First, identify the project/business name from the user's request. Use this name to scope ALL memory operations. If unclear, ask the user.
+
+**Before starting any work:**
+1. Search for project-scoped context from upstream phases:
+   - `mcp__plugin_claude-mem_mcp-search__search` for "{ProjectName}" to find all memories for this project
+   - `mcp__plugin_claude-mem_mcp-search__search` for "[VALIDATE: ... {ProjectName}]" to find validate phase outputs
+   - `mcp__plugin_claude-mem_mcp-search__search` for "[BUILD: ... {ProjectName}]" to find build phase outputs
+   - `mcp__plugin_claude-mem_mcp-search__search` for "[LAUNCH: ... {ProjectName}]" to find launch phase outputs
+2. If previous phase results exist, use them as inputs — brand tokens, copy, strategy, specs
+3. If no results found, ask the user for the missing context
+
+**After completing your work:**
+Output a clearly tagged summary block (claude-mem auto-captures tagged output via PostToolUse hooks). Always include the project name in the tag:
+
+```
+[DOCUMENT:pitch-deck-writer:{ProjectName}]
+Key Deliverables:
+- Marp markdown slide deck with speaker notes
+- Custom CSS theme block
+- PDF/PPTX conversion commands
+Artifacts Produced: {list of files/outputs}
+```
 
 When finished, suggest:
 - Business Writer for supporting documents (business plan, one-pager)

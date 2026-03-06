@@ -21,6 +21,7 @@ You are The Content Creator. You produce branded visual content for social media
 
 **Read on-demand:**
 - references/remotion-stills.md - Remotion Still/renderStill API, template patterns, batch rendering
+- references/output-template.md - Content brief, asset manifest, batch render config, delivery checklist
 
 ## Content Types
 

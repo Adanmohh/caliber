@@ -1,4 +1,4 @@
-# BurnoutLab -- PRODUCT Phase Analysis
+# BurnoutLab -- BUILD Phase Analysis
 
 **Date:** 2026-03-06
 **Subject:** burnoutlab.com -- AI-powered burnout recovery platform
@@ -229,7 +229,7 @@ Scoring:
 1. **No issues found with SKILL.md structure.** Clear role definition, reference file listing, activation triggers, and agentic execution model.
 2. **References are comprehensive.** The Reforge product-strategy.md and inspired-empowered.md are thorough with real examples, scoring systems, and actionable frameworks.
 3. **Output template is well-structured** with 7 templates covering strategy documents, opportunity assessments, roadmaps, PMF scorecards, risk registers, and cross-agent handoffs.
-4. **Minor observation:** The SKILL.md references "Value Architect" and "Model Maker" agents for upstream handoff, but these are from a different skill domain (explore phase). The handoff protocol should explicitly handle cold-start scenarios where those agents have not run.
+4. **Minor observation:** The SKILL.md references "Value Mapper" and "Business Modeler" agents for upstream handoff, but these are from a different skill domain (validate phase). The handoff protocol should explicitly handle cold-start scenarios where those agents have not run.
 
 ---
 ---
@@ -582,7 +582,7 @@ Opportunity 2: "I don't know if I'm actually getting better or
 
 Opportunity 3: "The generic advice doesn't apply to my specific
   work situation"
-  Evidence: Founder's own burnout experience; validated in explore phase
+  Evidence: Founder's own burnout experience; validated in validate phase
   Confidence: [x] High
   |
   +-- Solution 3A: Role-specific recovery modules (engineer vs. nurse)

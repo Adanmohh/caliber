@@ -101,6 +101,7 @@ What's the content?
 ## Reference Files
 - **Always read:** This file (SKILL.md)
 - **Always read:** `references/marp-reference.md` — full Marp syntax, directives, CLI commands, CSS patterns
+- **On-demand:** `references/output-template.md` — complete presentation template with slide types, CSS theme, and export commands
 
 ## Cross-Agent Suggestions
 After delivery, suggest:

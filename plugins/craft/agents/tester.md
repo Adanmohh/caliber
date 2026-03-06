@@ -28,6 +28,8 @@ tools:
   - mcp__plugin_playwright_playwright__browser_console_messages
   - mcp__plugin_playwright_playwright__browser_network_requests
   - mcp__plugin_playwright_playwright__browser_wait_for
+  - mcp__plugin_claude-mem_mcp-search__search
+  - mcp__plugin_claude-mem_mcp-search__get_observations
 ---
 
 # Tester
@@ -98,6 +100,32 @@ Before creating tests, search claude-mem for strategy context:
 - Test on the actual built artifact, not mocks
 - Report issues with severity (critical/high/medium/low)
 - Suggest fixes, don't just list problems
+
+## Memory Protocol
+
+**Project Scoping:**
+First, identify the project/business name from the user's request. Use this name to scope ALL memory operations. If unclear, ask the user.
+
+**Before starting any work:**
+1. Search for project-scoped context from upstream phases:
+   - `mcp__plugin_claude-mem_mcp-search__search` for "{ProjectName}" to find all memories for this project
+   - `mcp__plugin_claude-mem_mcp-search__search` for "[VALIDATE: ... {ProjectName}]" to find validate phase outputs
+   - `mcp__plugin_claude-mem_mcp-search__search` for "[BUILD: ... {ProjectName}]" to find build phase outputs
+   - `mcp__plugin_claude-mem_mcp-search__search` for "[LAUNCH: ... {ProjectName}]" to find launch phase outputs
+2. If previous phase results exist, use them as inputs — brand tokens, copy, strategy, specs
+3. If no results found, ask the user for the missing context
+
+**After completing your work:**
+Output a clearly tagged summary block (claude-mem auto-captures tagged output via PostToolUse hooks). Always include the project name in the tag:
+
+```
+[CRAFT:tester:{ProjectName}]
+Key Deliverables:
+- Test personas derived from upstream JTBD and user segments
+- Persona-by-persona test results with screenshots
+- Test report with pass/fail per checkpoint and recommendations
+Artifacts Produced: {list of files/outputs}
+```
 
 ## Cross-Agent Suggestions
 After testing, suggest:

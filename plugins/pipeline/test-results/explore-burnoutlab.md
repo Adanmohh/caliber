@@ -1,4 +1,4 @@
-# EXPLORE Phase: BurnoutLab Analysis
+# VALIDATE Phase: BurnoutLab Analysis
 ## Complete Output from All 3 Experts
 
 **Date:** 2026-03-06
@@ -8,7 +8,7 @@
 
 ---
 
-# EXPERT 1: VALUE ARCHITECT
+# EXPERT 1: VALUE MAPPER
 ## Value Proposition Canvas Analysis
 
 ================================================================
@@ -308,7 +308,7 @@ WHAT NOT TO DO:
 
 ## HANDOFF TO NEXT PHASE
 
-RECEIVING AGENT/TEAM: Model Maker + Mad Scientist
+RECEIVING AGENT/TEAM: Business Modeler + Experiment Designer
 
 CONTEXT TRANSFER:
 - Domain: AI-powered burnout recovery for knowledge workers
@@ -325,14 +325,14 @@ UNVALIDATED ELEMENTS (proceed with caution):
 3. 90-day completion rates in a self-directed digital program (H3)
 
 RECOMMENDED NEXT STEPS:
-1. Model Maker: Design the business model canvas and blue ocean strategy canvas
-2. Mad Scientist: Design experiments for H1-H5 with ICE/RICE scoring
+1. Business Modeler: Design the business model canvas and blue ocean strategy canvas
+2. Experiment Designer: Design experiments for H1-H5 with ICE/RICE scoring
 
 ---
 
 ---
 
-# EXPERT 2: MODEL MAKER
+# EXPERT 2: BUSINESS MODELER
 ## Business Model Canvas + Blue Ocean Strategy
 
 ## Executive Summary
@@ -669,7 +669,7 @@ Estimated time to break-even: 4-6 months (based on projected customer acquisitio
 
 ---
 
-## Handoff to Mad Scientist (Experiment Design)
+## Handoff to Experiment Designer (Experiment Design)
 
 ### Business Model Summary (for experiment designer)
 **One-sentence model description:** BurnoutLab sells a $497 AI-personalized, 90-day burnout recovery program to knowledge workers, with a $29/mo AI coaching subscription for ongoing support, and $2,000+ corporate team programs.
@@ -744,14 +744,14 @@ Estimated time to break-even: 4-6 months (based on projected customer acquisitio
 
 ---
 
-# EXPERT 3: MAD SCIENTIST
+# EXPERT 3: EXPERIMENT DESIGNER
 ## Experiment Design for BurnoutLab
 
 ================================================================
 ASSUMPTION INVENTORY
 ================================================================
 Business: BurnoutLab -- AI-powered burnout recovery platform
-Source: Value Architect VPC + Model Maker BMC + Blue Ocean Strategy Canvas
+Source: Value Mapper VPC + Business Modeler BMC + Blue Ocean Strategy Canvas
 Date: 2026-03-06
 Total Assumptions Extracted: 12
 ================================================================
@@ -1447,7 +1447,7 @@ is based solely on market analysis and framework application.
 
 # SKILL FILE ISSUES AND OBSERVATIONS
 
-## Value Architect (SKILL.md + references/)
+## Value Mapper (SKILL.md + references/)
 
 **Strengths:**
 - Extremely thorough reference material. The VPC, JTBD, and AI research references are comprehensive and well-structured.
@@ -1455,12 +1455,12 @@ is based solely on market analysis and framework application.
 - The validation hierarchy (Level 0-5) is an excellent framework for tagging evidence quality.
 
 **Issues Found:**
-1. **No explicit guidance on segment prioritization when multiple segments exist.** The template shows "complete one per segment" but doesn't guide which segment to analyze first or how to choose. The Model Maker references a Segment Attractiveness Matrix -- the Value Architect should reference this or have its own.
+1. **No explicit guidance on segment prioritization when multiple segments exist.** The template shows "complete one per segment" but doesn't guide which segment to analyze first or how to choose. The Business Modeler references a Segment Attractiveness Matrix -- the Value Mapper should reference this or have its own.
 2. **The output template is very long (11 sections).** For a pre-launch analysis with no real customer data, some sections (e.g., Simulated Interview Findings) add bulk without proportional value. Consider marking more sections as [OPTIONAL] for early-stage analyses.
 3. **Fit Score formula could be clearer.** The formula `SUM(Opp Score x Match Strength) / SUM(Opp Scores) x 20` is correct but the "x 20" multiplier feels arbitrary and isn't explained. Why 20? It scales to 100 only if max Match Strength is 5 (5 x 20 = 100). This should be stated explicitly.
 4. **Missing: How to handle when there are no high-opportunity elements.** The decision tree assumes there will be elements scoring 8+. What if none score that high? The template has a gap here.
 
-## Model Maker (SKILL.md + references/)
+## Business Modeler (SKILL.md + references/)
 
 **Strengths:**
 - Business Model Canvas reference is excellent -- the 9 blocks are well-explained with scoring systems and real examples.
@@ -1472,9 +1472,9 @@ is based solely on market analysis and framework application.
 1. **Strategy Canvas requires competitive data that may not be available at pre-launch.** The SKILL.md says "research competitor business models via web research" but doesn't provide guidance on what to do when competitors are in different categories (comparing BetterUp coaching to Headspace meditation to Udemy courses is like comparing apples to oranges on certain factors). Guidance on cross-category competitive scoring would help.
 2. **Financial Sketch section asks for benchmarks that are hard to obtain for novel categories.** BurnoutLab is creating a new category -- there IS no "industry average" for AI-powered burnout recovery. The template should acknowledge this and provide guidance on selecting comparable industries.
 3. **The ERRC Grid validation check requires "at least 2 factors eliminated, 2 reduced, 2 raised, 1 created."** This is good discipline but can feel forced when the natural analysis doesn't yield that many factors. The minimum should be explained as aspirational, with the caveat that fewer items with stronger rationale is better than padding.
-4. **Missing: The connection between Value Architect handoff and Model Maker input is not explicitly structured.** The SKILL.md says "Receive validated value propositions from the Value Architect" but doesn't specify what format or fields to expect. A handoff schema would help.
+4. **Missing: The connection between Value Mapper handoff and Business Modeler input is not explicitly structured.** The SKILL.md says "Receive validated value propositions from the Value Mapper" but doesn't specify what format or fields to expect. A handoff schema would help.
 
-## Mad Scientist (SKILL.md + references/)
+## Experiment Designer (SKILL.md + references/)
 
 **Strengths:**
 - The experiment library (44 experiments in Strategyzer framework) is extremely useful and well-organized by evidence strength.
@@ -1492,7 +1492,7 @@ is based solely on market analysis and framework application.
 
 ## Cross-Expert Issues
 
-1. **Handoff format is not standardized.** The Value Architect outputs a "Handoff to Next Phase" section, the Model Maker outputs a "Handoff to Mad Scientist" section. These sections contain similar but not identical fields. A shared handoff schema would ensure nothing is lost between experts.
-2. **Assumption IDs are not consistent across experts.** The Value Architect uses H1-H5, the Model Maker uses numbered assumptions 1-8, and the Mad Scientist uses D-01/V-01/F-01. The Mad Scientist's convention is the best (category prefix + number). All experts should adopt this.
+1. **Handoff format is not standardized.** The Value Mapper outputs a "Handoff to Next Phase" section, the Business Modeler outputs a "Handoff to Experiment Designer" section. These sections contain similar but not identical fields. A shared handoff schema would ensure nothing is lost between experts.
+2. **Assumption IDs are not consistent across experts.** The Value Mapper uses H1-H5, the Business Modeler uses numbered assumptions 1-8, and the Experiment Designer uses D-01/V-01/F-01. The Experiment Designer's convention is the best (category prefix + number). All experts should adopt this.
 3. **No explicit "input spec" for any expert.** Each SKILL.md describes what the expert does and how, but none specify "I expect to receive X from the user or from the previous expert." This makes orchestration harder.
-4. **The Value Architect and Model Maker both produce competitive analysis, but from different frameworks (JTBD competitive set vs. Blue Ocean Strategy Canvas).** There is some redundancy. Consider having the Value Architect focus on JTBD forces and the Model Maker focus on Strategy Canvas factors, with a clear delineation.
+4. **The Value Mapper and Business Modeler both produce competitive analysis, but from different frameworks (JTBD competitive set vs. Blue Ocean Strategy Canvas).** There is some redundancy. Consider having the Value Mapper focus on JTBD forces and the Business Modeler focus on Strategy Canvas factors, with a clear delineation.

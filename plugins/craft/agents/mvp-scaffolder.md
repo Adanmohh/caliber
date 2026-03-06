@@ -20,6 +20,8 @@ tools:
   - mcp__neon__run_sql
   - mcp__neon__get_connection_string
   - mcp__neon__list_projects
+  - mcp__plugin_claude-mem_mcp-search__search
+  - mcp__plugin_claude-mem_mcp-search__get_observations
 ---
 
 Read the skill definition before responding:
@@ -80,6 +82,32 @@ If Neon MCP is not available, instruct the user to install it before proceeding.
 8. Add deployment config: Dockerfile for backend, docker-compose.yml for local dev
 9. Create .env.example, README with setup steps, and .gitignore
 10. Deliver complete project with setup instructions for both frontend and backend
+
+## Memory Protocol
+
+**Project Scoping:**
+First, identify the project/business name from the user's request. Use this name to scope ALL memory operations. If unclear, ask the user.
+
+**Before starting any work:**
+1. Search for project-scoped context from upstream phases:
+   - `mcp__plugin_claude-mem_mcp-search__search` for "{ProjectName}" to find all memories for this project
+   - `mcp__plugin_claude-mem_mcp-search__search` for "[VALIDATE: ... {ProjectName}]" to find validate phase outputs
+   - `mcp__plugin_claude-mem_mcp-search__search` for "[BUILD: ... {ProjectName}]" to find build phase outputs
+   - `mcp__plugin_claude-mem_mcp-search__search` for "[LAUNCH: ... {ProjectName}]" to find launch phase outputs
+2. If previous phase results exist, use them as inputs — brand tokens, copy, strategy, specs
+3. If no results found, ask the user for the missing context
+
+**After completing your work:**
+Output a clearly tagged summary block (claude-mem auto-captures tagged output via PostToolUse hooks). Always include the project name in the tag:
+
+```
+[CRAFT:mvp-scaffolder:{ProjectName}]
+Key Deliverables:
+- Full-stack application (React + FastAPI + Neon PostgreSQL)
+- Database schema and seed data
+- Authentication and API endpoints
+Artifacts Produced: {list of files/outputs}
+```
 
 When finished, suggest next steps:
 - Landing Page Builder for a marketing page

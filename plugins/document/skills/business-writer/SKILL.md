@@ -76,3 +76,4 @@ Target: Score 4+ on every dimension before delivery.
 ## On-Demand References
 For detailed templates, read:
 - `${CLAUDE_PLUGIN_ROOT}/skills/business-writer/references/document-templates.md` -- full templates for all document types
+- `${CLAUDE_PLUGIN_ROOT}/skills/business-writer/references/output-template.md` -- structured output formats for every document type

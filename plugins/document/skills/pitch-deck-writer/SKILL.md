@@ -77,3 +77,4 @@ npx @marp-team/marp-cli deck.md --html
 ## On-Demand References
 For detailed frameworks, read:
 - `${CLAUDE_PLUGIN_ROOT}/skills/pitch-deck-writer/references/pitch-frameworks.md` -- Sequoia, YC, sales deck templates + Marp syntax
+- `${CLAUDE_PLUGIN_ROOT}/skills/pitch-deck-writer/references/output-template.md` -- complete Marp deck template with slides, speaker notes, and export commands
