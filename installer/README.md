@@ -2,7 +2,7 @@
 
 > Most founders fail not from bad ideas, but from the gap between knowing what to build and actually building it. Caliber closes that gap.
 
-**22 specialized AI agents organized into 9 independent plugins** that work alone or chain together into a complete idea-to-execution pipeline. Each agent brings deep framework expertise — not generic advice, but the same methodologies used by top strategists, growth engineers, and builders.
+**22 specialized AI agents organized into 8 independent plugins** that work alone or chain together into a complete idea-to-execution pipeline. Each agent brings deep framework expertise — not generic advice, but the same methodologies used by top strategists, growth engineers, and builders.
 
 ## The Problem
 
