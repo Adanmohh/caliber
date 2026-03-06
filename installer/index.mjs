@@ -12,7 +12,7 @@ const PLUGINS = [
   },
   {
     name: "build",
-    desc: "Build strategy (4 experts: Product Strategist, Growth Designer, Spec Writer, Product Designer)",
+    desc: "Build strategy (5 experts: Product Strategist, Brand Strategist, Growth Designer, Spec Writer, Product Designer)",
   },
   {
     name: "launch",
@@ -31,12 +31,12 @@ const PLUGINS = [
     desc: "Create presentations (1 agent: Slide Designer)",
   },
   {
-    name: "demo",
-    desc: "Produce videos (2 agents: Demo Producer, Clip Maker)",
+    name: "studio",
+    desc: "Produce videos (3 agents: Demo Producer, Clip Maker, Content Creator)",
   },
   {
     name: "pipeline",
-    desc: "Pipeline automation (chains validate > build > launch into 5-phase workflow)",
+    desc: "Pipeline orchestrator (chains 15 experts across validate > build > launch with autonomous mode)",
   },
 ];
 
@@ -56,7 +56,7 @@ async function main() {
   console.log(`
 ╔══════════════════════════════════════════════════╗
 ║              Caliber Installer                   ║
-║     23 AI experts for business strategy          ║
+║     25 AI experts for business strategy          ║
 ║     validate > build > launch + execute          ║
 ╚══════════════════════════════════════════════════╝
 `);
@@ -133,7 +133,10 @@ async function main() {
     console.log(`
 To run the full pipeline:
   claude
-  > /run My business idea
+  > /pipeline:run My business idea
+
+Autonomous mode (research-driven):
+  > /pipeline:run My business idea --autonomous
 
 To run a single expert:
   > /value-mapper My SaaS product for freelancers
