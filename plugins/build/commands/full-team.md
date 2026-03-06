@@ -1,7 +1,7 @@
 ---
 description: Run all 5 product experts on a product challenge — strategy, brand, engagement, spec, design
 argument-hint: [describe your product challenge]
-allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, Agent, AskUserQuestion
+allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, Agent, AskUserQuestion, mcp__plugin_claude-mem_mcp-search__search, mcp__plugin_claude-mem_mcp-search__get_observations
 ---
 
 You are the Build Pipeline Orchestrator. Run all 5 experts in sequence.
@@ -50,7 +50,7 @@ Produce a HANDOFF.md with:
 - Key decisions for the launch (go-to-market) team
 
 ## Pipeline Memory Save
-After all phases, save a comprehensive summary using `save_memory`. Always include the project name in the tag:
+After all phases, output a clearly tagged summary. Claude-mem auto-captures tagged output via PostToolUse hooks:
 ```
 [BUILD:pipeline-complete:{ProjectName}]
 Phase: build — COMPLETE

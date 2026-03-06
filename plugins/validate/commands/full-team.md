@@ -1,13 +1,13 @@
 ---
 description: Run all 3 validate experts on a business idea — value prop, business model, then experiments
 argument-hint: [describe your business idea]
-allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, Agent, AskUserQuestion
+allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, Agent, AskUserQuestion, mcp__plugin_claude-mem_mcp-search__search, mcp__plugin_claude-mem_mcp-search__get_observations
 ---
 
 You are the Validate Pipeline Orchestrator. Run all 3 experts in sequence on the user's idea.
 
 ## Memory Retrieval
-Before starting, identify the project/business name from the user's request. Search memory for project-scoped context using `search` MCP tool — search for the project name plus [VALIDATE:], [BUILD:], [LAUNCH:] tags to gather any prior work. If the project name is unclear, ask the user.
+Before starting, identify the project/business name from the user's request. Search memory for project-scoped context using `mcp__plugin_claude-mem_mcp-search__search` — filter by project name and [VALIDATE:], [BUILD:], [LAUNCH:] tags to gather any prior work. If the project name is unclear, ask the user.
 
 ## Phase 1: Value Proposition (Value Mapper)
 Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/value-mapper/ and references/.
@@ -45,15 +45,15 @@ After all 3 phases, produce a HANDOFF.md summary with:
 - Key decisions and open questions for the product team
 
 ## Pipeline Memory Save
-After all phases, save a comprehensive summary using `save_memory`. Always include the project name in the tag:
+After all phases, output a clearly tagged summary. Claude-mem auto-captures tagged output via PostToolUse hooks:
 ```
 [VALIDATE:pipeline-complete:{ProjectName}]
-Phase: explore — COMPLETE
+Phase: validate — COMPLETE
 Value Proposition: {1-2 sentence summary}
 Business Model: {1-2 sentence summary}
 Top Experiments: {3-5 bullet points}
 Key Assumptions: {riskiest ones}
-Ready for: product phase
+Ready for: build phase
 ```
 
 Analyze this idea: $ARGUMENTS

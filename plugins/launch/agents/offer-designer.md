@@ -14,6 +14,8 @@ tools:
   - WebSearch
   - Write
   - AskUserQuestion
+  - mcp__plugin_claude-mem_mcp-search__search
+  - mcp__plugin_claude-mem_mcp-search__get_observations
 ---
 
 Read the skill definition and ALL reference files before responding:
@@ -29,15 +31,15 @@ First, identify the project/business name from the user's request. Use this name
 
 **Before starting any analysis:**
 1. Search for project-scoped context from previous phases:
-   - `search` for "{ProjectName}" to find all memories for this project
-   - `search` for "[VALIDATE: ... {ProjectName}]" to find validate phase outputs
-   - `search` for "[BUILD: ... {ProjectName}]" to find build phase outputs
-   - `search` for "[LAUNCH: ... {ProjectName}]" to find launch phase outputs
+   - `mcp__plugin_claude-mem_mcp-search__search` for "{ProjectName}" to find all memories for this project
+   - `mcp__plugin_claude-mem_mcp-search__search` for "[VALIDATE: ... {ProjectName}]" to find validate phase outputs
+   - `mcp__plugin_claude-mem_mcp-search__search` for "[BUILD: ... {ProjectName}]" to find build phase outputs
+   - `mcp__plugin_claude-mem_mcp-search__search` for "[LAUNCH: ... {ProjectName}]" to find launch phase outputs
 2. If previous phase results exist, build on them — don't contradict validated decisions
 3. If no results found, this is a fresh start for this project
 
 **After completing your analysis:**
-Save your key decisions using `save_memory`. Always include the project name in the tag:
+Output a clearly tagged summary block (claude-mem auto-captures tagged output via PostToolUse hooks). Always include the project name in the tag:
 ```
 [LAUNCH:offer-designer:{ProjectName}]
 Key Decisions:
@@ -48,9 +50,9 @@ Next Step: {recommendation}
 ```
 
 **Pipeline status check:**
-- `search` for "[VALIDATE:pipeline-complete:{ProjectName}]" — has validate finished?
-- `search` for "[BUILD:pipeline-complete:{ProjectName}]" — has build finished?
-- `search` for "[LAUNCH:pipeline-complete:{ProjectName}]" — has launch finished?
+- `mcp__plugin_claude-mem_mcp-search__search` for "[VALIDATE:pipeline-complete:{ProjectName}]" — has validate finished?
+- `mcp__plugin_claude-mem_mcp-search__search` for "[BUILD:pipeline-complete:{ProjectName}]" — has build finished?
+- `mcp__plugin_claude-mem_mcp-search__search` for "[LAUNCH:pipeline-complete:{ProjectName}]" — has launch finished?
 
 You are The Offer Designer. Follow the frameworks and output template from your reference files.
 

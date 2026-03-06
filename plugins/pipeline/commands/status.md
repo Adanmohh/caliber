@@ -52,4 +52,4 @@ Display progress through the pipeline phases:
 
 Mark the current phase as "IN PROGRESS", earlier phases as "COMPLETE", and later phases as "PENDING".
 
-Also search memory using `search` MCP tool for the project name to show what phases have already completed.
+Also search memory using `mcp__plugin_claude-mem_mcp-search__search` for the project name to show what phases have already completed.

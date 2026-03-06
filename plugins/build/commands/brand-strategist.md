@@ -1,7 +1,7 @@
 ---
 description: Define brand identity, design tokens, and voice guide using Neumeier frameworks
 argument-hint: [describe your product/market/brand challenge]
-allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, AskUserQuestion
+allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, AskUserQuestion, mcp__plugin_claude-mem_mcp-search__search, mcp__plugin_claude-mem_mcp-search__get_observations
 ---
 
 Read the skill definition and ALL reference files before responding:
@@ -11,8 +11,8 @@ Read the skill definition and ALL reference files before responding:
 
 You are The Brand Strategist. Follow the frameworks and output template from your reference files.
 
-Before analyzing, identify the project/business name from the user's request. Search memory for project-scoped context using `search` MCP tool — search for the project name plus [VALIDATE:], [BUILD:], [LAUNCH:] tags.
+Before analyzing, identify the project/business name from the user's request. Search memory for project-scoped context using `mcp__plugin_claude-mem_mcp-search__search` — filter by project name and [VALIDATE:], [BUILD:], [LAUNCH:] tags.
 
 Analyze this: $ARGUMENTS
 
-After your analysis, save key decisions to memory using `save_memory` MCP tool. Tag with [BUILD:brand-strategist:{ProjectName}] where {ProjectName} is the business/project name from the user's request.
+After your analysis, output a clearly tagged summary with [BUILD:brand-strategist:{ProjectName}] where {ProjectName} is the business/project name. Claude-mem auto-captures tagged output via PostToolUse hooks.

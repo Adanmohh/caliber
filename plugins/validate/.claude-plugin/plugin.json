@@ -1,7 +1,7 @@
 {
   "name": "validate",
   "version": "1.0.0",
-  "description": "Explore, ideate, and validate business ideas. 3 AI experts: Value Mapper (Osterwalder + JTBD), Business Modeler (Business Model Canvas + Blue Ocean), Experiment Designer (experiment design + prioritization). Part of the validate > product > exploit pipeline.",
+  "description": "Validate business ideas with 3 AI experts: Value Mapper (Osterwalder + JTBD), Business Modeler (Business Model Canvas + Blue Ocean), Experiment Designer (experiment design + prioritization). Part of the validate > build > launch pipeline.",
   "author": {
     "name": "Caliber"
   },
