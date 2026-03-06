@@ -1,6 +1,6 @@
 {
   "name": "caliber",
-  "description": "Caliber: AI Business Agents. 23 AI experts that take you from idea to shipped product. Validate > Build > Launch + Craft, Document, Present, Demo.",
+  "description": "Caliber: AI Business Agents. 24 AI agents that take you from idea to shipped product. Validate > Build > Launch + Craft, Document, Present, Demo.",
   "version": "1.0.0",
   "owner": {
     "name": "Adan Mohh",
@@ -17,7 +17,7 @@
     {
       "name": "build",
       "source": "./build",
-      "description": "Build product strategy with 4 AI experts: Product Strategist, Growth Designer, Spec Writer, Product Designer",
+      "description": "Build product strategy with 5 AI experts: Product Strategist, Brand Strategist, Growth Designer, Spec Writer, Product Designer",
       "version": "1.0.0"
     },
     {

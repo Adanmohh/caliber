@@ -96,21 +96,24 @@ You are continuing the Caliber pipeline. The validate phase just completed.
 
 Read ALL skill files and references for each build expert from the build plugin directory:
 - BUILD_PLUGIN_DIR/skills/product-strategist/SKILL.md + all files in references/
+- BUILD_PLUGIN_DIR/skills/brand-strategist/SKILL.md + all files in references/
 - BUILD_PLUGIN_DIR/skills/growth-designer/SKILL.md + all files in references/
 - BUILD_PLUGIN_DIR/skills/spec-writer/SKILL.md + all files in references/
 - BUILD_PLUGIN_DIR/skills/product-designer/SKILL.md + all files in references/
 
 Execute in this order:
 1. **Product Strategist** — Define product strategy using Reforge + Cagan frameworks, informed by validate findings
-2. **Growth Designer** — Design growth loops using Teresa Torres + Hooked + PLG frameworks
-3. **Spec Writer** — Write Shape Up specs for the highest-priority features
-4. **Product Designer** — Design the core user experience using Don Norman + JTBD UX
+2. **Brand Strategist** — Define brand identity, produce design tokens and voice guide using Neumeier frameworks
+3. **Growth Designer** — Design growth loops using Teresa Torres + Hooked + PLG frameworks
+4. **Spec Writer** — Write Shape Up specs for the highest-priority features
+5. **Product Designer** — Design the core user experience using Don Norman + JTBD UX
 
-After ALL 4 experts complete, output a comprehensive summary clearly labeled:
+After ALL 5 experts complete, output a comprehensive summary clearly labeled:
 ```
 [BUILD:pipeline-complete:PROJECT_NAME]
 Phase: build — COMPLETE
 Product Strategy: {summary}
+Brand Identity: {summary}
 Growth Design: {summary}
 Specs: {summary of shaped features}
 UX Design: {summary}

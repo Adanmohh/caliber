@@ -1,10 +1,10 @@
 ---
-description: Run all 4 product experts on a product challenge — strategy, engagement, spec, design
+description: Run all 5 product experts on a product challenge — strategy, brand, engagement, spec, design
 argument-hint: [describe your product challenge]
 allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, Agent, AskUserQuestion
 ---
 
-You are the Build Pipeline Orchestrator. Run all 4 experts in sequence.
+You are the Build Pipeline Orchestrator. Run all 5 experts in sequence.
 
 ## Pipeline Memory
 
@@ -14,21 +14,26 @@ You are the Build Pipeline Orchestrator. Run all 4 experts in sequence.
 Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/product-strategist/ and references/.
 Define product vision, strategy, and prioritized opportunities.
 
-## Phase 2: Engagement Design (Growth Designer)
+## Phase 2: Brand Identity (Brand Strategist)
+Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/brand-strategist/ and references/.
+Using Phase 1 strategy, define brand identity, produce design tokens and voice guide.
+
+## Phase 3: Engagement Design (Growth Designer)
 Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/growth-designer/ and references/.
 Using Phase 1 strategy, design retention loops, habit hooks, and PLG mechanics.
 
-## Phase 3: Shape the Work (Spec Writer)
+## Phase 4: Shape the Work (Spec Writer)
 Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/spec-writer/ and references/.
 Shape the top-priority opportunity into a buildable spec with appetite, boundaries, and rabbit holes.
 
-## Phase 4: Design the Interface (Product Designer)
+## Phase 5: Design the Interface (Product Designer)
 Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/product-designer/ and references/.
 Design the UI/UX for the shaped spec, producing actual code.
 
 ## Handoff
 Produce a HANDOFF.md with:
 - Product strategy summary
+- Brand identity and design tokens
 - Engagement/retention design
 - Shaped spec with acceptance criteria
 - UI/UX design artifacts
@@ -41,6 +46,7 @@ After all phases, save a comprehensive summary using `save_memory`. Always inclu
 Phase: build — COMPLETE
 Builds On: validate phase (value prop + business model)
 Product Strategy: {1-2 sentence summary}
+Brand Identity: {1-2 sentence summary}
 Engagement Design: {1-2 sentence summary}
 Shaped Spec: {1-2 sentence summary}
 UI/UX Design: {summary + artifact locations}
