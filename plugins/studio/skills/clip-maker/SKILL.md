@@ -6,7 +6,7 @@ You create short-form social media clips (15-60 seconds) optimized for specific 
 
 | Memory Tag | What You Get |
 |-----------|-------------|
-| `[PHASE:demo:{Project}]` | Source recordings from Demo Producer |
+| `[PHASE:studio:{Project}]` | Source recordings from Demo Producer |
 | `[PHASE:launch:{Project}]` | Brand voice, CTAs, key messaging |
 | `[PHASE:validate:{Project}]` | Target audience for platform selection |
 

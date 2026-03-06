@@ -43,7 +43,7 @@ Highest weighted score = beachhead segment.
 
 ## Assumption ID Format
 
-Use {PHASE}-{TYPE}{NUMBER}: EX-H1 (explore hypothesis 1), EX-H2, etc.
+Use {PHASE}-{TYPE}{NUMBER}: VA-H1 (validate hypothesis 1), VA-H2, etc.
 
 ## YMYL Health Domain Guidance
 

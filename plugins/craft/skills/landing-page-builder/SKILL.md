@@ -33,7 +33,7 @@ Before building, search claude-mem for upstream strategy outputs:
 | Copywriter (launch) | Headlines, body copy, CTAs, message hierarchy |
 | Offer Designer (launch) | Offer stack, pricing, guarantees, bonuses |
 | Funnel Architect (launch) | Page position in funnel, traffic source context |
-| Brand Strategist (launch) | Voice, tone, color palette, typography |
+| Brand Strategist (build) | Voice, tone, color palette, typography |
 
 ## Execution Workflow
 1. **Gather** — Ask: audience, product, tone, tech stack (plain HTML or React with Vite), deployment target

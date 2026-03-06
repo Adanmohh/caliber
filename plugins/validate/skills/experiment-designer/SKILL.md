@@ -61,4 +61,4 @@ Produce ALL sections from output-template.md. Key artifacts: Assumption Inventor
 
 ## Downstream Handoff
 
-Hand off to: **Product Strategist** (product phase). Emit structured signals: VALIDATED, INVALIDATED, INCONCLUSIVE with evidence summaries for each tested hypothesis.
+Hand off to: **Product Strategist** (build phase). Emit structured signals: VALIDATED, INVALIDATED, INCONCLUSIVE with evidence summaries for each tested hypothesis.

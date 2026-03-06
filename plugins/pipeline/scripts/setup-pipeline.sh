@@ -35,7 +35,7 @@ EXAMPLES:
 
 PIPELINE PHASES:
   validate → Value Mapper, Business Modeler, Experiment Designer
-  build    → Product Strategist, Growth Designer, Spec Writer, Product Designer
+  build    → Product Strategist, Brand Strategist, Growth Designer, Spec Writer, Product Designer
   launch   → Offer Designer, Copywriter, Funnel Architect, Growth Auditor,
              Media Planner, SEO Strategist, AI Search Optimizer
 

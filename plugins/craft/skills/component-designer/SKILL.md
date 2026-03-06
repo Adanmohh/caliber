@@ -28,10 +28,10 @@ Produces production-grade, accessible React UI components using Tailwind CSS. Ev
 
 | Source | What You Receive |
 |--------|-----------------|
-| Product Designer (product) | UX requirements, interaction patterns |
+| Product Designer (build) | UX requirements, interaction patterns |
 | Landing Page Builder (craft) | Page-specific component needs |
-| Spec Writer (product) | Feature requirements implying UI |
-| Brand Strategist (launch) | Color palette, typography, voice |
+| Spec Writer (build) | Feature requirements implying UI |
+| Brand Strategist (build) | Color palette, typography, voice |
 
 ## Execution Workflow
 1. **Gather** — Ask: component type, variants needed, design system context, existing tech stack
