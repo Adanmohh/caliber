@@ -1,7 +1,7 @@
 {
   "name": "caliberos",
-  "version": "1.0.0",
-  "description": "Interactive installer for Caliber AI Business Agents - Claude Code plugins",
+  "version": "1.0.1",
+  "description": "22 AI agents that take you from idea to shipped product. Strategy pipeline (validate > build > launch) + execution plugins (craft, document, present, demo). Each plugin works independently or chains together. For Claude Code.",
   "bin": {
     "caliberos": "./index.mjs"
   },
@@ -9,19 +9,37 @@
   "license": "MIT",
   "author": {
     "name": "Adan Mohh",
-    "email": "adan@neogrant.fi"
+    "email": "adan@neogrant.fi",
+    "url": "https://github.com/Adanmohh"
   },
+  "homepage": "https://github.com/Adanmohh/caliber#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Adanmohh/caliber"
+    "url": "git+https://github.com/Adanmohh/caliber.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Adanmohh/caliber/issues"
   },
   "keywords": [
     "claude-code",
+    "claude",
     "plugin",
-    "business",
-    "marketing",
     "ai-agents",
-    "strategy",
+    "business-strategy",
+    "go-to-market",
+    "landing-page",
+    "mvp",
+    "pitch-deck",
+    "product-strategy",
+    "marketing",
+    "seo",
+    "copywriting",
+    "growth",
+    "validation",
+    "anthropic",
     "caliber"
-  ]
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
