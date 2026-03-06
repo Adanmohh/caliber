@@ -29,7 +29,7 @@ POST https://api.elevenlabs.io/v1/text-to-speech/{voice_id}
 | eleven_turbo_v2_5 | Low latency, real-time applications | Good |
 | eleven_flash_v2_5 | Fastest, WebSocket streaming | Acceptable |
 
-Note: WebSockets are NOT available for eleven_v3.
+Note: WebSockets are NOT available for eleven_multilingual_v2.
 
 ## Headers
 

@@ -1,6 +1,6 @@
 # Validate Plugin
 
-Business idea exploration, ideation, and validation. Part of the **validate > product > exploit** pipeline.
+Business idea exploration, ideation, and validation. Part of the **validate > build > launch** pipeline.
 
 ## Team Roster
 
@@ -13,9 +13,7 @@ Business idea exploration, ideation, and validation. Part of the **validate > pr
 ## Installation
 
 ```bash
-claude plugin install validate@<marketplace>
-# Or load locally:
-claude --plugin-dir ./explore
+claude plugin install validate@Adanmohh/caliber
 ```
 
 ## Usage
@@ -34,24 +32,24 @@ claude --plugin-dir ./explore
 /full-team Mobile app that connects local farmers directly with restaurant chefs
 ```
 
-Runs all 3 experts in sequence: value proposition analysis, business model design, then experiment planning. Produces a HANDOFF.md summary at the end.
+Runs all 3 experts in sequence: value proposition analysis, business model design, then experiment planning.
 
 ## Pipeline Flow
 
 ```
-validate (this plugin)   -->  product  -->  exploit
-Ideate & validate ideas       Build it      Scale & optimize
+validate (this plugin)  -->  build  -->  launch
+Validate ideas               Build strategy   Go to market
 ```
 
-The validate plugin validates whether an idea is worth building. Once key assumptions are validated, hand off findings to the **product** plugin to begin building.
+The validate plugin validates whether an idea is worth building. Once key assumptions are validated, hand off findings to the **build** plugin to begin product strategy.
 
 ## Full Pipeline
 
-To run the full automated pipeline (validate > product > exploit), install the **orchestrator** plugin and use `/run`:
+To run the full automated pipeline (validate > build > launch), install the **pipeline** plugin and use `/run`:
 
 ```bash
-claude --plugin-dir ./explore --plugin-dir ./product --plugin-dir ./exploit --plugin-dir ./orchestrator
-> /run My SaaS idea for freelancers
+claude plugin install pipeline@Adanmohh/caliber
+> /pipeline:run My SaaS idea for freelancers
 ```
 
-See the [orchestrator README](../orchestrator/README.md) for details.
+See the [pipeline README](../pipeline/README.md) for details.

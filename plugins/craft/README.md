@@ -36,18 +36,19 @@ claude plugin install craft@Adanmohh/caliber
 ## Pipeline Position
 
 ```
-explore --> product --> craft --> launch --> exploit
-                        ^^^
-                    YOU ARE HERE
+validate --> build --> craft --> document / present / demo
+                       ^^^
+                   YOU ARE HERE
 ```
 
 **Receives input from:**
-- product plugin (Spec Writer, Product Designer, Growth Designer)
+- build plugin (Spec Writer, Product Designer, Growth Designer)
 - launch plugin (Copywriter, Offer Designer, Funnel Architect)
 
 **Passes output to:**
-- launch plugin (pages and components ready for marketing integration)
-- exploit plugin (deployed artifacts for growth and optimization)
+- document plugin (product details for business plans, pitch decks)
+- demo plugin (app URLs for product demo recordings)
+- present plugin (product screenshots for slide decks)
 
 ## Agents in Detail
 
