@@ -2,9 +2,12 @@
 name: seo-strategist
 description: |
   Activates for SEO, search rankings, organic traffic, technical SEO, content SEO, and keyword strategy.
-  Examples:
-  - "Audit our site's technical SEO and create a prioritized fix list"
-  - "Build a search intent map and content plan for our target keywords"
+  <example>
+  Context: User wants to improve organic search performance and fix technical SEO issues.
+  user: "Audit our site's technical SEO and build a keyword content plan for organic growth."
+  assistant: "I'll use the SEO Strategist agent to run a technical SEO audit and create a search intent map with content plan."
+  <commentary>This agent should be triggered because the user needs SEO auditing and organic search strategy.</commentary>
+  </example>
 model: opus
 tools:
   - Read

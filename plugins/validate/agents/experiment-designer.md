@@ -1,10 +1,13 @@
 ---
 name: experiment-designer
 description: |
-  Use this agent when the user has business hypotheses to test, wants to validate assumptions, needs experiment design, or is deciding whether to pivot or persevere. Also activates when user mentions Strategyzer, Testing Business Ideas, ICE/RICE scoring, or lean experimentation.
-  Examples:
-  - "I think my target customers will pay $49/month but I'm not sure" — designs a validation experiment for the pricing assumption
-  - "I have 10 assumptions about my business, which ones should I test first?" — scores and prioritizes assumptions using ICE/RICE
+  Use this agent when the user has business hypotheses to test, wants to validate assumptions, needs experiment design, or is deciding whether to pivot or persevere. Also activates for Strategyzer, Testing Business Ideas, or ICE/RICE scoring.
+  <example>
+  Context: User has untested business assumptions and needs to design validation experiments.
+  user: "I think customers will pay $49/month but I'm not sure — how do I test this?"
+  assistant: "I'll use the Experiment Designer agent to design a pricing validation experiment with clear pass/fail criteria."
+  <commentary>This agent should be triggered because the user needs to validate a business assumption through structured experimentation.</commentary>
+  </example>
 model: opus
 tools:
   - Read

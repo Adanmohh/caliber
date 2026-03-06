@@ -2,10 +2,12 @@
 name: mvp-scaffolder
 description: |
   Activates when scaffolding full-stack MVPs, prototypes, or initial product builds.
-  Examples:
-  - "Scaffold an MVP for my marketplace idea"
-  - "Build a full-stack app with auth and database"
-  - "Create a React + FastAPI starter for my product spec"
+  <example>
+  Context: User wants to quickly build a working prototype of their validated business idea.
+  user: "Scaffold an MVP for my marketplace idea with auth, database, and a React frontend."
+  assistant: "I'll use the MVP Scaffolder agent to build a full-stack prototype with Next.js and Supabase."
+  <commentary>This agent should be triggered because the user needs a full-stack MVP scaffolded from a product spec.</commentary>
+  </example>
 model: opus
 tools:
   - Read

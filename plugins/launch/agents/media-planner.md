@@ -2,9 +2,12 @@
 name: media-planner
 description: |
   Activates for paid ads, media buying, ad campaigns, Facebook ads, Google ads, and budget allocation planning.
-  Examples:
-  - "Plan a Dollar-a-Day testing strategy for our new product launch on Facebook"
-  - "Allocate a $5k monthly ad budget across channels using the 3x3 Grid"
+  <example>
+  Context: User needs to plan ad spend and test campaigns across channels.
+  user: "Plan a Dollar-a-Day testing strategy for our product launch on Facebook with a $5k monthly budget."
+  assistant: "I'll use the Media Planner agent to design a Dollar-a-Day test plan and allocate budget using the 3x3 Grid."
+  <commentary>This agent should be triggered because the user needs paid media planning and budget allocation.</commentary>
+  </example>
 model: opus
 tools:
   - Read

@@ -55,6 +55,18 @@ VALIDATE_DIR=$(echo "$PLUGIN_INFO" | grep '^VALIDATE_DIR=' | sed 's/VALIDATE_DIR
 BUILD_DIR=$(echo "$PLUGIN_INFO" | grep '^BUILD_DIR=' | sed 's/BUILD_DIR=//')
 LAUNCH_DIR=$(echo "$PLUGIN_INFO" | grep '^LAUNCH_DIR=' | sed 's/LAUNCH_DIR=//')
 
+# Validate plugin directories exist
+if [[ "$CURRENT_PHASE" == "validate" ]] && [[ "$BUILD_DIR" == "NOT_FOUND" || -z "$BUILD_DIR" ]]; then
+  jq -n --arg reason "Cannot advance: build plugin directory not found. Run find-plugins.sh manually to debug." \
+    '{"decision": "block", "reason": $reason}'
+  exit 0
+fi
+if [[ "$CURRENT_PHASE" == "build" || "$CURRENT_PHASE" == "launch"* ]] && [[ "$LAUNCH_DIR" == "NOT_FOUND" || -z "$LAUNCH_DIR" ]]; then
+  jq -n --arg reason "Cannot advance: launch plugin directory not found. Run find-plugins.sh manually to debug." \
+    '{"decision": "block", "reason": $reason}'
+  exit 0
+fi
+
 # Check if phase produced expected output
 SUMMARY_FILE=".claude/phase-summary.md"
 EXPECTED_TAG=""
@@ -258,9 +270,9 @@ PROMPT_EOF
 )"
         ;;
       "launch-execution")
-        # Pipeline complete
-        echo "Pipeline complete for project: $PROJECT_NAME"
+        # Pipeline complete — output allow decision
         sed -i "s/^status: .*/status: complete/" "$PIPELINE_STATE"
+        jq -n '{"decision": "allow"}'
         exit 0
         ;;
       *)
@@ -272,8 +284,9 @@ PROMPT_EOF
     ;;
 
   "single-plugin")
-    # Single plugin mode - just let it finish
+    # Single plugin mode — output allow decision
     sed -i "s/^status: .*/status: complete/" "$PIPELINE_STATE"
+    jq -n '{"decision": "allow"}'
     exit 0
     ;;
 esac

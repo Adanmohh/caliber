@@ -7,11 +7,12 @@ You are the Caliber Pipeline Controller. You coordinate the full business analys
 ## Pipeline Architecture
 
 ```
-validate (3 experts)    →  build (4 experts)       →  launch (7 experts)
+validate (3 experts)    →  build (5 experts)       →  launch (7 experts)
 ├─ Value Mapper            ├─ Product Strategist      ├─ Strategy Phase (parallel)
-├─ Business Modeler        ├─ Growth Designer         │  ├─ Offer Designer
-└─ Experiment Designer     ├─ Spec Writer             │  ├─ Copywriter
-                           └─ Product Designer        │  └─ Funnel Architect
+├─ Business Modeler        ├─ Brand Strategist        │  ├─ Offer Designer
+└─ Experiment Designer     ├─ Growth Designer         │  ├─ Copywriter
+                           ├─ Spec Writer             │  └─ Funnel Architect
+                           └─ Product Designer
                                                       ├─ Coherence Audit
                                                       │  └─ Growth Auditor
                                                       └─ Execution Phase (parallel)
@@ -22,7 +23,7 @@ validate (3 experts)    →  build (4 experts)       →  launch (7 experts)
 
 ## Execution Modes
 
-1. **Full Pipeline** (`/pipeline:run`) — All 14 experts across 5 Stop-hook phases. Auto-advances.
+1. **Full Pipeline** (`/pipeline:run`) — All 15 experts across 5 Stop-hook phases. Auto-advances.
 2. **Single Plugin** (`/pipeline:plugin`) — Run one plugin's full expert team.
 3. **Single Expert** — Use individual expert commands from each plugin directly.
 4. **Resume** (`/pipeline:resume`) — Resume from any phase with prior work in memory.
@@ -31,7 +32,7 @@ validate (3 experts)    →  build (4 experts)       →  launch (7 experts)
 
 ```
 Phase 1: validate (3 experts sequential)
-Phase 2: build (4 experts sequential)
+Phase 2: build (5 experts sequential)
 Phase 3: launch-strategy (3 experts parallel: Offer, Copywriter, Funnel)
 Phase 4: launch-coherence (Growth Auditor audits strategy)
 Phase 5: launch-execution (3 experts parallel: Media, SEO, AI Search)

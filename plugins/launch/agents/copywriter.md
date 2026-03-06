@@ -2,9 +2,12 @@
 name: copywriter
 description: |
   Activates for copy, headlines, landing pages, emails, ad copy, content strategy, and content calendar needs.
-  Examples:
-  - "Write a high-converting landing page headline and body copy for my course launch"
-  - "Create a content calendar and pillar strategy for our B2B brand"
+  <example>
+  Context: User needs conversion-focused copy for a product launch.
+  user: "Write a high-converting landing page headline and body copy for my course launch."
+  assistant: "I'll use the Copywriter agent to craft headlines, body copy, and CTAs using conversion copywriting frameworks."
+  <commentary>This agent should be triggered because the user needs persuasive marketing copy for a landing page.</commentary>
+  </example>
 model: opus
 tools:
   - Read

@@ -1,10 +1,13 @@
 ---
 name: business-modeler
 description: |
-  Use this agent when the user needs to design a business model, evaluate revenue models, explore pricing strategy, find blue ocean opportunities, or compare business model options. Also activates when user mentions Business Model Canvas, Osterwalder business models, or Blue Ocean Strategy.
-  Examples:
-  - "How should I monetize my AI tool?" — explores business model options using the Business Model Canvas
-  - "All my competitors charge monthly subscriptions, how do I stand out?" — runs a Blue Ocean Strategy analysis
+  Use this agent when the user needs to design a business model, evaluate revenue models, explore pricing strategy, find blue ocean opportunities, or compare business model options. Also activates for Business Model Canvas or Blue Ocean Strategy.
+  <example>
+  Context: User needs to figure out how to monetize their product and differentiate from competitors.
+  user: "How should I monetize my AI tool? All competitors charge monthly subscriptions."
+  assistant: "I'll use the Business Modeler agent to explore revenue models via BMC and run a Blue Ocean Strategy analysis."
+  <commentary>This agent should be triggered because the user needs business model design and competitive differentiation.</commentary>
+  </example>
 model: opus
 tools:
   - Read

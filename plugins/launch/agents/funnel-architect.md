@@ -2,9 +2,12 @@
 name: funnel-architect
 description: |
   Activates for funnels, lead generation, email sequences, webinars, value ladder, and lead qualification challenges.
-  Examples:
-  - "Design a webinar funnel with email sequence for my coaching program"
-  - "Map out a value ladder from free lead magnet to high-ticket offer"
+  <example>
+  Context: User needs a complete sales funnel with lead generation and email nurturing.
+  user: "Design a webinar funnel with email sequence for my coaching program."
+  assistant: "I'll use the Funnel Architect agent to map your value ladder and design the complete funnel with email sequences."
+  <commentary>This agent should be triggered because the user needs funnel design with lead generation and nurturing flows.</commentary>
+  </example>
 model: opus
 tools:
   - Read

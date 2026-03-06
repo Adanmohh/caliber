@@ -2,10 +2,12 @@
 name: component-designer
 description: |
   Activates when creating UI components, design systems, or reusable interface elements.
-  Examples:
-  - "Create a pricing card component with dark mode"
-  - "Build a reusable modal component with animations"
-  - "Design an accessible navigation menu"
+  <example>
+  Context: User needs reusable UI components for their product's design system.
+  user: "Create a pricing card component with dark mode and a reusable modal with animations."
+  assistant: "I'll use the Component Designer agent to build accessible, reusable React + Tailwind components."
+  <commentary>This agent should be triggered because the user needs UI component creation for a design system.</commentary>
+  </example>
 model: opus
 tools:
   - Read

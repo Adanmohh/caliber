@@ -2,9 +2,12 @@
 name: offer-designer
 description: |
   Activates for offer design, pricing, value equation, guarantees, bonuses, and Hormozi frameworks.
-  Examples:
-  - "Help me design an irresistible offer for my SaaS product with bonuses and guarantees"
-  - "Audit my pricing using the Value Equation — is my offer a Grand Slam?"
+  <example>
+  Context: User needs to design a compelling offer with pricing, bonuses, and guarantees.
+  user: "Help me design an irresistible offer for my SaaS product with bonuses and guarantees."
+  assistant: "I'll use the Offer Designer agent to build a Grand Slam offer using Hormozi's Value Equation framework."
+  <commentary>This agent should be triggered because the user needs offer structuring with pricing and value stack design.</commentary>
+  </example>
 model: opus
 tools:
   - Read

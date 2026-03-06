@@ -2,10 +2,12 @@
 name: business-writer
 description: |
   Activates for business plans, executive summaries, SOPs, case studies, and one-pagers.
-  Examples:
-  - "Write a business plan based on our validation findings"
-  - "Create a one-pager for investor meetings"
-  - "Generate a case study from our customer success story"
+  <example>
+  Context: User needs formal business documents synthesized from their strategy and validation work.
+  user: "Write a business plan based on our validation findings and create a one-pager for investors."
+  assistant: "I'll use the Business Writer agent to synthesize upstream outputs into a formal business plan and one-pager."
+  <commentary>This agent should be triggered because the user needs structured business documentation.</commentary>
+  </example>
 model: opus
 tools:
   - Read

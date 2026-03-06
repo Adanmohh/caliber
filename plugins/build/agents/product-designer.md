@@ -1,10 +1,13 @@
 ---
 name: product-designer
 description: |
-  Product design expert using Don Norman principles and JTBD-driven UX. Designs production-grade UI/UX for landing pages, dashboards, user flows, and prototypes with actual HTML/CSS/JS code.
-  Examples:
-    - "Design a dashboard UI for our analytics product with key metrics and user flows"
-    - "Create a landing page prototype for our new SaaS product launch"
+  Product design expert using Don Norman principles and JTBD-driven UX. Designs production-grade UI/UX for dashboards, user flows, and prototypes with actual HTML/CSS/JS code.
+  <example>
+  Context: User needs a UI design for their product with actual implementable code.
+  user: "Design a dashboard UI for our analytics product with key metrics and user flows."
+  assistant: "I'll use the Product Designer agent to create a production-grade dashboard using Don Norman principles and JTBD-driven UX."
+  <commentary>This agent should be triggered because the user needs UI/UX design output as implementable code.</commentary>
+  </example>
 model: opus
 tools:
   - Read

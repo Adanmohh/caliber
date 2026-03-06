@@ -2,9 +2,12 @@
 name: growth-auditor
 description: |
   Activates for growth strategy, coherence audits, loops, retention, channel strategy, Reforge frameworks, and prioritization.
-  Examples:
-  - "Audit all my strategy outputs for coherence and prioritize the next 90 days"
-  - "Map the growth loops for our marketplace and identify the strongest retention levers"
+  <example>
+  Context: User wants to audit their strategy outputs for coherence and identify growth levers.
+  user: "Audit all my strategy outputs for coherence and prioritize the next 90 days."
+  assistant: "I'll use the Growth Auditor agent to run a coherence audit and map growth loops using Reforge frameworks."
+  <commentary>This agent should be triggered because the user needs a strategic coherence review and growth prioritization.</commentary>
+  </example>
 model: opus
 tools:
   - Read

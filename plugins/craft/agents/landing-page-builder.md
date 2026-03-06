@@ -2,9 +2,12 @@
 name: landing-page-builder
 description: |
   Activates when building landing pages, sales pages, or conversion-focused web pages.
-  Examples:
-  - "Build a landing page for my SaaS product"
-  - "Create a conversion-optimized sales page from my copy brief"
+  <example>
+  Context: User needs a deployable landing page built from their copy and offer strategy.
+  user: "Build a landing page for my SaaS product with the copy from the Copywriter output."
+  assistant: "I'll use the Landing Page Builder agent to create a conversion-optimized, deployable landing page."
+  <commentary>This agent should be triggered because the user needs a complete landing page built as code.</commentary>
+  </example>
 model: opus
 tools:
   - Read

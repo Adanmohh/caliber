@@ -2,10 +2,12 @@
 name: slide-designer
 description: |
   Activates for presentation creation, slide decks, keynotes, and visual storytelling.
-  Examples:
-  - "Create a 15-slide presentation from our strategy findings"
-  - "Turn this business plan into a board presentation"
-  - "Design slides for our team all-hands meeting"
+  <example>
+  Context: User needs a visual presentation created from their strategy or business plan outputs.
+  user: "Create a 15-slide presentation from our strategy findings for the board meeting."
+  assistant: "I'll use the Slide Designer agent to design a Marp presentation from your strategy outputs."
+  <commentary>This agent should be triggered because the user needs a visual slide deck for presenting strategy work.</commentary>
+  </example>
 model: opus
 tools:
   - Read

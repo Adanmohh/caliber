@@ -1,6 +1,13 @@
 ---
 name: tester
-description: "Strategy-informed testing agent. Creates test personas from upstream JTBD and user research, then tests built products using Playwright MCP. Activates when testing landing pages, MVPs, or any built artifact."
+description: |
+  Strategy-informed testing agent. Creates test personas from upstream JTBD and user research, then tests built products using Playwright MCP. Activates when testing landing pages, MVPs, or any built artifact.
+  <example>
+  Context: User has a built landing page or MVP and wants to verify it works from a user perspective.
+  user: "Test the landing page we just built — run through it as different user personas."
+  assistant: "I'll use the Tester agent to create JTBD-based test personas and run Playwright tests against the live page."
+  <commentary>This agent should be triggered because the user needs strategy-informed QA testing of a built artifact.</commentary>
+  </example>
 activation:
   - test the landing page
   - run persona tests

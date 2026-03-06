@@ -2,10 +2,12 @@
 name: pitch-deck-writer
 description: |
   Activates for investor pitch decks, sales decks, and partnership proposals.
-  Examples:
-  - "Create an investor pitch deck for our Series A"
-  - "Build a sales deck for enterprise clients"
-  - "Write a partnership proposal deck"
+  <example>
+  Context: User needs a structured pitch deck for fundraising or sales.
+  user: "Create an investor pitch deck for our Series A raise."
+  assistant: "I'll use the Pitch Deck Writer agent to build a Marp pitch deck using proven investor frameworks."
+  <commentary>This agent should be triggered because the user needs a structured pitch deck for investors or sales.</commentary>
+  </example>
 model: opus
 tools:
   - Read

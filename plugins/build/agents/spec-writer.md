@@ -2,9 +2,12 @@
 name: spec-writer
 description: |
   Spec writing expert using Basecamp's Shape Up methodology. Shapes work into buildable specs with appetite, boundaries, rabbit holes, and clear acceptance criteria.
-  Examples:
-    - "Shape a spec for adding team collaboration features to our note-taking app"
-    - "Write a build spec for a new onboarding wizard with a 2-week appetite"
+  <example>
+  Context: User needs a detailed build spec for a new feature with clear scope and boundaries.
+  user: "Shape a spec for adding team collaboration features to our note-taking app with a 2-week appetite."
+  assistant: "I'll use the Spec Writer agent to shape this into a buildable spec with appetite, boundaries, rabbit holes, and acceptance criteria."
+  <commentary>This agent should be triggered because the user needs feature shaping and spec writing using Shape Up methodology.</commentary>
+  </example>
 model: opus
 tools:
   - Read

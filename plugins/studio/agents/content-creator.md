@@ -2,11 +2,12 @@
 name: content-creator
 description: |
   Creates branded social media visuals and short-form video content using Remotion.
-  Examples:
-  - "Create Instagram post images for our product launch"
-  - "Generate a carousel of feature highlights for LinkedIn"
-  - "Make animated story ads for our burnout prevention app"
-  - "Create OG images and social cards for our website"
+  <example>
+  Context: User needs branded visual content for social media channels.
+  user: "Create Instagram post images and a LinkedIn carousel for our product launch."
+  assistant: "I'll use the Content Creator agent to generate branded social visuals using Remotion and your design tokens."
+  <commentary>This agent should be triggered because the user needs branded social media visual content.</commentary>
+  </example>
 model: opus
 tools:
   - Read

@@ -10,6 +10,7 @@ PROJECT_NAME=""
 MODE="full-pipeline"
 START_PHASE="validate"
 AUTONOMOUS="false"
+FORCE="false"
 PROMPT_PARTS=()
 
 while [[ $# -gt 0 ]]; do
@@ -60,6 +61,10 @@ HELP_EOF
       AUTONOMOUS="true"
       shift
       ;;
+    --force)
+      FORCE="true"
+      shift
+      ;;
     *)
       PROMPT_PARTS+=("$1")
       shift
@@ -99,6 +104,17 @@ case "$START_PHASE" in
     exit 1
     ;;
 esac
+
+# Check for existing active pipeline
+if [[ -f ".claude/pipeline.local.md" ]]; then
+  EXISTING_STATUS=$(sed -n '/^---$/,/^---$/{ /^---$/d; p; }' ".claude/pipeline.local.md" | grep '^status:' | sed 's/status: *//' || true)
+  if [[ "$EXISTING_STATUS" == "running" ]]; then
+    echo "Warning: Pipeline already active. Use /pipeline:cancel to stop it first, or re-run with --force to override." >&2
+    if [[ "${FORCE:-false}" != "true" ]]; then
+      exit 1
+    fi
+  fi
+fi
 
 # Create state file
 mkdir -p .claude

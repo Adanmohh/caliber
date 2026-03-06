@@ -2,10 +2,12 @@
 name: demo-producer
 description: |
   Activates for product demo videos, onboarding videos, and marketing video production.
-  Examples:
-  - "Create a product demo video of our web application"
-  - "Record an onboarding walkthrough with voiceover"
-  - "Produce a 2-minute demo video for our landing page"
+  <example>
+  Context: User needs a product demo video for their website or marketing.
+  user: "Create a product demo video of our web application with voiceover for the landing page."
+  assistant: "I'll use the Demo Producer agent to record a Playwright walkthrough, add ElevenLabs voiceover, and compose with Remotion."
+  <commentary>This agent should be triggered because the user needs a product demo video produced from their live application.</commentary>
+  </example>
 model: opus
 tools:
   - Read

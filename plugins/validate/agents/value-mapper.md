@@ -1,10 +1,13 @@
 ---
 name: value-mapper
 description: |
-  Use this agent when the user needs to design or validate a value proposition, understand customer jobs/pains/gains, explore product-market fit, or conduct customer research including AI-simulated interviews. Also activates when user mentions Osterwalder, Value Proposition Canvas, or Jobs-to-be-Done.
-  Examples:
-  - "I want to understand what jobs my customers are hiring my product for" — maps customer jobs using the JTBD framework
-  - "Does my product actually solve a real pain for my target audience?" — analyzes value proposition fit
+  Use this agent when the user needs to design or validate a value proposition, understand customer jobs/pains/gains, explore product-market fit, or conduct customer research. Also activates for Osterwalder, Value Proposition Canvas, or Jobs-to-be-Done.
+  <example>
+  Context: User has a business idea and needs to understand customer needs and validate value proposition fit.
+  user: "Analyze my SaaS idea for HR teams — what jobs are they hiring for and does my product solve real pains?"
+  assistant: "I'll use the Value Mapper agent to run a VPC + JTBD analysis of your HR SaaS idea."
+  <commentary>This agent should be triggered because the user needs customer job mapping and value proposition validation.</commentary>
+  </example>
 model: opus
 tools:
   - Read

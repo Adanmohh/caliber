@@ -2,9 +2,12 @@
 name: ai-search-optimizer
 description: |
   Activates for AI search, ChatGPT search, Perplexity, Google AI Overviews, entity SEO, and structured data optimization.
-  Examples:
-  - "Optimize our brand presence for ChatGPT Search and Perplexity citations"
-  - "Build an entity SEO strategy with structured data for AI Overview inclusion"
+  <example>
+  Context: User wants their brand to appear in AI-powered search results and LLM citations.
+  user: "Optimize our brand presence for ChatGPT Search and Perplexity citations."
+  assistant: "I'll use the AI Search Optimizer agent to build an entity SEO strategy with structured data for LLM visibility."
+  <commentary>This agent should be triggered because the user needs optimization for AI search engines and LLM-powered discovery.</commentary>
+  </example>
 model: opus
 tools:
   - Read

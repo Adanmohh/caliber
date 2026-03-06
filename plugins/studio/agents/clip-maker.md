@@ -2,10 +2,12 @@
 name: clip-maker
 description: |
   Activates for short social media clips, platform-specific video content, and repurposing longer videos into short-form.
-  Examples:
-  - "Create a 30-second Instagram Reel from the product demo"
-  - "Make TikTok clips highlighting key features"
-  - "Cut a LinkedIn video from the onboarding walkthrough"
+  <example>
+  Context: User wants to create short-form social content from existing video assets.
+  user: "Create a 30-second Instagram Reel from the product demo highlighting key features."
+  assistant: "I'll use the Clip Maker agent to cut a platform-optimized short clip from your demo recording."
+  <commentary>This agent should be triggered because the user needs short-form social video content.</commentary>
+  </example>
 model: opus
 tools:
   - Read
