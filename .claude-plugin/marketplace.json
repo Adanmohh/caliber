@@ -1,0 +1,60 @@
+{
+  "name": "caliber",
+  "description": "Caliber: AI Business Agents. 22 AI experts that take you from idea to shipped product. Validate > Build > Launch + Craft, Document, Present, Demo.",
+  "version": "1.0.0",
+  "owner": {
+    "name": "Adan Mohh",
+    "email": "adan@neogrant.fi"
+  },
+  "pluginRoot": "./plugins",
+  "plugins": [
+    {
+      "name": "validate",
+      "source": "./validate",
+      "description": "Validate business ideas with 3 AI experts: Value Mapper, Business Modeler, Experiment Designer",
+      "version": "1.0.0"
+    },
+    {
+      "name": "build",
+      "source": "./build",
+      "description": "Build product strategy with 4 AI experts: Product Strategist, Growth Designer, Spec Writer, Product Designer",
+      "version": "1.0.0"
+    },
+    {
+      "name": "launch",
+      "source": "./launch",
+      "description": "Go-to-market with 7 AI experts: Offer Designer, Copywriter, Funnel Architect, Growth Auditor, Media Planner, SEO Strategist, AI Search Optimizer",
+      "version": "1.0.0"
+    },
+    {
+      "name": "craft",
+      "source": "./craft",
+      "description": "Build production deliverables with 3 AI agents: Landing Page Builder, MVP Scaffolder, Component Designer",
+      "version": "1.0.0"
+    },
+    {
+      "name": "document",
+      "source": "./document",
+      "description": "Generate professional business documents with 2 AI agents: Business Writer, Pitch Deck Writer",
+      "version": "1.0.0"
+    },
+    {
+      "name": "present",
+      "source": "./present",
+      "description": "Create slide presentations with 1 AI agent: Slide Designer (Marp markdown to PDF/PPTX)",
+      "version": "1.0.0"
+    },
+    {
+      "name": "demo",
+      "source": "./demo",
+      "description": "Produce product demo videos with 2 AI agents: Demo Producer (Playwright+ElevenLabs+Remotion), Clip Maker",
+      "version": "1.0.0"
+    },
+    {
+      "name": "pipeline",
+      "source": "./pipeline",
+      "description": "Pipeline controller that chains validate > build > launch into automated workflow with Stop hook loop pattern",
+      "version": "1.0.0"
+    }
+  ]
+}

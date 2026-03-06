@@ -1,0 +1,10 @@
+{
+  "name": "build",
+  "version": "1.0.0",
+  "description": "Product vision and build. 4 AI experts: Product Strategist (Reforge + Cagan), Growth Designer (Torres + Hooked + PLG), Spec Writer (Shape Up), Product Designer (Don Norman + JTBD UX). Part of the validate → build → launch pipeline.",
+  "author": {
+    "name": "Caliber"
+  },
+  "commands": "./commands",
+  "agents": "./agents"
+}

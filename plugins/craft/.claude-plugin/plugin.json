@@ -1,0 +1,11 @@
+{
+  "name": "craft",
+  "version": "1.0.0",
+  "description": "Build production deliverables: landing pages, MVPs, and UI components. 3 AI builder agents. Part of the Caliber ecosystem.",
+  "author": {
+    "name": "Caliber",
+    "email": "adan@neogrant.fi"
+  },
+  "commands": "./commands",
+  "agents": "./agents"
+}

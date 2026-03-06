@@ -1,0 +1,27 @@
+{
+  "name": "caliber",
+  "version": "1.0.0",
+  "description": "Interactive installer for Caliber AI Business Agents - Claude Code plugins",
+  "bin": {
+    "caliber": "./index.mjs"
+  },
+  "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "Adan Mohh",
+    "email": "adan@neogrant.fi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Adanmohh/caliber"
+  },
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "business",
+    "marketing",
+    "ai-agents",
+    "strategy",
+    "caliber"
+  ]
+}

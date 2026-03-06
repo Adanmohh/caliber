@@ -1,0 +1,11 @@
+{
+  "name": "present",
+  "version": "1.0.0",
+  "description": "Create professional slide presentations from strategy outputs. Marp markdown to PDF/PPTX. 1 AI designer agent. Part of the Caliber ecosystem.",
+  "author": {
+    "name": "Caliber",
+    "email": "adan@neogrant.fi"
+  },
+  "commands": "./commands",
+  "agents": "./agents"
+}

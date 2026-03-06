@@ -1,0 +1,11 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "Produce product demo videos and social clips. Playwright recording + ElevenLabs voiceover + Remotion composition. 2 AI producer agents. Part of the Caliber ecosystem.",
+  "author": {
+    "name": "Caliber",
+    "email": "adan@neogrant.fi"
+  },
+  "commands": "./commands",
+  "agents": "./agents"
+}
