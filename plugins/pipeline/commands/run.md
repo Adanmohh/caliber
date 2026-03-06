@@ -41,6 +41,48 @@ Spawn a full agent team where each expert is a teammate with its own context win
 **Default to Mode 1 unless the user explicitly requests parallel or team execution.**
 If the user says "run in parallel", "use teams", or "fast mode", switch to Mode 2 or 3 accordingly.
 
+## Autonomy Mode (Research-Driven)
+
+Check the setup script output for `Autonomous: true`. If autonomous mode is active, ALL experts follow the **80/20 Research Protocol** instead of asking the user questions:
+
+### 80/20 Research Protocol
+
+For EACH expert, before doing any analysis:
+
+**Phase 1 — Broad Scan (20% effort → 80% coverage):**
+1. Use WebSearch with 5-8 targeted queries relevant to this expert's domain:
+   - `"{ProjectName}" + {domain keywords}` (direct matches)
+   - `{industry} market size {year}` (market data)
+   - `{competitor names} pricing features` (competitive intel)
+   - `{target audience} pain points {problem space}` (customer insights)
+2. Extract: key facts, numbers, competitor names, pricing, trends, customer language
+
+**Phase 2 — Targeted Deep-Dive (80% effort → remaining 20%):**
+1. Identify the 2-3 biggest unknowns from Phase 1
+2. Run 3-5 more specific WebSearch queries to fill gaps
+3. Cross-reference contradictory claims
+4. Find primary sources for key statistics
+
+**Phase 3 — Synthesize & Proceed:**
+1. Compile research into structured inputs for your frameworks
+2. Apply your frameworks using research data (not assumptions)
+3. Flag low-confidence areas where research was inconclusive
+4. **Only use AskUserQuestion for truly unanswerable questions** — things that require the founder's personal intent, budget constraints, or strategic preferences that no amount of research can determine
+
+### Parallel Research Sub-Agents
+
+In autonomous mode, experts SHOULD use the Agent tool to parallelize research:
+```
+Agent 1: "WebSearch for {ProjectName} competitors, pricing, features — return structured comparison"
+Agent 2: "WebSearch for {target market} size, growth trends, key players — return market summary"
+Agent 3: "WebSearch for {customer segment} pain points, forums, reviews — return voice-of-customer data"
+```
+Wait for all agents, then synthesize findings into your analysis.
+
+### When NOT Autonomous
+
+If `Autonomous: false` (default), experts use AskUserQuestion freely to gather requirements from the user. This is the standard interactive mode.
+
 ## Phase 1: Validate
 
 You are starting the Caliber pipeline. Your task is to run the full validate phase.
@@ -80,7 +122,9 @@ Ready for: build phase
 ```
 (claude-mem auto-captures this via PostToolUse hooks — no explicit save needed)
 
-Ask the user questions as needed using AskUserQuestion. Be thorough — this is the foundation for everything that follows.
+**If Autonomous mode is active** (setup script output shows `Autonomous: true`), follow the 80/20 Research Protocol above — WebSearch first, ask only what research can't answer. Use the Agent tool to parallelize research across domains (competitors, market data, customer insights).
+
+**If NOT autonomous** (default), ask the user questions as needed using AskUserQuestion. Be thorough — this is the foundation for everything that follows.
 
 Write your phase summary to `.claude/phase-summary.md` in addition to outputting it.
 

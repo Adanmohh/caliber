@@ -39,6 +39,7 @@ MODE=$(echo "$FRONTMATTER" | grep '^mode:' | sed 's/mode: *//')
 CURRENT_PHASE=$(echo "$FRONTMATTER" | grep '^current_phase:' | sed 's/current_phase: *//')
 STATUS=$(echo "$FRONTMATTER" | grep '^status:' | sed 's/status: *//')
 PROJECT_NAME=$(echo "$FRONTMATTER" | grep '^project_name:' | sed 's/project_name: *//' | sed 's/^"\(.*\)"$/\1/')
+AUTONOMOUS=$(echo "$FRONTMATTER" | grep '^autonomous:' | sed 's/autonomous: *//' || echo "false")
 STARTED_AT=$(echo "$FRONTMATTER" | grep '^started_at:' | sed 's/started_at: *//' | sed 's/^"\(.*\)"$/\1/' || true)
 
 # If status is "complete" or "cancelled", allow exit
@@ -288,6 +289,28 @@ NEXT_PROMPT="${NEXT_PROMPT//PROJECT_NAME/$PROJECT_NAME}"
 NEXT_PROMPT="${NEXT_PROMPT//BUILD_PLUGIN_DIR/$BUILD_DIR}"
 NEXT_PROMPT="${NEXT_PROMPT//LAUNCH_PLUGIN_DIR/$LAUNCH_DIR}"
 NEXT_PROMPT="${NEXT_PROMPT//PIPELINE_START_DATE/$STARTED_AT}"
+
+# Inject autonomy mode instructions if enabled
+if [[ "$AUTONOMOUS" == "true" ]]; then
+  AUTONOMY_BLOCK="
+
+## AUTONOMOUS MODE ACTIVE
+
+You are running in research-driven autonomous mode. Follow the 80/20 Research Protocol:
+
+**Phase 1 — Broad Scan (20% effort → 80% coverage):**
+Use WebSearch with 5-8 targeted queries per expert to gather market data, competitors, pricing, customer pain points, and industry trends for $PROJECT_NAME.
+
+**Phase 2 — Targeted Deep-Dive (80% effort → remaining 20%):**
+Identify 2-3 biggest unknowns from Phase 1 and run 3-5 more specific queries.
+
+**Phase 3 — Synthesize & Proceed:**
+Apply your frameworks using research data. Only use AskUserQuestion for truly unanswerable questions (founder intent, budget, strategic preferences).
+
+Use the Agent tool to parallelize research: spawn 2-3 sub-agents doing WebSearch in parallel for different research domains, then synthesize.
+"
+  NEXT_PROMPT="${AUTONOMY_BLOCK}${NEXT_PROMPT}"
+fi
 
 # Update state file with next phase
 TEMP_FILE="${PIPELINE_STATE}.tmp.$$"

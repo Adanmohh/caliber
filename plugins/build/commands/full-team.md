@@ -40,6 +40,18 @@ If the user requests parallel execution:
 
 Default: run sequentially (Product Strategist -> Brand Strategist -> Growth Designer -> Spec Writer -> Product Designer).
 
+## Autonomous Mode (--autonomous)
+
+If the user's input contains "--autonomous" or "--auto", run in research-driven mode:
+
+**For EACH expert, before analysis:**
+1. **Broad Scan** — Use WebSearch with 5-8 targeted queries relevant to this expert's domain
+2. **Deep-Dive** — Run 3-5 follow-up queries on biggest unknowns
+3. **Synthesize** — Apply frameworks using research data, not assumptions
+4. **Ask only what research can't answer** — founder intent, budget, strategic preferences
+
+Use the Agent tool to parallelize research sub-agents doing WebSearch across different domains.
+
 ## Handoff
 Produce a HANDOFF.md with:
 - Product strategy summary

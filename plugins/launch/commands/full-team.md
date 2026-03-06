@@ -96,6 +96,18 @@ If the user requests parallel execution:
 
 This matches the existing Phase 1/2/3 structure above. When running in parallel mode, use the Agent tool to launch Group 1 and Group 3 agents concurrently rather than sequentially.
 
+## Autonomous Mode (--autonomous)
+
+If the user's input contains "--autonomous" or "--auto", run in research-driven mode:
+
+**For EACH expert, before analysis:**
+1. **Broad Scan** — Use WebSearch with 5-8 targeted queries relevant to this expert's domain (competitor ads, pricing pages, SEO benchmarks, ad costs, etc.)
+2. **Deep-Dive** — Run 3-5 follow-up queries on biggest unknowns
+3. **Synthesize** — Apply frameworks using research data, not assumptions
+4. **Ask only what research can't answer** — founder intent, budget, strategic preferences
+
+Use the Agent tool to parallelize research sub-agents doing WebSearch across different domains.
+
 ## Final Deliverable
 After all phases complete, synthesize a unified go-to-market plan that includes:
 - Executive summary of the strategy

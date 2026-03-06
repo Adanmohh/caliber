@@ -9,6 +9,7 @@ set -euo pipefail
 PROJECT_NAME=""
 MODE="full-pipeline"
 START_PHASE="validate"
+AUTONOMOUS="false"
 PROMPT_PARTS=()
 
 while [[ $# -gt 0 ]]; do
@@ -26,12 +27,14 @@ ARGUMENTS:
 OPTIONS:
   --mode <mode>           Pipeline mode: full-pipeline | single-plugin (default: full-pipeline)
   --start-phase <phase>   Start from phase: validate | build | launch (default: validate)
+  --autonomous            Research-driven mode: experts WebSearch first, ask user only what research can't answer
   -h, --help              Show this help message
 
 EXAMPLES:
   /pipeline:run BurnoutLab - AI-powered burnout recovery courses
-  /pipeline:run "MyApp" --start-phase product
-  /pipeline:run SaaSProduct --mode single-plugin --start-phase launch
+  /pipeline:run "MyApp" --start-phase build
+  /pipeline:run SaaSProduct --autonomous
+  /pipeline:run BurnoutLab.md --autonomous
 
 PIPELINE PHASES:
   validate → Value Mapper, Business Modeler, Experiment Designer
@@ -52,6 +55,10 @@ HELP_EOF
     --start-phase)
       START_PHASE="$2"
       shift 2
+      ;;
+    --autonomous|--auto)
+      AUTONOMOUS="true"
+      shift
       ;;
     *)
       PROMPT_PARTS+=("$1")
@@ -102,6 +109,7 @@ active: true
 mode: $MODE
 current_phase: $START_PHASE
 status: running
+autonomous: $AUTONOMOUS
 project_name: "$PROJECT_NAME"
 brief_file: "${BRIEF_FILE:-}"
 session_id: ${CLAUDE_CODE_SESSION_ID:-}
@@ -111,6 +119,7 @@ started_at: "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 Project: $PROJECT_NAME
 Mode: $MODE
 Start Phase: $START_PHASE
+Autonomous: $AUTONOMOUS
 Brief File: ${BRIEF_FILE:-none}
 EOF
 
@@ -120,6 +129,7 @@ Caliber Pipeline activated!
 
   Project: $PROJECT_NAME
   Mode: $MODE
+  Autonomous: $AUTONOMOUS
   Starting phase: $START_PHASE
   Phases: validate > build > launch
 
