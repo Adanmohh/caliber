@@ -2,13 +2,13 @@
 
 > Most founders fail not from bad ideas, but from the gap between knowing what to build and actually building it. Caliber closes that gap.
 
-**22 specialized AI agents organized into 8 independent plugins** that work alone or chain together into a complete idea-to-execution pipeline. Each agent brings deep framework expertise — not generic advice, but the same methodologies used by top strategists, growth engineers, and builders.
+**22 specialized AI agents organized into 8 independent plugins** that work alone or chain together into a complete idea-to-execution pipeline. Each agent brings deep framework expertise — not generic advice, but proven methodologies that top strategists and builders actually use.
 
 ## The Problem
 
 You have an idea. Now what?
 
-Validation needs Osterwalder and Jobs-to-be-Done. Product strategy needs Reforge and Shape Up. Go-to-market needs Hormozi pricing, Copyhackers copy, Brunson funnels, and Dennis Yu media buying. Then you still need to build the landing page, write the pitch deck, design the slides, and record the demo.
+Validation needs value proposition mapping and jobs-to-be-done analysis. Product strategy needs growth loops and product operating models. Go-to-market needs offer design, conversion copywriting, funnel architecture, and paid media planning. Then you still need to build the landing page, write the pitch deck, design the slides, and record the demo.
 
 That's 22 different disciplines. No solo founder or small team has all of them.
 
@@ -27,7 +27,7 @@ validate  >  build  >  launch                  craft | document | present | demo
 ```
 
 **Install one plugin** when you need a specific expert.
-**Install all nine** when you want the full pipeline from idea to shipped product.
+**Install all eight** when you want the full pipeline from idea to shipped product.
 
 ## Strategy Pipeline
 
@@ -37,36 +37,36 @@ Three plugins that chain together. Each builds on the previous phase's findings.
 
 3 experts that pressure-test your idea before you write a line of code.
 
-| Expert | Methodology | Output |
-|--------|------------|--------|
-| **Value Mapper** | Osterwalder VPC + Jobs-to-be-Done + Identity Jobs | Value proposition canvas, customer segments |
-| **Business Modeler** | Business Model Canvas + Blue Ocean Strategy + AI-native patterns | Revenue model, competitive positioning, pricing |
-| **Experiment Designer** | Strategyzer + ICE/RICE prioritization | Prioritized experiment backlog, test designs |
+| Expert | What they do | Output |
+|--------|-------------|--------|
+| **Value Mapper** | Maps value propositions against customer jobs, pains, and gains | Value proposition canvas, customer segments |
+| **Business Modeler** | Designs revenue models, competitive positioning, and pricing strategy | Business model canvas, pricing model, blue ocean map |
+| **Experiment Designer** | Designs and prioritizes validation experiments | Prioritized experiment backlog, test designs |
 
 ### build — What exactly should we ship?
 
 4 experts that turn a validated idea into a buildable product spec.
 
-| Expert | Methodology | Output |
-|--------|------------|--------|
-| **Product Strategist** | Reforge + Growth Loops + Cagan Transformed | Product strategy, growth model |
-| **Growth Designer** | Teresa Torres + Hooked Model + PLG | Retention loops, engagement triggers |
-| **Spec Writer** | Basecamp Shape Up | Buildable specs with appetite and scope |
-| **Product Designer** | Don Norman + JTBD-driven UX + AI UX patterns | Wireframes, interaction design, accessibility |
+| Expert | What they do | Output |
+|--------|-------------|--------|
+| **Product Strategist** | Defines product strategy, growth loops, and operating model | Product strategy doc, growth model |
+| **Growth Designer** | Designs retention loops, engagement triggers, and product-led growth | Habit loops, activation flows, retention curves |
+| **Spec Writer** | Shapes buildable specs with clear appetite and scope | Shaped pitches, fat-marker sketches, scope tables |
+| **Product Designer** | Creates accessible UI/UX driven by user jobs and AI interaction patterns | Wireframes, interaction design, component specs |
 
 ### launch — How do we get customers?
 
 7 experts that build your complete go-to-market engine. Runs in three waves: strategy first, coherence audit, then execution.
 
-| Expert | Methodology | Output |
-|--------|------------|--------|
-| **Offer Designer** | Hormozi Value Equation + Grand Slam Offer | Irresistible offer stack, pricing, guarantees |
-| **Copywriter** | Copyhackers + Ogilvy + Gary Vee | Landing page copy, email sequences, ad copy |
-| **Funnel Architect** | Brunson + Suby + AI-native funnels | Conversion funnel architecture |
-| **Growth Auditor** | Reforge Growth Loops + AI-era Four Fits | Coherence audit across all strategies |
-| **Media Planner** | Dennis Yu Dollar-a-Day + Meta Advantage+ | Paid media plan, budget allocation |
-| **SEO Strategist** | CXL + GEO methodology | Search strategy, content architecture |
-| **AI Search Optimizer** | Entity SEO + LLM visibility | Optimization for ChatGPT, Perplexity, AI Overviews |
+| Expert | What they do | Output |
+|--------|-------------|--------|
+| **Offer Designer** | Designs irresistible offers with pricing, guarantees, and bonuses | Offer stack, value equation score, pricing tiers |
+| **Copywriter** | Writes conversion copy from voice-of-customer research | Landing page copy, email sequences, ad copy |
+| **Funnel Architect** | Architects conversion funnels with AI-native qualification | Funnel blueprint, lead magnets, email flows |
+| **Growth Auditor** | Audits all strategies for coherence and prioritizes actions | Gap analysis, prioritized roadmap, growth loop map |
+| **Media Planner** | Plans paid media with budget allocation and creative testing | Channel plan, budget splits, ad creative briefs |
+| **SEO Strategist** | Designs search strategy with technical SEO and content architecture | Keyword map, content clusters, technical audit |
+| **AI Search Optimizer** | Optimizes visibility in AI-powered search and assistants | Entity map, structured data plan, citation strategy |
 
 ## Execution Plugins
 
@@ -78,7 +78,7 @@ Four plugins that turn strategy into tangible deliverables. Each works standalon
 |-------|-----------------|
 | **Landing Page Builder** | Deployable, conversion-optimized landing pages (React/HTML) |
 | **MVP Scaffolder** | Full-stack prototypes with auth, database, API, deployment |
-| **Component Designer** | Production-grade React + Tailwind UI components |
+| **Component Designer** | Production-grade UI components with variants and accessibility |
 
 ### document — Write it
 
@@ -97,7 +97,7 @@ Four plugins that turn strategy into tangible deliverables. Each works standalon
 
 | Agent | What it produces |
 |-------|-----------------|
-| **Demo Producer** | Full product demo videos (Playwright recording + ElevenLabs voiceover + Remotion composition) |
+| **Demo Producer** | Full product demo videos (browser recording + voiceover + composition) |
 | **Clip Maker** | Short social clips for Instagram Reels, TikTok, YouTube Shorts, LinkedIn |
 
 ## Orchestration
