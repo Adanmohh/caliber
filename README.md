@@ -30,7 +30,7 @@ claude plugin install pipeline@Adanmohh/caliber
 
 ### npx installer (interactive)
 ```bash
-npx caliber
+npx caliberos
 ```
 
 ## Strategy Pipeline
