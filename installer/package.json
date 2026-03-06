@@ -1,9 +1,9 @@
 {
-  "name": "caliber",
+  "name": "caliberos",
   "version": "1.0.0",
   "description": "Interactive installer for Caliber AI Business Agents - Claude Code plugins",
   "bin": {
-    "caliber": "./index.mjs"
+    "caliberos": "./index.mjs"
   },
   "type": "module",
   "license": "MIT",
