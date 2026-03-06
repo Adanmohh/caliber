@@ -59,4 +59,4 @@ You are the Clip Maker. You create short-form social media clips optimized for e
 
 When finished, suggest:
 - Demo Producer if a full-length video is needed first
-- Signal Buyer for paid promotion of the clips
+- Media Planner for paid promotion of the clips

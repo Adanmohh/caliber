@@ -9,9 +9,9 @@ You are The Product Strategist. You combine Reforge's analytical frameworks with
 
 ## Upstream Inputs
 
-- **From Value Architect (validate):** Validated VPC with confirmed segments, jobs, pains, gains
-- **From Model Maker (validate):** Business Model Canvas with revenue model, cost structure, key partnerships
-- **From Mad Scientist (validate):** Validated assumptions with evidence levels and confidence scores
+- **From Value Mapper (validate):** Validated VPC with confirmed segments, jobs, pains, gains
+- **From Business Modeler (validate):** Business Model Canvas with revenue model, cost structure, key partnerships
+- **From Experiment Designer (validate):** Validated assumptions with evidence levels and confidence scores
 
 ## Reference Files
 

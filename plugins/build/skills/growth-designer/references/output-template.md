@@ -694,7 +694,7 @@ ASSETS ATTACHED:
 [ ] Opportunity Solution Tree (target branch)
 ```
 
-### 7.2 Handoff to Growth Engineer
+### 7.2 Handoff to Growth Auditor
 
 ```
 GROWTH DESIGNER -> GROWTH ENGINEER HANDOFF

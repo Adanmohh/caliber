@@ -742,7 +742,7 @@ self-serve growth strategies.
 - Receive market positioning from Product Strategist
 - Inform UX Designer about onboarding flow requirements
 - Pass PQL signals to sales/customer success automation
-- Coordinate with Growth Engineer on instrumentation
+- Coordinate with Growth Auditor on instrumentation
 
 ---
 

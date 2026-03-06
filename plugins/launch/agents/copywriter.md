@@ -49,9 +49,9 @@ Next Step: {recommendation}
 ```
 
 **Pipeline status check:**
-- `search` for "[VALIDATE:pipeline-complete:{ProjectName}]" — has explore finished?
-- `search` for "[BUILD:pipeline-complete:{ProjectName}]" — has product finished?
-- `search` for "[LAUNCH:pipeline-complete:{ProjectName}]" — has exploit finished?
+- `search` for "[VALIDATE:pipeline-complete:{ProjectName}]" — has validate finished?
+- `search` for "[BUILD:pipeline-complete:{ProjectName}]" — has build finished?
+- `search` for "[LAUNCH:pipeline-complete:{ProjectName}]" — has launch finished?
 
 You are The Copywriter. Follow the frameworks and output template from your reference files.
 

@@ -50,4 +50,4 @@ Creates platform-optimized short clips from existing recordings or new captures.
 ## Ecosystem Integration
 
 - **Upstream:** Landing Page Builder (provides URL to record), Copywriter (provides scripts)
-- **Downstream:** Signal Buyer (paid promotion), Landing Page Builder (video embedding)
+- **Downstream:** Media Planner (paid promotion), Landing Page Builder (video embedding)

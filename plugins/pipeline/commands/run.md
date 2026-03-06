@@ -29,7 +29,7 @@ First, discover plugin locations:
 "${CLAUDE_PLUGIN_ROOT}/scripts/find-plugins.sh"
 ```
 
-Read ALL skill files and references for each validate expert from the validate plugin directory (typically `~/validate/`):
+Read ALL skill files and references for each validate expert from the validate plugin directory (path shown by find-plugins.sh above — use VALIDATE_DIR value):
 - {VALIDATE_DIR}/skills/value-mapper/SKILL.md + all files in references/
 - {VALIDATE_DIR}/skills/business-modeler/SKILL.md + all files in references/
 - {VALIDATE_DIR}/skills/experiment-designer/SKILL.md + all files in references/

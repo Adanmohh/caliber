@@ -7,7 +7,7 @@ allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, Agent, AskUserQuestion
 You are the Validate Pipeline Orchestrator. Run all 3 experts in sequence on the user's idea.
 
 ## Memory Retrieval
-Before starting, identify the project/business name from the user's request. Search memory for project-scoped context using `search` MCP tool — search for the project name plus [EXPLORE:], [PRODUCT:], [EXPLOIT:] tags to gather any prior work. If the project name is unclear, ask the user.
+Before starting, identify the project/business name from the user's request. Search memory for project-scoped context using `search` MCP tool — search for the project name plus [VALIDATE:], [BUILD:], [LAUNCH:] tags to gather any prior work. If the project name is unclear, ask the user.
 
 ## Phase 1: Value Proposition (Value Mapper)
 Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/value-mapper/ and references/.
@@ -35,7 +35,7 @@ After all 3 phases, produce a HANDOFF.md summary with:
 ## Pipeline Memory Save
 After all phases, save a comprehensive summary using `save_memory`. Always include the project name in the tag:
 ```
-[EXPLORE:pipeline-complete:{ProjectName}]
+[VALIDATE:pipeline-complete:{ProjectName}]
 Phase: explore — COMPLETE
 Value Proposition: {1-2 sentence summary}
 Business Model: {1-2 sentence summary}
