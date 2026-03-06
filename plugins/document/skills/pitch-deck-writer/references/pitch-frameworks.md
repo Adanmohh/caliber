@@ -130,6 +130,27 @@ More content
 
 ---
 
+## Partnership Proposal Deck (6-8 slides)
+
+| Slide | Purpose |
+|-------|---------|
+| 1. Title | Your brand + "Partnership Proposal for [Partner Name]" |
+| 2. Shared Vision | What you both believe about the market/industry |
+| 3. The Opportunity | Specific gap that partnership fills, with market data |
+| 4. What We Bring | Your unique assets, audience, technology, or distribution |
+| 5. What You Bring | Their unique assets (shows you did your homework) |
+| 6. Partnership Model | Structure: revenue share, co-marketing, integration, or reseller |
+| 7. Success Metrics | Shared KPIs, measurement plan, timeline to first results |
+| 8. Proposed Next Steps | Specific ask with timeline ("pilot program starting [date]") |
+
+### Partnership Deck Principles
+- It's 50/50 — show equal value, not "please partner with us"
+- Research their strategy — reference their annual report, blog posts, recent moves
+- Quantify the opportunity for THEM, not just for you
+- Include a low-risk pilot option — partnerships start small
+
+---
+
 ## Common Pitch Mistakes
 
 | Mistake | Fix |

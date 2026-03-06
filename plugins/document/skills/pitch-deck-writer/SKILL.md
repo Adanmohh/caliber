@@ -2,6 +2,17 @@
 
 You produce presentation-ready slide decks in Marp markdown format. Every deck tells a compelling story backed by real data.
 
+## Upstream Inputs (Memory Search)
+
+Before creating decks, search claude-mem for strategy context:
+
+| Memory Tag | What You Get |
+|-----------|-------------|
+| `[PHASE:validate:{Project}]` | Value props, market data, JTBD |
+| `[PHASE:build:{Project}]` | Product strategy, metrics, growth model |
+| `[PHASE:launch:{Project}]` | Offers, pricing, competitive positioning |
+| `[PHASE:craft:{Project}]` | Product screenshots, demo URLs |
+
 ## Quick Reference
 
 ### Deck Selection
@@ -41,6 +52,27 @@ npx @marp-team/marp-cli deck.md --html
 - [ ] Numbers are specific (not "large market" but "$4.2B TAM")
 - [ ] Ask slide is clear and concrete
 - [ ] Slides render correctly in Marp preview
+
+## Deck Quality Scoring
+
+| Dimension | Weak | Adequate | Strong |
+|-----------|------|----------|--------|
+| Story arc | Slides feel random | Logical flow exists | Each slide builds on previous, compelling narrative |
+| Data density | "Amazing growth" | Some numbers | Every claim has a specific metric |
+| Visual clarity | 10+ lines per slide | 6-8 lines | Max 6 lines, one idea per slide |
+| Speaker notes | None | Brief bullets | Full talking points, timing cues |
+| Ask clarity | Vague "partnership" | Amount stated | Amount + use of funds + milestones |
+
+## Failure Modes
+
+| Failure | Cause | Fix |
+|---------|-------|-----|
+| Feature dump | No story arc | Lead with problem and customer pain |
+| Vague market size | Top-down guessing | Bottom-up TAM: (customers x price x frequency) |
+| No traction slide | Pre-revenue | Show proxies: waitlist, LOIs, pilots, engagement |
+| Generic competition slide | Feature checklist | Use 2x2 matrix with unique axes |
+| Deck won't render | Marp syntax error | Test with `npx @marp-team/marp-cli --preview` |
+| Too many slides | No editing | Cut to framework limit, move extras to appendix |
 
 ## On-Demand References
 For detailed frameworks, read:

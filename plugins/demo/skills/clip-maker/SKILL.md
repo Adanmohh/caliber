@@ -2,6 +2,14 @@
 
 You create short-form social media clips (15-60 seconds) optimized for specific platforms. You can extract highlights from existing recordings or create new short captures.
 
+## Upstream Inputs (Memory Search)
+
+| Memory Tag | What You Get |
+|-----------|-------------|
+| `[PHASE:demo:{Project}]` | Source recordings from Demo Producer |
+| `[PHASE:launch:{Project}]` | Brand voice, CTAs, key messaging |
+| `[PHASE:validate:{Project}]` | Target audience for platform selection |
+
 ## Platform Specifications
 
 | Platform | Aspect Ratio | Resolution | Duration | Safe Zone |
@@ -63,3 +71,6 @@ Animation: Word-by-word highlight or fade-in
 - Remotion (`npx create-video@latest`)
 - ffmpeg for source video processing
 - Source video (from Demo Producer or user-provided)
+
+## Reference Files
+- **On-demand:** `references/clip-composition.md` — Aspect ratio conversion, text overlays, caption patterns, platform safe zones, clip extraction, batch rendering, failure modes

@@ -187,3 +187,92 @@ THE ASK
 - **Success metric:** [KPI]
 - **Review frequency:** [Quarterly/Annual]
 - **Escalation path:** [Who to contact if issues arise]
+
+---
+
+## Executive Summary Template (2-3 pages)
+
+### Header
+- Title: "Executive Summary: [Topic]"
+- Date, author, distribution list
+
+### 1. Situation Overview (half page)
+- Current state of business/project/market
+- Key context the reader needs
+- Why this summary exists now
+
+### 2. Key Findings (1 page)
+| Finding | Evidence | Impact |
+|---------|----------|--------|
+| [Finding 1] | [Data point] | [Business impact] |
+| [Finding 2] | [Data point] | [Business impact] |
+| [Finding 3] | [Data point] | [Business impact] |
+
+### 3. Analysis (half page)
+- What the findings mean together
+- Risks if no action is taken
+- Opportunities identified
+
+### 4. Recommendations (half page)
+| Priority | Action | Owner | Timeline | Expected Result |
+|----------|--------|-------|----------|----------------|
+| 1 | [Action] | [Role] | [Date] | [Metric] |
+| 2 | [Action] | [Role] | [Date] | [Metric] |
+| 3 | [Action] | [Role] | [Date] | [Metric] |
+
+### 5. Next Steps
+- Immediate actions (this week)
+- Short-term actions (this month)
+- Decision points requiring approval
+
+---
+
+## Pandoc PDF Generation
+
+### Basic Command
+
+```bash
+pandoc business-plan.md \
+  --pdf-engine=xelatex \
+  --toc --toc-depth=3 \
+  --number-sections \
+  -V geometry:margin=1in \
+  -V fontsize=12pt \
+  -V mainfont="Georgia" \
+  -o business-plan.pdf
+```
+
+### Eisvogel Template (Professional PDFs)
+
+The Eisvogel template adds title pages, colored headers, and professional formatting.
+
+Install: Download `eisvogel.latex` to pandoc templates directory.
+- Windows: `C:\Users\{USERNAME}\AppData\Roaming\pandoc\templates\`
+- macOS: `~/.pandoc/templates/`
+
+YAML frontmatter for Eisvogel:
+
+```yaml
+---
+title: "Business Plan"
+author: "Company Name"
+date: "2026-03-06"
+titlepage: true
+titlepage-color: "2563eb"
+titlepage-text-color: "ffffff"
+titlepage-rule-color: "10b981"
+titlepage-rule-height: 2
+toc: true
+toc-own-page: true
+numbersections: true
+geometry: margin=1in
+fontsize: 12pt
+---
+```
+
+Generate:
+```bash
+pandoc business-plan.md --template eisvogel --pdf-engine=xelatex -o business-plan.pdf
+```
+
+Note: Enclose color values in quotes (e.g., "2563eb") to prevent YAML truncation.

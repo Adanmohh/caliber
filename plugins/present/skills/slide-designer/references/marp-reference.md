@@ -241,3 +241,128 @@ Content here
 - **Contrast:** ensure text is readable against backgrounds (WCAG AA minimum)
 - **Consistent spacing:** use the same padding/margins throughout
 - **File naming:** use descriptive names like `q4-strategy-review.md` not `slides.md`
+
+## Scoped Styles (Per-Slide CSS)
+
+```markdown
+<!-- Global style — applies to ALL slides -->
+<style>
+h1 { color: red; }
+</style>
+
+# Red heading
+
+---
+
+<!-- Scoped style — THIS slide only -->
+<style scoped>
+h1 { color: blue; }
+</style>
+
+# Blue heading (only here)
+
+---
+
+# Red heading (global resumes)
+```
+
+## Programmatic Configuration (`marp.config.js`)
+
+```javascript
+import { defineConfig } from "@marp-team/marp-cli";
+
+export default defineConfig({
+  inputDir: "./slides",
+  output: "./public",
+  themeSet: "./themes",
+  html: true,
+  allowLocalFiles: true,
+  pdf: true,
+  pdfNotes: true,
+  pdfOutlines: { pages: true, headings: true },
+  parallel: 8,
+  imageScale: 2,
+});
+```
+
+## Custom Theme Registration
+
+Custom themes MUST include a `@theme` metadata comment:
+
+```css
+/* @theme caliber-dark */
+@import "default";
+
+section {
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: "Inter", sans-serif;
+  padding: 60px;
+}
+
+h1 { color: #3b82f6; font-size: 2.5em; }
+h2 { color: #60a5fa; border-bottom: 2px solid #3b82f6; padding-bottom: 10px; }
+
+section.lead {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+table { width: 100%; border-collapse: collapse; }
+th { background: #1e293b; color: #3b82f6; padding: 12px; }
+td { padding: 10px; border-bottom: 1px solid #334155; }
+
+blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 20px;
+  font-style: italic;
+  font-size: 1.3em;
+}
+```
+
+Use with: `npx @marp-team/marp-cli --theme caliber-dark.css slides.md`
+
+## Advanced CLI Options
+
+| Command | Purpose |
+|---------|---------|
+| `--pdf-notes` | Embed speaker notes as PDF annotations |
+| `--pdf-outlines` | Add heading-based navigation to PDF |
+| `--parallel 10` | Batch process multiple decks |
+| `-s ./` | Server mode (live preview in browser) |
+| `--html` | Enable raw HTML in slides |
+| `--allow-local-files` | Allow local file references |
+
+## Troubleshooting
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| Custom CSS not applying | Missing `marp: true` in frontmatter | Ensure first line of YAML is `marp: true` |
+| Theme file not found | Wrong path to `.css` file | Use `--theme ./path/to/theme.css` in CLI |
+| Images not showing in PDF | External URLs blocked | Download images locally, use relative paths |
+| Font not rendering | System font not installed | Use web-safe fonts or embed via `@import url()` |
+| Slide numbering wrong | Global vs. local directive | Use `<!-- _paginate: false -->` (underscore) for single slide |
+| HTML not rendering | HTML mode disabled | Add `--html` flag: `npx @marp-team/marp-cli --html slides.md` |
+| Background image stretched | Using `bg` without fit mode | Use `![bg contain]()` or `![bg cover]()` |
+| Two-column layout broken | Markdown inside HTML div | Add blank lines before/after markdown inside `<div>` |
+| Math equations not rendering | KaTeX not supported in theme | Use default or unset theme, or add KaTeX CSS |
+
+## Export Format Comparison
+
+| Format | Best For | Limitations |
+|--------|----------|-------------|
+| HTML | Web sharing, interactive preview | Needs browser, no speaker notes view |
+| PDF | Printing, email attachments | No animations, some CSS unsupported |
+| PPTX | Corporate environments, editing | Complex layouts may break, limited CSS support |
+| PNG/JPEG | Social media, thumbnails | One image per slide, no interactivity |
+
+## Marp Limitations
+
+- No slide transitions or animations (static slides only)
+- No video embedding (use image + link instead)
+- Limited PPTX export fidelity (complex CSS may not transfer)
+- Speaker notes not visible in HTML export (use `--html` + presenter mode)
+- Custom fonts require installation or web import
+- No built-in chart/graph support (use table or external image)

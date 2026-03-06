@@ -1,6 +1,6 @@
 {
   "name": "caliber",
-  "description": "Caliber: AI Business Agents. 22 AI experts that take you from idea to shipped product. Validate > Build > Launch + Craft, Document, Present, Demo.",
+  "description": "Caliber: AI Business Agents. 23 AI experts that take you from idea to shipped product. Validate > Build > Launch + Craft, Document, Present, Demo.",
   "version": "1.0.0",
   "owner": {
     "name": "Adan Mohh",
@@ -29,7 +29,7 @@
     {
       "name": "craft",
       "source": "./craft",
-      "description": "Build production deliverables with 3 AI agents: Landing Page Builder, MVP Scaffolder, Component Designer",
+      "description": "Build production deliverables with 4 AI agents: Landing Page Builder, MVP Scaffolder, Component Designer, Tester",
       "version": "1.0.0"
     },
     {

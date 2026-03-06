@@ -90,6 +90,63 @@ export const DemoVideo: React.FC<z.infer<typeof DemoVideoSchema>> = ({
 };
 ```
 
+### Available Transition Types
+
+```tsx
+import { fade } from "@remotion/transitions/fade";
+import { wipe } from "@remotion/transitions/wipe";
+import { slide } from "@remotion/transitions/slide";
+
+// Use different transitions for variety:
+<TransitionSeries.Transition
+  presentation={fade()}           // Crossfade (default, subtle)
+  timing={linearTiming({ durationInFrames: 15 })}
+/>
+
+<TransitionSeries.Transition
+  presentation={wipe()}           // Horizontal wipe
+  timing={springTiming({ config: { damping: 200 } })}
+/>
+
+<TransitionSeries.Transition
+  presentation={slide()}          // Slide in from edge
+  timing={linearTiming({ durationInFrames: 20 })}
+/>
+```
+
+Recommendation: Use `fade()` for most transitions. Use `wipe()` or `slide()` for section changes.
+
+### Dynamic Audio Volume (Fade In/Out)
+
+```tsx
+<Audio
+  src={staticFile("voiceover.mp3")}
+  volume={(f) => {
+    if (f < 15) return f / 15;                              // Fade in over 0.5s
+    const fadeOutStart = durationInFrames - 15;
+    if (f > fadeOutStart) return (durationInFrames - f) / 15; // Fade out
+    return 1;                                                // Full volume
+  }}
+/>
+```
+
+### OffthreadVideo vs Video
+
+Always use `OffthreadVideo` for production renders:
+```tsx
+import { OffthreadVideo } from "remotion";
+
+<OffthreadVideo
+  src={staticFile(scene.videoFile)}
+  playbackRate={scene.playbackRate}
+  startFrom={scene.trimBefore}
+  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+  muted
+/>
+```
+
+`OffthreadVideo` renders video on a separate thread, preventing memory issues with large files. Only use `Video` for Remotion Studio previews where you need seeking.
+
 ## Audio Overlay System with Gap-Limiting
 
 Prevents audio from one scene bleeding into the next:
@@ -271,3 +328,24 @@ npx remotion render src/index.ts DemoVideo out/demo.mp4 \
 npx remotion render src/index.ts DemoVideo out/test.mp4 \
   --frames=0-90
 ```
+
+## Failure Modes
+
+| Pitfall | Cause | Fix |
+|---------|-------|-----|
+| Blank white video | `staticFile()` path wrong | Verify file exists in `public/` directory |
+| Audio doesn't play | File format unsupported | Convert to MP3 (AAC also works) |
+| "Cannot use CSS animations" error | Using `transition` or `@keyframes` | Use `useCurrentFrame()` + `interpolate()` for ALL animation |
+| Video freezes at frame 0 | Wrong `durationInFrames` (too short) | Calculate: `Math.round(seconds * fps)` |
+| TransitionSeries crash | Non-alternating children | Must be: Sequence, Transition, Sequence, Transition... |
+| Audio bleeds between scenes | No gap-limiting | Cap each Audio's duration at scene boundary |
+| Render takes forever | Too many compositions or high CRF | Use `--crf 23` (not 18), render specific frame range first |
+| Out of memory during render | Large video files | Use `OffthreadVideo` instead of `Video` component |
+| Black frames between scenes | Transition duration > sequence duration | Ensure every Sequence is longer than adjacent Transitions |
+
+## Important Rules
+
+1. **NEVER use CSS animations** — No `transition`, `animation`, `@keyframes`. All motion must use `useCurrentFrame()` + `interpolate()` or `spring()`.
+2. **Always use `OffthreadVideo`** for production renders — `Video` component can cause memory issues with large files.
+3. **Always `muted` source videos** — Original audio should never play; use Audio component for voiceover.
+4. **Calculate total duration precisely** — Account for transition overlap: `total = sum(sequences) - (numTransitions * transitionDuration)`.

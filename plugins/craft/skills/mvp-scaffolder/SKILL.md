@@ -1,65 +1,86 @@
 ---
 name: mvp-scaffolder
-description: Scaffolds full-stack MVPs with auth, database, API, and deployment config. Activates for any MVP, prototype, or app scaffolding request.
+description: Scaffolds full-stack MVPs with React frontend, FastAPI backend, and Neon PostgreSQL. Activates for any MVP, prototype, or app scaffolding request.
 ---
 
 # MVP Scaffolder
 
-Produces working, deployable full-stack applications from product specs or verbal descriptions. Includes authentication, database schema, API routes, and deployment configuration. The output is a complete project directory a developer can run immediately.
+Produces working, deployable full-stack applications. The standard stack is React (Vite) + FastAPI (Python) + Neon PostgreSQL. Includes authentication, database schema, API routes, and deployment configuration.
 
 ## Core Principles
-- Simplest viable architecture — no over-engineering
-- TypeScript by default for type safety across the stack
-- Auth and database from day one — never bolt on later
-- Ship with deployment config (docker-compose, Vercel, or Railway)
+- React (Vite) frontend + FastAPI backend + Neon PostgreSQL — this is THE stack
+- Neon MCP is MANDATORY — Claude manages database directly via MCP tools
+- TypeScript for frontend, Python for backend
+- Auth (JWT) and database from day one
+- Ship with Docker + deployment config (Railway or Fly.io)
 - Include .env.example, README, and seed data
-- Convention over configuration with clear escape hatches
-- Test setup included even if tests are minimal
+- Maximum 5 core features — push back on scope creep
 
-## Upstream Inputs
+## Upstream Inputs (Memory Search)
 
-| Source | What You Receive |
-|--------|-----------------|
-| Spec Writer (product) | Feature specs, user stories, scope boundaries |
-| Product Strategist (product) | Success metrics, positioning, target user |
-| Growth Designer (product) | Activation loops, onboarding flow, habit hooks |
-| Model Maker (explore) | Business model, revenue streams |
+Before starting, search claude-mem for upstream strategy outputs:
+
+| Memory Tag | What You Get |
+|-----------|-------------|
+| `[PHASE:validate:{Project}]` | User segments, value propositions, business models |
+| `[PHASE:build:{Project}]` | Product strategy, specs, user stories, scope boundaries |
+| `[PHASE:launch:{Project}]` | Offer stack, pricing, copy, brand voice |
+
+## Stack Architecture
+
+```
+React (Vite) ──> FastAPI ──> Neon PostgreSQL
+   │                │              │
+   ├─ Tailwind CSS  ├─ Pydantic   ├─ Managed via Neon MCP
+   ├─ React Router  ├─ JWT Auth   ├─ Serverless driver
+   └─ Tanstack Query└─ SQLAlchemy └─ Free unlimited projects
+```
 
 ## Execution Workflow
-1. **Gather** — Ask: product type, core features (max 5), tech preferences, deployment target
-2. **Select stack** — Choose from standard stacks based on product type (see table below)
-3. **Scaffold structure** — Project root, pages/routes, API layer, database schema, auth
-4. **Write schema** — Database tables, relationships, migration files, seed data
-5. **Build auth** — Sign up, sign in, password reset, session management
-6. **Wire API** — CRUD routes for core entities, input validation, error handling
-7. **Add deployment** — docker-compose.yml or platform config, CI pipeline, .env.example
-8. **Deliver** — Complete project with `npm install && npm run dev` instructions
+1. **Gather** — Ask: product type, core features (max 5), deployment target
+2. **Create Neon DB** — Use Neon MCP to create project + database
+3. **Scaffold backend** — FastAPI app with routers, Pydantic models, JWT auth
+4. **Write schema** — SQL migrations via Neon MCP, seed data
+5. **Scaffold frontend** — React (Vite) with Tailwind, React Router, API client
+6. **Wire API** — Connect frontend to FastAPI endpoints via Tanstack Query
+7. **Add deployment** — Dockerfile for backend, Vercel/Netlify for frontend
+8. **Deliver** — Complete project with setup instructions
 
-## Stack Selection
+## Neon MCP Requirement
 
-| Product Type | Recommended Stack | Why |
-|-------------|-------------------|-----|
-| SaaS / Dashboard | Next.js + Supabase + Tailwind | Fast auth, real-time, edge functions |
-| Marketplace | Remix + Prisma + PostgreSQL | Complex data relations, form-heavy |
-| Content Platform | Astro + Supabase | Content-first, fast static pages |
-| Real-time App | Next.js + Convex | Built-in real-time, no polling |
-| API-first | Hono + Drizzle + PostgreSQL | Lightweight, deploy anywhere |
+The Neon MCP server MUST be configured. It provides:
+- `create_project` — Create a new Neon project (free, unlimited)
+- `run_sql` — Execute SQL directly (schema, migrations, seeds)
+- `get_connection_string` — Get DATABASE_URL for FastAPI
 
-## Project Structure (Next.js + Supabase default)
+If Neon MCP is not available, instruct the user to install it:
+```
+Add to .claude/settings.json or MCP config:
+"@neondatabase/mcp-server-neon" with NEON_API_KEY
+```
+
+## Project Structure
 
 | Directory | Contents |
 |-----------|----------|
-| `/app` | Pages, layouts, loading/error states |
-| `/app/api` | API route handlers |
-| `/components` | Shared UI components |
-| `/lib` | Supabase client, utilities, types |
-| `/supabase/migrations` | SQL migration files |
-| `/supabase/seed.sql` | Seed data |
+| `/frontend` | React (Vite) app with Tailwind |
+| `/frontend/src/pages` | Page components with React Router |
+| `/frontend/src/components` | Shared UI components |
+| `/frontend/src/api` | API client (fetch wrapper + Tanstack Query hooks) |
+| `/backend` | FastAPI application |
+| `/backend/app/routers` | API route modules |
+| `/backend/app/models` | Pydantic models (request/response) |
+| `/backend/app/db.py` | Neon connection + SQLAlchemy setup |
+| `/backend/app/auth.py` | JWT authentication |
 | Root files | .env.example, docker-compose.yml, README.md |
 
 ## Key Constraints
-- Maximum 5 core features in MVP scope — push back on scope creep
-- No premature optimization — working beats fast
+- Maximum 5 core features in MVP scope
 - All secrets in .env, never hardcoded
-- Include basic error boundaries and loading states
-- README must include: setup steps, env vars needed, deployment instructions
+- Frontend and backend are separate deployable units
+- CORS configured for frontend origin
+- Include basic error handling and loading states
+- README must include: setup steps, env vars, deployment instructions
+
+## Reference Files
+- **On-demand:** `references/fullstack-patterns.md` — FastAPI patterns, Neon setup, JWT auth, React patterns, deployment configs, failure modes

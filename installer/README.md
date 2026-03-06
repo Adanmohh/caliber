@@ -2,7 +2,7 @@
 
 > Most founders fail not from bad ideas, but from the gap between knowing what to build and actually building it. Caliber closes that gap.
 
-**22 specialized AI agents organized into 8 independent plugins** that work alone or chain together into a complete idea-to-execution pipeline. Each agent brings deep framework expertise — not generic advice, but proven methodologies that top strategists and builders actually use.
+**23 specialized AI agents organized into 8 independent plugins** that work alone or chain together into a complete idea-to-execution pipeline. Each agent brings deep framework expertise — not generic advice, but proven methodologies that top strategists and builders actually use.
 
 ## The Problem
 
@@ -10,7 +10,7 @@ You have an idea. Now what?
 
 Validation needs value proposition mapping and jobs-to-be-done analysis. Product strategy needs growth loops and product operating models. Go-to-market needs offer design, conversion copywriting, funnel architecture, and paid media planning. Then you still need to build the landing page, write the pitch deck, design the slides, and record the demo.
 
-That's 22 different disciplines. No solo founder or small team has all of them.
+That's 23 different disciplines. No solo founder or small team has all of them.
 
 ## The Solution
 
@@ -23,7 +23,7 @@ One command. Pick the plugins you need. Each one works independently — or chai
 ```
 STRATEGY PIPELINE                              EXECUTION PLUGINS
 validate  >  build  >  launch                  craft | document | present | demo
-3 experts    4 experts   7 experts              3 agents  2 agents   1 agent   2 agents
+3 experts    4 experts   7 experts              4 agents  2 agents   1 agent   2 agents
 ```
 
 **Install one plugin** when you need a specific expert.
@@ -79,6 +79,7 @@ Four plugins that turn strategy into tangible deliverables. Each works standalon
 | **Landing Page Builder** | Deployable, conversion-optimized landing pages (React/HTML) |
 | **MVP Scaffolder** | Full-stack prototypes with auth, database, API, deployment |
 | **Component Designer** | Production-grade UI components with variants and accessibility |
+| **Tester** | Strategy-informed testing with Playwright (persona-based QA) |
 
 ### document — Write it
 

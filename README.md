@@ -1,10 +1,10 @@
 # Caliber
 
-Raise the caliber. 22 AI agents that take you from idea to shipped product. A Claude Code plugin marketplace.
+Raise the caliber. 23 AI agents that take you from idea to shipped product. A Claude Code plugin marketplace.
 
 ```
 STRATEGY                                    EXECUTION
-validate (3)  >  build (4)  >  launch (7)   craft (3) | document (2) | present (1) | demo (2)
+validate (3)  >  build (4)  >  launch (7)   craft (4) | document (2) | present (1) | demo (2)
 Validate ideas   Build strategy  Go to market  Build it    Write it       Show it       Film it
 ```
 
@@ -63,12 +63,13 @@ npx caliberos
 
 ## Execution Plugins
 
-### craft - Build Deliverables (3 agents)
+### craft - Build Deliverables (4 agents)
 | Agent | What it does |
 |-------|-------------|
-| **Landing Page Builder** | Builds conversion-optimized landing pages (HTML/React) |
+| **Landing Page Builder** | Builds conversion-optimized landing pages (React/HTML) |
 | **MVP Scaffolder** | Scaffolds full-stack MVPs with auth, DB, API |
 | **Component Designer** | Creates polished UI components (React + Tailwind) |
+| **Tester** | Strategy-informed testing with Playwright (persona-based QA) |
 
 ### document - Write Documents (2 agents)
 | Agent | What it does |

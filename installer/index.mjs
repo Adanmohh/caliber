@@ -20,7 +20,7 @@ const PLUGINS = [
   },
   {
     name: "craft",
-    desc: "Build deliverables (3 agents: Landing Page Builder, MVP Scaffolder, Component Designer)",
+    desc: "Build deliverables (4 agents: Landing Page Builder, MVP Scaffolder, Component Designer, Tester)",
   },
   {
     name: "document",
@@ -56,7 +56,7 @@ async function main() {
   console.log(`
 ╔══════════════════════════════════════════════════╗
 ║              Caliber Installer                   ║
-║     22 AI experts for business strategy          ║
+║     23 AI experts for business strategy          ║
 ║     validate > build > launch + execute          ║
 ╚══════════════════════════════════════════════════╝
 `);

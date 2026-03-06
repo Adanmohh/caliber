@@ -11,7 +11,7 @@ POST https://api.elevenlabs.io/v1/text-to-speech/{voice_id}
 ```json
 {
   "text": "Welcome to our product demo. Let me show you how easy it is to get started.",
-  "model_id": "eleven_v3",
+  "model_id": "eleven_multilingual_v2",
   "voice_settings": {
     "stability": 0.5,
     "similarity_boost": 0.75,
@@ -21,6 +21,15 @@ POST https://api.elevenlabs.io/v1/text-to-speech/{voice_id}
   }
 }
 ```
+
+### Model Selection
+| Model | Use Case | Quality |
+|-------|----------|---------|
+| eleven_multilingual_v2 | Best quality, multilingual (recommended) | Highest |
+| eleven_turbo_v2_5 | Low latency, real-time applications | Good |
+| eleven_flash_v2_5 | Fastest, WebSocket streaming | Acceptable |
+
+Note: WebSockets are NOT available for eleven_v3.
 
 ## Headers
 
@@ -78,7 +87,7 @@ async function generateVoiceovers(
         },
         body: JSON.stringify({
           text: scene.text,
-          model_id: 'eleven_v3',
+          model_id: 'eleven_multilingual_v2',
           voice_settings: {
             stability: 0.5,
             similarity_boost: 0.75,
@@ -101,6 +110,33 @@ async function generateVoiceovers(
     await new Promise((r) => setTimeout(r, 500));
   }
 }
+```
+
+## TypeScript SDK Pattern
+
+Alternative to the fetch-based approach above, using `@elevenlabs/elevenlabs-js`:
+
+```typescript
+import { ElevenLabsClient } from "@elevenlabs/elevenlabs-js";
+import { createWriteStream } from "fs";
+
+const elevenlabs = new ElevenLabsClient({
+  apiKey: process.env.ELEVENLABS_API_KEY,
+});
+
+const audio = await elevenlabs.textToSpeech.convert(voiceId, {
+  modelId: "eleven_multilingual_v2",
+  text: sceneText,
+  outputFormat: "mp3_44100_128",
+  voiceSettings: {
+    stability: 0.5,
+    similarityBoost: 0.75,
+    speed: 0.9,
+  },
+});
+
+const fileStream = createWriteStream(`public/audio/${sceneName}.mp3`);
+audio.pipe(fileStream);
 ```
 
 ## Language Codes
@@ -136,7 +172,7 @@ To calculate expected duration before generating:
 
 ## Cost Optimization
 
-- eleven_v3 uses ~1 character credit per character
+- eleven_multilingual_v2 uses ~1 character credit per character
 - Batch generate and cache — never regenerate unchanged scripts
 - Use `skip existing` pattern in the batch script above
 - Preview with a short test phrase before generating all scenes

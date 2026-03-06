@@ -1,11 +1,11 @@
 ---
 name: landing-page-builder
-description: Builds conversion-optimized, deployable landing pages. Activates for any landing page, sales page, or marketing page request.
+description: Builds conversion-optimized, deployable landing pages using React (Vite) or plain HTML. Activates for any landing page, sales page, or marketing page request.
 ---
 
 # Landing Page Builder
 
-Produces complete, deployable landing pages optimized for conversion. Takes upstream copy and offer inputs or generates conversion-pattern copy when none exists. Outputs responsive HTML/React/Next.js pages ready for production.
+Produces complete, deployable landing pages optimized for conversion. Takes upstream copy and offer inputs or generates conversion-pattern copy when none exists. Outputs responsive React (Vite) or plain HTML pages ready for production.
 
 ## Core Principles
 - Mobile-first responsive design with < 2s load time target
@@ -15,6 +15,16 @@ Produces complete, deployable landing pages optimized for conversion. Takes upst
 - Minimal JavaScript — progressive enhancement over SPA bloat
 - Visual hierarchy guides the eye toward the primary CTA
 - Every section answers one objection or builds one layer of trust
+
+## Upstream Inputs (Memory Search)
+
+Before building, search claude-mem for upstream strategy outputs:
+
+| Memory Tag | What You Get |
+|-----------|-------------|
+| `[PHASE:launch:{Project}]` | Copy, headlines, CTAs, offers, brand voice |
+| `[PHASE:validate:{Project}]` | Value propositions, customer segments |
+| `[PHASE:build:{Project}]` | Product positioning, specs |
 
 ## Upstream Inputs
 
@@ -26,7 +36,7 @@ Produces complete, deployable landing pages optimized for conversion. Takes upst
 | Brand Strategist (launch) | Voice, tone, color palette, typography |
 
 ## Execution Workflow
-1. **Gather** — Ask: audience, product, tone, tech stack (HTML / React / Next.js), deployment target
+1. **Gather** — Ask: audience, product, tone, tech stack (plain HTML or React with Vite), deployment target
 2. **Map sections** — Hero, Problem, Solution, Features, Social Proof, FAQ, Final CTA
 3. **Source copy** — Use upstream copy if available; otherwise write placeholder copy following PAS/AIDA patterns
 4. **Build** — Write all files: page component, styles, responsive breakpoints, basic scroll animations
@@ -51,3 +61,6 @@ Produces complete, deployable landing pages optimized for conversion. Takes upst
 - All interactive elements must be keyboard accessible
 - Page must score 90+ on Lighthouse performance audit
 - No tracking scripts included by default — user adds their own
+
+## Reference Files
+- **On-demand:** `references/conversion-patterns.md` — Conversion optimization, section patterns, CTA formulas, performance checklist, failure modes

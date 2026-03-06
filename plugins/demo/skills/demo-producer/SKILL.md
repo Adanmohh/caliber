@@ -10,6 +10,16 @@ Phase 0: Discovery ──> Phase 1+2 (parallel) ──> Phase 3: Compose ──>
                        └─ Voiceover (ElevenLabs)
 ```
 
+## Upstream Inputs (Memory Search)
+
+Before starting, search claude-mem for upstream context:
+
+| Memory Tag | What You Get |
+|-----------|-------------|
+| `[PHASE:craft:{Project}]` | Built app URL, tech stack, page structure |
+| `[PHASE:launch:{Project}]` | Copy, brand voice, key messaging |
+| `[PHASE:validate:{Project}]` | User segments, value propositions |
+
 ## Phase 0: Discovery
 
 Run 4 rounds of AskUserQuestion to gather requirements:
@@ -37,7 +47,7 @@ Reference: `references/playwright-recording.md`
 Generate narration audio for each scene.
 
 Key settings:
-- Model: `eleven_v3`
+- Model: `eleven_multilingual_v2`
 - Stability: 0.5, Similarity: 0.75, Speed: 0.9
 - Batch generate per scene, skip existing files
 - Write scripts at ~150 words per minute for natural pacing
@@ -80,6 +90,26 @@ project/
 │       └── voiceover/   # copied .mp3 files
 └── output/              # final rendered MP4
 ```
+
+## Scene Script Template
+
+Present this table to the user for approval before recording:
+
+```markdown
+| # | Scene | Duration | Record? | Action | Narration |
+|---|-------|----------|---------|--------|-----------|
+| 0 | Intro | 4s | No (Remotion) | Brand title card with logo | — |
+| 1 | Login | 8s | Yes | Navigate to login, enter credentials | "Welcome to [Product]..." |
+| 2 | Dashboard | 12s | Yes | Show main dashboard, highlight key metrics | "Here you can see..." |
+| 3 | Feature A | 15s | Yes | Click through main workflow | "The core feature lets you..." |
+| N | Outro | 5s | No (Remotion) | CTA card with URL | — |
+```
+
+### Iteration Workflow
+1. Record -> Watch raw clips -> Re-record if needed
+2. Generate voiceover -> Listen -> Regenerate specific scenes if needed
+3. Preview in Remotion Studio (`npx remotion preview`) -> Adjust timing
+4. Render final MP4 -> Review with user -> Iterate
 
 ## Requirements
 

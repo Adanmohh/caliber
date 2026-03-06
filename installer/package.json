@@ -1,7 +1,7 @@
 {
   "name": "caliberos",
-  "version": "1.0.3",
-  "description": "22 AI agents that take you from idea to shipped product. Strategy pipeline (validate > build > launch) + execution plugins (craft, document, present, demo). Each plugin works independently or chains together. For Claude Code.",
+  "version": "1.0.4",
+  "description": "23 AI agents that take you from idea to shipped product. Strategy pipeline (validate > build > launch) + execution plugins (craft, document, present, demo). Each plugin works independently or chains together. For Claude Code.",
   "bin": {
     "caliberos": "./index.mjs"
   },

@@ -16,6 +16,14 @@ Produces production-grade, accessible React UI components using Tailwind CSS. Ev
 - Responsive by default across sm/md/lg/xl breakpoints
 - Include TypeScript prop interfaces with JSDoc descriptions
 
+## Upstream Inputs (Memory Search)
+
+| Memory Tag | What You Get |
+|-----------|-------------|
+| `[PHASE:build:{Project}]` | UX requirements, interaction patterns |
+| `[PHASE:craft:{Project}]` | Page-specific component needs from Landing Page Builder |
+| `[PHASE:launch:{Project}]` | Brand colors, typography, voice |
+
 ## Upstream Inputs
 
 | Source | What You Receive |
@@ -64,3 +72,6 @@ Produces production-grade, accessible React UI components using Tailwind CSS. Ev
 - No external component library dependencies unless user requests (e.g., Radix primitives are acceptable)
 - File size target: < 200 lines per component file (split if larger)
 - Every interactive element must have a visible focus indicator
+
+## Reference Files
+- **On-demand:** `references/component-patterns.md` — CVA patterns, compound components, accessibility checklist, dark mode, Storybook stories, failure modes
