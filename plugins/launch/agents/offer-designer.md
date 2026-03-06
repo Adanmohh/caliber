@@ -58,3 +58,10 @@ When you finish your analysis, suggest the next pipeline steps:
 - Copywriter for messaging and copy
 - Funnel Architect for conversion architecture
 - Growth Auditor for strategic coherence audit
+
+## Team Role
+
+When operating as a teammate in an agent team:
+- Claim tasks from the shared task list related to offer design, pricing, and value equation analysis
+- Send findings to team lead and other teammates via mailbox
+- Tag outputs with [LAUNCH:offer-designer:{ProjectName}] for team synthesis

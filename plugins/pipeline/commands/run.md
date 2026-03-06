@@ -1,7 +1,7 @@
 ---
 description: "Run the full Caliber pipeline: validate > build > launch"
 argument-hint: "[project name and description]"
-allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, Agent, AskUserQuestion, mcp__plugin_claude-mem_mcp-search__search, mcp__plugin_claude-mem_mcp-search__get_observations, mcp__plugin_claude-mem_mcp-search__timeline
+allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, Agent, AskUserQuestion, TeamCreate, TeamDelete, SendMessage, TaskCreate, TaskList, TaskGet, TaskUpdate, mcp__plugin_claude-mem_mcp-search__search, mcp__plugin_claude-mem_mcp-search__get_observations, mcp__plugin_claude-mem_mcp-search__timeline
 ---
 
 # Caliber Pipeline
@@ -11,6 +11,35 @@ Execute the setup script to initialize the pipeline:
 ```!
 "${CLAUDE_PLUGIN_ROOT}/scripts/setup-pipeline.sh" $ARGUMENTS
 ```
+
+## Execution Mode
+
+Choose execution mode based on context:
+
+### Mode 1: Sequential (Default)
+Single-session execution with Stop hook phase chaining. Best for thorough analysis where each phase builds deeply on the previous.
+- Each expert runs in full, one at a time
+- Stop hook automatically advances to next phase
+- Deepest analysis but slowest execution
+
+### Mode 2: Sub-Agent Parallel
+Use the Agent tool to run independent experts in parallel within a single session. Best when experts within a phase don't depend on each other.
+- Within validate: all 3 experts can run in parallel (they analyze the same idea independently)
+- Within build: Product Strategist first, then Brand Strategist + Growth Designer in parallel, then Spec Writer, then Product Designer
+- Within launch-strategy: Offer Designer + Copywriter + Funnel Architect all parallel
+- Within launch-execution: Media Planner + SEO Strategist + AI Search Optimizer all parallel
+- Growth Auditor runs alone (needs all strategy outputs)
+
+### Mode 3: Agent Teams
+Spawn a full agent team where each expert is a teammate with its own context window. Best for complex projects requiring deep parallel work.
+- Create team with TeamCreate
+- Spawn each expert as a teammate
+- Team lead coordinates and synthesizes
+- Teammates communicate via mailbox
+- Shared task list tracks progress
+
+**Default to Mode 1 unless the user explicitly requests parallel or team execution.**
+If the user says "run in parallel", "use teams", or "fast mode", switch to Mode 2 or 3 accordingly.
 
 ## Phase 1: Validate
 

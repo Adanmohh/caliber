@@ -1,10 +1,10 @@
 # Caliber
 
-Raise the caliber. 23 AI agents that take you from idea to shipped product. A Claude Code plugin marketplace.
+Raise the caliber. 25 AI agents that take you from idea to shipped product. A Claude Code plugin marketplace.
 
 ```
 STRATEGY                                    EXECUTION
-validate (3)  >  build (4)  >  launch (7)   craft (4) | document (2) | present (1) | demo (2)
+validate (3)  >  build (4)  >  launch (7)   craft (4) | document (2) | present (1) | studio (3)
 Validate ideas   Build strategy  Go to market  Build it    Write it       Show it       Film it
 ```
 
@@ -24,7 +24,7 @@ claude plugin install launch@Adanmohh/caliber
 claude plugin install craft@Adanmohh/caliber
 claude plugin install document@Adanmohh/caliber
 claude plugin install present@Adanmohh/caliber
-claude plugin install demo@Adanmohh/caliber
+claude plugin install studio@Adanmohh/caliber
 claude plugin install pipeline@Adanmohh/caliber
 ```
 
@@ -82,11 +82,12 @@ npx caliberos
 |-------|-------------|
 | **Slide Designer** | Professional slide decks from strategy outputs (Marp markdown) |
 
-### demo - Produce Videos (2 agents)
+### studio - Produce Videos (3 agents)
 | Agent | What it does |
 |-------|-------------|
 | **Demo Producer** | Full product demo videos (Playwright + ElevenLabs + Remotion) |
 | **Clip Maker** | Short social clips for Instagram, TikTok, YouTube, LinkedIn |
+| **Content Creator** | Branded social media images and short-form videos |
 
 ### pipeline - Orchestration
 Chains all strategy plugins into an automated 5-phase pipeline with Stop hook loop pattern.
@@ -120,7 +121,7 @@ Runs all 14 strategy experts in sequence. Each expert asks you questions and bui
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI
 - Optional: [claude-mem](https://github.com/nicobailon/claude-mem) for cross-session memory
 
-### For demo plugin
+### For studio plugin
 - Node.js + npm
 - Playwright (`npm install playwright`)
 - Remotion (`npx create-video@latest`)

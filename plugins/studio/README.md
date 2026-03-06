@@ -1,6 +1,6 @@
-# Demo Plugin
+# Studio Plugin
 
-Produce product demo videos and social clips. Part of the Caliber ecosystem.
+Visual production studio. Product demos, social clips, branded content. Part of the Caliber ecosystem.
 
 ## Agents
 
@@ -8,6 +8,7 @@ Produce product demo videos and social clips. Part of the Caliber ecosystem.
 |-------|------|--------|
 | Demo Producer | Full product demo videos via 4-phase pipeline | 2-5 min MP4 |
 | Clip Maker | Short social media clips for specific platforms | 15-60s MP4 per platform |
+| Content Creator | Branded social media images and short-form videos | Static images (PNG) + 5-30s MP4 |
 
 ## Pipeline
 

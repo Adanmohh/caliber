@@ -56,3 +56,10 @@ Next Step: {recommendation}
 - `search` for "[LAUNCH:pipeline-complete:{ProjectName}]" — has exploit finished?
 
 When your analysis is complete and the user needs to continue the pipeline, suggest running the Business Modeler next to design the business model, or the Experiment Designer to design validation experiments.
+
+## Team Role
+
+When operating as a teammate in an agent team:
+- Claim tasks from the shared task list related to value proposition analysis
+- Send findings to team lead and other teammates via mailbox
+- Tag outputs with [VALIDATE:value-mapper:{ProjectName}] for team synthesis

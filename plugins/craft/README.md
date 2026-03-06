@@ -36,7 +36,7 @@ claude plugin install craft@Adanmohh/caliber
 ## Pipeline Position
 
 ```
-validate --> build --> craft --> document / present / demo
+validate --> build --> craft --> document / present / studio
                        ^^^
                    YOU ARE HERE
 ```
@@ -47,7 +47,7 @@ validate --> build --> craft --> document / present / demo
 
 **Passes output to:**
 - document plugin (product details for business plans, pitch decks)
-- demo plugin (app URLs for product demo recordings)
+- studio plugin (app URLs for product demo recordings)
 - present plugin (product screenshots for slide decks)
 
 ## Agents in Detail

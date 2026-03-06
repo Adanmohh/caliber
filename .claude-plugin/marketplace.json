@@ -1,6 +1,6 @@
 {
   "name": "caliber",
-  "description": "Caliber: AI Business Agents. 24 AI agents that take you from idea to shipped product. Validate > Build > Launch + Craft, Document, Present, Demo.",
+  "description": "Caliber: AI Business Agents. 25 AI agents that take you from idea to shipped product. Validate > Build > Launch + Craft, Document, Present, Studio.",
   "version": "1.0.0",
   "owner": {
     "name": "Adan Mohh",
@@ -45,9 +45,9 @@
       "version": "1.0.0"
     },
     {
-      "name": "demo",
-      "source": "./demo",
-      "description": "Produce product demo videos with 2 AI agents: Demo Producer (Playwright+ElevenLabs+Remotion), Clip Maker",
+      "name": "studio",
+      "source": "./studio",
+      "description": "Visual production studio with 3 AI agents: Demo Producer, Clip Maker, Content Creator",
       "version": "1.0.0"
     },
     {

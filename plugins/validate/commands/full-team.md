@@ -25,6 +25,18 @@ Extract key assumptions from Phase 1 and Phase 2 outputs.
 Design experiments to validate the riskiest assumptions first.
 Produce a prioritized test backlog with experiment cards.
 
+## Parallel Execution (Optional)
+
+If the user requests parallel execution, run all 3 experts simultaneously using the Agent tool:
+
+1. Agent: Value Mapper — read all skills/value-mapper/ files, run VPC + JTBD analysis
+2. Agent: Business Modeler — read all skills/business-modeler/ files, run BMC + Blue Ocean
+3. Agent: Experiment Designer — read all skills/experiment-designer/ files, design validation experiments
+
+Wait for all 3, then synthesize into unified summary.
+
+Default: run sequentially (Value Mapper -> Business Modeler -> Experiment Designer).
+
 ## Handoff
 After all 3 phases, produce a HANDOFF.md summary with:
 - Validated value proposition

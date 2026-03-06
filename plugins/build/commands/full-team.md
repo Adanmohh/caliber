@@ -30,6 +30,16 @@ Shape the top-priority opportunity into a buildable spec with appetite, boundari
 Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/product-designer/ and references/.
 Design the UI/UX for the shaped spec, producing actual code.
 
+## Parallel Execution (Optional)
+
+If the user requests parallel execution:
+- Phase 1: Product Strategist (must run first — upstream for all others)
+- Phase 2-3: Brand Strategist + Growth Designer in PARALLEL (both depend on Phase 1 only)
+- Phase 4: Spec Writer (depends on Phases 1-3)
+- Phase 5: Product Designer (depends on Phase 4)
+
+Default: run sequentially (Product Strategist -> Brand Strategist -> Growth Designer -> Spec Writer -> Product Designer).
+
 ## Handoff
 Produce a HANDOFF.md with:
 - Product strategy summary

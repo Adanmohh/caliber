@@ -87,6 +87,15 @@ Based on Growth Auditor priorities, run the relevant execution experts in parall
 6. **SEO Strategist** — SEO strategy and implementation plan
 7. **AI Search Optimizer** — AI search optimization plan
 
+## Parallel Execution (Optional)
+
+If the user requests parallel execution:
+- Group 1 (PARALLEL): Offer Designer + Copywriter + Funnel Architect
+- Group 2 (SEQUENTIAL after Group 1): Growth Auditor (needs all strategy outputs)
+- Group 3 (PARALLEL after Group 2): Media Planner + SEO Strategist + AI Search Optimizer
+
+This matches the existing Phase 1/2/3 structure above. When running in parallel mode, use the Agent tool to launch Group 1 and Group 3 agents concurrently rather than sequentially.
+
 ## Final Deliverable
 After all phases complete, synthesize a unified go-to-market plan that includes:
 - Executive summary of the strategy

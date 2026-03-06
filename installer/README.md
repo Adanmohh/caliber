@@ -2,7 +2,7 @@
 
 > Most founders fail not from bad ideas, but from the gap between knowing what to build and actually building it. Caliber closes that gap.
 
-**23 specialized AI agents organized into 8 independent plugins** that work alone or chain together into a complete idea-to-execution pipeline. Each agent brings deep framework expertise — not generic advice, but proven methodologies that top strategists and builders actually use.
+**25 specialized AI agents organized into 8 independent plugins** that work alone or chain together into a complete idea-to-execution pipeline. Each agent brings deep framework expertise — not generic advice, but proven methodologies that top strategists and builders actually use.
 
 ## The Problem
 
@@ -22,8 +22,8 @@ One command. Pick the plugins you need. Each one works independently — or chai
 
 ```
 STRATEGY PIPELINE                              EXECUTION PLUGINS
-validate  >  build  >  launch                  craft | document | present | demo
-3 experts    4 experts   7 experts              4 agents  2 agents   1 agent   2 agents
+validate  >  build  >  launch                  craft | document | present | studio
+3 experts    4 experts   7 experts              4 agents  2 agents   1 agent   3 agents
 ```
 
 **Install one plugin** when you need a specific expert.
@@ -94,12 +94,13 @@ Four plugins that turn strategy into tangible deliverables. Each works standalon
 |-------|-----------------|
 | **Slide Designer** | Professional presentations from any strategy output (Marp markdown) |
 
-### demo — Film it
+### studio — Film it
 
 | Agent | What it produces |
 |-------|-----------------|
 | **Demo Producer** | Full product demo videos (browser recording + voiceover + composition) |
 | **Clip Maker** | Short social clips for Instagram Reels, TikTok, YouTube Shorts, LinkedIn |
+| **Content Creator** | Branded social media images and short-form videos |
 
 ## Orchestration
 
@@ -139,7 +140,7 @@ claude plugin install craft@Adanmohh/caliber
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI
 - Optional: [claude-mem](https://github.com/nicobailon/claude-mem) for cross-session memory
-- For demo plugin: Node.js, Playwright, Remotion, ffmpeg, ElevenLabs API key
+- For studio plugin: Node.js, Playwright, Remotion, ffmpeg, ElevenLabs API key
 
 ## Links
 
