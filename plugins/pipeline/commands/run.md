@@ -16,6 +16,8 @@ Execute the setup script to initialize the pipeline:
 
 You are starting the Caliber pipeline. Your task is to run the full validate phase.
 
+**Check for a brief file first.** Look at the setup script output above. If it says "Brief file detected: {path}", read that file immediately using the Read tool. This file contains the user's idea description, target audience, business context, and other details. Use this information to pre-fill your analysis — skip any AskUserQuestion calls where the brief already provides the answer. Only ask questions about information NOT covered in the brief.
+
 **CRITICAL: Search claude-mem first for any existing work on this project.**
 1. Call `mcp__plugin_claude-mem_mcp-search__search` with NO query — use filters only: `limit` 20
 2. Scan the index for observations mentioning "{ProjectName}", "validate", "build", or "pipeline"

@@ -66,7 +66,22 @@ if [[ -z "$PROJECT_NAME" ]]; then
   echo "Error: No project name provided" >&2
   echo "Usage: /pipeline:run [PROJECT_NAME]" >&2
   echo "Example: /pipeline:run BurnoutLab - AI burnout recovery platform" >&2
+  echo "Example: /pipeline:run BurnoutLab.md  (reads idea from file)" >&2
   exit 1
+fi
+
+# If argument is a file path, extract project name and flag for reading
+BRIEF_FILE=""
+if [[ -f "$PROJECT_NAME" ]]; then
+  BRIEF_FILE="$PROJECT_NAME"
+  # Extract project name from filename (strip path and extension)
+  PROJECT_NAME="$(basename "$PROJECT_NAME" .md)"
+  PROJECT_NAME="$(basename "$PROJECT_NAME" .txt)"
+  echo "Brief file detected: $BRIEF_FILE"
+  echo "Project name: $PROJECT_NAME"
+elif [[ -f "${PROJECT_NAME}.md" ]]; then
+  BRIEF_FILE="${PROJECT_NAME}.md"
+  echo "Brief file detected: $BRIEF_FILE"
 fi
 
 # Validate start phase
@@ -88,6 +103,7 @@ mode: $MODE
 current_phase: $START_PHASE
 status: running
 project_name: "$PROJECT_NAME"
+brief_file: "${BRIEF_FILE:-}"
 session_id: ${CLAUDE_CODE_SESSION_ID:-}
 started_at: "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 ---
@@ -95,6 +111,7 @@ started_at: "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 Project: $PROJECT_NAME
 Mode: $MODE
 Start Phase: $START_PHASE
+Brief File: ${BRIEF_FILE:-none}
 EOF
 
 # Output activation message
