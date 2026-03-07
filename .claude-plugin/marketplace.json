@@ -1,0 +1,63 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "organtic",
+  "description": "The AI-native organization. 25 experts from idea to launch. Strategy pipeline (validate > build > launch) + execution plugins (craft, document, present, studio).",
+  "owner": {
+    "name": "Adan Mohh",
+    "email": "adan@neogrant.fi"
+  },
+  "metadata": {
+    "description": "Organtic - AI-native organization plugins for Claude Code",
+    "homepage": "https://github.com/Adanmohh/organtic"
+  },
+  "plugins": [
+    {
+      "name": "validate",
+      "version": "1.0.0",
+      "source": "./plugins/validate",
+      "description": "Validate business ideas with 3 AI experts: Value Mapper, Business Modeler, Experiment Designer"
+    },
+    {
+      "name": "build",
+      "version": "1.0.0",
+      "source": "./plugins/build",
+      "description": "Product vision and build with 5 AI experts: Product Strategist, Brand Strategist, Growth Designer, Spec Writer, Product Designer"
+    },
+    {
+      "name": "launch",
+      "version": "1.0.0",
+      "source": "./plugins/launch",
+      "description": "Go-to-market with 7 AI experts: Offer Designer, Copywriter, Funnel Architect, Growth Auditor, Media Planner, SEO Strategist, AI Search Optimizer"
+    },
+    {
+      "name": "craft",
+      "version": "1.0.0",
+      "source": "./plugins/craft",
+      "description": "Build landing pages, scaffold MVPs, design components, and test products with 4 AI builder agents"
+    },
+    {
+      "name": "document",
+      "version": "1.0.0",
+      "source": "./plugins/document",
+      "description": "Generate professional business documents: plans, pitch decks, SOPs, case studies with 2 AI writer agents"
+    },
+    {
+      "name": "present",
+      "version": "1.0.0",
+      "source": "./plugins/present",
+      "description": "Create professional slide presentations from strategy outputs with Marp markdown to PDF/PPTX"
+    },
+    {
+      "name": "studio",
+      "version": "1.0.0",
+      "source": "./plugins/studio",
+      "description": "Visual production studio: product demos, social clips, branded content with 3 AI producer agents"
+    },
+    {
+      "name": "pipeline",
+      "version": "1.0.0",
+      "source": "./plugins/pipeline",
+      "description": "Pipeline controller that chains validate > build > launch plugins using Stop hook loop pattern"
+    }
+  ]
+}
