@@ -97,27 +97,31 @@ Each phase outputs project-scoped tags that are auto-captured by claude-mem:
 
 Later phases search memory by date range and project name to build on validated findings.
 
-## Quick Install
+## Install
 
-### All plugins (recommended)
+### Step 1: Add the marketplace
 ```bash
-claude plugin install caliber@Adanmohh/caliber
-```
-Select all 9 plugins when prompted.
-
-### Individual plugins
-```bash
-claude plugin install validate@Adanmohh/caliber
-claude plugin install build@Adanmohh/caliber
-claude plugin install launch@Adanmohh/caliber
-claude plugin install craft@Adanmohh/caliber
-claude plugin install document@Adanmohh/caliber
-claude plugin install present@Adanmohh/caliber
-claude plugin install studio@Adanmohh/caliber
-claude plugin install pipeline@Adanmohh/caliber
+/plugin marketplace add Adanmohh/caliber
 ```
 
-### npx installer (interactive)
+### Step 2: Install plugins
+```bash
+# Install all plugins (open the browser and select)
+/plugins
+
+# Or install individually
+/plugin install validate@caliber
+/plugin install build@caliber
+/plugin install launch@caliber
+/plugin install craft@caliber
+/plugin install document@caliber
+/plugin install present@caliber
+/plugin install studio@caliber
+/plugin install pipeline@caliber
+```
+
+### Alternative: npx installer
+Installs all plugins interactively from your terminal:
 ```bash
 npx caliberos
 ```

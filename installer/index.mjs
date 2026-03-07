@@ -3,7 +3,8 @@
 import { execSync } from "child_process";
 import { createInterface } from "readline";
 
-const MARKETPLACE = "Adanmohh/caliber";
+const MARKETPLACE_REPO = "Adanmohh/caliber";
+const MARKETPLACE_NAME = "caliber";
 
 const PLUGINS = [
   {
@@ -70,7 +71,16 @@ async function main() {
     process.exit(1);
   }
 
-  console.log("Available plugins:\n");
+  // Step 1: Add marketplace
+  console.log("Adding Caliber marketplace...\n");
+  if (!run(`claude plugin marketplace add ${MARKETPLACE_REPO}`)) {
+    console.log(
+      "Note: Marketplace may already be added, or add it manually:"
+    );
+    console.log(`  claude plugin marketplace add ${MARKETPLACE_REPO}\n`);
+  }
+
+  console.log("\nAvailable plugins:\n");
   console.log("  Strategy Pipeline:");
   PLUGINS.slice(0, 3).forEach((p, i) => {
     console.log(`    [${i + 1}] ${p.name} — ${p.desc}`);
@@ -116,13 +126,15 @@ async function main() {
   let installed = 0;
   for (const plugin of selected) {
     console.log(`→ Installing ${plugin.name}...`);
-    const ok = run(`claude plugin install ${plugin.name}@${MARKETPLACE}`);
+    const ok = run(
+      `claude plugin install ${plugin.name}@${MARKETPLACE_NAME}`
+    );
     if (ok) {
       installed++;
       console.log(`  ✓ ${plugin.name} installed\n`);
     } else {
       console.log(
-        `  ✗ ${plugin.name} failed — try manually: claude plugin install ${plugin.name}@${MARKETPLACE}\n`
+        `  ✗ ${plugin.name} failed — try manually:\n    claude plugin install ${plugin.name}@${MARKETPLACE_NAME}\n`
       );
     }
   }
