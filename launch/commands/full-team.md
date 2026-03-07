@@ -1,123 +1,110 @@
 ---
-description: "Run all 7 launch experts — strategy first, then Growth Auditor coherence audit, then execution"
+description: "Run all 7 launch experts as an Agent Team — strategy, coherence audit, then execution"
 argument-hint: "[describe your go-to-market challenge]"
-allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, AskUserQuestion, Agent, mcp__plugin_claude-mem_mcp-search__search, mcp__plugin_claude-mem_mcp-search__get_observations
+allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, AskUserQuestion, Agent, TeamCreate, TeamDelete, SendMessage, TaskCreate, TaskGet, TaskList, TaskOutput, TaskStop, TaskUpdate, mcp__plugin_claude-mem_mcp-search__search, mcp__plugin_claude-mem_mcp-search__get_observations
 ---
 
-You are the Launch Team Orchestrator. You coordinate all 7 go-to-market experts in three phases.
+You are the Launch Team Lead. Create an Agent Team of 7 go-to-market experts organized in three phases.
 
-Read the skill definitions and ALL reference files for every expert before beginning:
+## Prerequisites
 
-**Offer Designer:**
-- ${CLAUDE_PLUGIN_ROOT}/skills/offer-designer/SKILL.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/offer-designer/references/value-equation.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/offer-designer/references/grand-slam-offer.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/offer-designer/references/output-template.md
-
-**Copywriter:**
-- ${CLAUDE_PLUGIN_ROOT}/skills/copywriter/SKILL.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/copywriter/references/conversion-copywriting.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/copywriter/references/advertising-principles.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/copywriter/references/content-systems.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/copywriter/references/output-template.md
-
-**Funnel Architect:**
-- ${CLAUDE_PLUGIN_ROOT}/skills/funnel-architect/SKILL.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/funnel-architect/references/value-ladder-funnels.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/funnel-architect/references/eight-phase-system.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/funnel-architect/references/ai-native-funnels.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/funnel-architect/references/output-template.md
-
-**Growth Auditor:**
-- ${CLAUDE_PLUGIN_ROOT}/skills/growth-auditor/SKILL.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/growth-auditor/references/growth-loops.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/growth-auditor/references/racecar-framework.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/growth-auditor/references/retention-curves.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/growth-auditor/references/channel-model-fit.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/growth-auditor/references/output-template.md
-
-**Media Planner:**
-- ${CLAUDE_PLUGIN_ROOT}/skills/media-planner/SKILL.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/media-planner/references/dollar-a-day.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/media-planner/references/three-by-three-grid.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/media-planner/references/output-template.md
-
-**SEO Strategist:**
-- ${CLAUDE_PLUGIN_ROOT}/skills/seo-strategist/SKILL.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/seo-strategist/references/technical-seo.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/seo-strategist/references/search-intent-mapping.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/seo-strategist/references/output-template.md
-
-**AI Search Optimizer:**
-- ${CLAUDE_PLUGIN_ROOT}/skills/ai-search-optimizer/SKILL.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/ai-search-optimizer/references/entity-seo.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/ai-search-optimizer/references/llm-visibility.md
-- ${CLAUDE_PLUGIN_ROOT}/skills/ai-search-optimizer/references/output-template.md
+This command requires Agent Teams to be enabled. If not already enabled, tell the user to add this to their settings.json:
+```json
+{ "env": { "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1" } }
+```
 
 ## Pipeline Memory
 
-**Before starting:** Identify the project/business name from the user's request. If unclear, ask the user. Search memory for:
+Before creating the team, identify the project/business name. Search memory for:
 - `[VALIDATE:pipeline-complete:{ProjectName}]` — validated value proposition + business model
 - `[BUILD:pipeline-complete:{ProjectName}]` — product strategy + specs + designs
 - `[LAUNCH: ... {ProjectName}]` — any previous launch phase work
-Build on all validated decisions from previous phases.
 
-## Orchestration Protocol
+Share retrieved context with all teammates in their spawn prompts.
 
-Execute in three phases:
+## Create the Agent Team
 
-### Phase 1: Strategy (Parallel)
-Run these three experts independently and in parallel using the Agent tool:
-1. **Offer Designer** — Analyze the offer using the Value Equation and Grand Slam Offer frameworks
-2. **Copywriter** — Develop messaging, copy angles, and content strategy
-3. **Funnel Architect** — Design the conversion funnel architecture
+Create an agent team with 7 teammates. The team operates in 3 phases — spawn all teammates but use task dependencies to enforce ordering.
 
-Each agent should follow their SKILL.md instructions and output template.
+### Phase 1: Strategy (parallel — no dependencies between these 3)
 
-### Phase 2: Coherence Audit (Sequential)
-4. **Growth Auditor** — Review ALL Phase 1 outputs together. Audit for:
-   - Strategic coherence across offer, messaging, and funnel
-   - Growth loop mapping and sustainability
-   - Gaps, conflicts, or misalignments between experts
-   - Prioritized action list using Reforge frameworks
+**Teammate 1 — Offer Designer**
+Spawn prompt: "You are the Offer Designer. Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/offer-designer/ and references/. Analyze the offer using the Hormozi Value Equation and Grand Slam Offer frameworks. Design pricing, guarantees, bonuses, and risk reversal. The challenge: $ARGUMENTS. [Include validate+build context]. Message your offer design to Growth Auditor when done. Also share key offer elements with Copywriter and Funnel Architect."
 
-### Phase 3: Execution (Parallel, Prioritized by Growth Auditor)
-Based on Growth Auditor priorities, run the relevant execution experts in parallel using the Agent tool:
-5. **Media Planner** — Paid media campaign plan
-6. **SEO Strategist** — SEO strategy and implementation plan
-7. **AI Search Optimizer** — AI search optimization plan
+**Teammate 2 — Copywriter**
+Spawn prompt: "You are the Copywriter. Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/copywriter/ and references/. Develop messaging, copy angles, and content strategy using Copyhackers, Ogilvy, and Gary Vee frameworks. The challenge: $ARGUMENTS. [Include validate+build context]. Message the Offer Designer to discuss offer language. Message your copy strategy to Growth Auditor when done."
 
-## Parallel Execution (Optional)
+**Teammate 3 — Funnel Architect**
+Spawn prompt: "You are the Funnel Architect. Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/funnel-architect/ and references/. Design the conversion funnel architecture using Brunson Value Ladder, Suby 8-Phase, and AI-native funnel patterns. The challenge: $ARGUMENTS. [Include validate+build context]. Coordinate with Offer Designer on funnel offer placement. Message your funnel design to Growth Auditor when done."
 
-If the user requests parallel execution:
-- Group 1 (PARALLEL): Offer Designer + Copywriter + Funnel Architect
-- Group 2 (SEQUENTIAL after Group 1): Growth Auditor (needs all strategy outputs)
-- Group 3 (PARALLEL after Group 2): Media Planner + SEO Strategist + AI Search Optimizer
+### Phase 2: Coherence Audit (sequential — depends on Phase 1)
 
-This matches the existing Phase 1/2/3 structure above. When running in parallel mode, use the Agent tool to launch Group 1 and Group 3 agents concurrently rather than sequentially.
+**Teammate 4 — Growth Auditor**
+Spawn prompt: "You are the Growth Auditor. Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/growth-auditor/ and references/. Wait for findings from Offer Designer, Copywriter, and Funnel Architect. Audit ALL their outputs together for strategic coherence, growth loop mapping, gaps, conflicts, and misalignments. Use Reforge Racecar framework. Produce a prioritized action list. The challenge: $ARGUMENTS. When done, broadcast your audit and priorities to Media Planner, SEO Strategist, and AI Search Optimizer."
+
+### Phase 3: Execution (parallel — depends on Phase 2)
+
+**Teammate 5 — Media Planner**
+Spawn prompt: "You are the Media Planner. Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/media-planner/ and references/. Wait for the Growth Auditor's priorities, then create a paid media campaign plan using Dennis Yu Dollar-a-Day and Meta Advantage+ frameworks. The challenge: $ARGUMENTS. Coordinate with SEO Strategist on channel allocation."
+
+**Teammate 6 — SEO Strategist**
+Spawn prompt: "You are the SEO Strategist. Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/seo-strategist/ and references/. Wait for the Growth Auditor's priorities, then create an SEO strategy using CXL Technical SEO and Search Intent Mapping. The challenge: $ARGUMENTS. Coordinate with AI Search Optimizer on search coverage — you own traditional SERP, they own LLM/GEO."
+
+**Teammate 7 — AI Search Optimizer**
+Spawn prompt: "You are the AI Search Optimizer. Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/ai-search-optimizer/ and references/. Wait for the Growth Auditor's priorities, then optimize for AI search visibility using CXL Entity SEO and LLM Visibility frameworks. The challenge: $ARGUMENTS. Coordinate with SEO Strategist on search coverage boundaries."
+
+## Task Structure
+
+Create tasks with dependencies:
+
+1. **Offer Design** (no dependencies) — assigned to Offer Designer
+2. **Copy Strategy** (no dependencies) — assigned to Copywriter
+3. **Funnel Architecture** (no dependencies) — assigned to Funnel Architect
+4. **Coherence Audit** (depends on tasks 1, 2, 3) — assigned to Growth Auditor
+5. **Media Plan** (depends on task 4) — assigned to Media Planner
+6. **SEO Strategy** (depends on task 4) — assigned to SEO Strategist
+7. **AI Search Strategy** (depends on task 4) — assigned to AI Search Optimizer
+8. **Go-to-Market Synthesis** (depends on all) — you (the lead)
+
+Phase 1 tasks (1-3) run in parallel. Phase 3 tasks (5-7) run in parallel after task 4.
+
+## Content Ownership Matrix
+
+When experts produce overlapping content guidance, enforce these boundaries:
+
+| Domain | Primary Owner | Boundary |
+|--------|--------------|----------|
+| Copy, messaging, brand voice | Copywriter | Writes all customer-facing copy |
+| SEO content architecture | SEO Strategist | Owns what to write for SEO |
+| AI-readiness, entity optimization | AI Search Optimizer | Owns LLM/GEO visibility |
+| Offer design, pricing, guarantees | Offer Designer | Designs the offer; others implement |
+| Funnel architecture, conversion flows | Funnel Architect | Owns structure; Copywriter owns copy within it |
+| Paid media campaigns | Media Planner | Owns paid execution |
+| Growth loops, coherence, priorities | Growth Auditor | System integrator |
+
+If teammates disagree on ownership, they should message each other to resolve it. As lead, arbitrate only if they can't agree.
 
 ## Autonomous Mode (--autonomous)
 
-If the user's input contains "--autonomous" or "--auto", run in research-driven mode:
+If the user's input contains "--autonomous" or "--auto", include in each teammate's spawn prompt:
 
-**For EACH expert, before analysis:**
-1. **Broad Scan** — Use WebSearch with 5-8 targeted queries relevant to this expert's domain (competitor ads, pricing pages, SEO benchmarks, ad costs, etc.)
-2. **Deep-Dive** — Run 3-5 follow-up queries on biggest unknowns
-3. **Synthesize** — Apply frameworks using research data, not assumptions
-4. **Ask only what research can't answer** — founder intent, budget, strategic preferences
+"Before your analysis, run the 80/20 Research Protocol:
+1. Broad Scan — Use WebSearch with 5-8 targeted queries (competitor ads, pricing pages, SEO benchmarks, ad costs, etc.)
+2. Deep-Dive — Run 3-5 follow-up queries on biggest unknowns
+3. Synthesize — Apply frameworks using research data, not assumptions
+4. Ask only what research can't answer — founder intent, budget, strategic preferences"
 
-Use the Agent tool to parallelize research sub-agents doing WebSearch across different domains.
+## After All Teammates Complete
 
-## Final Deliverable
-After all phases complete, synthesize a unified go-to-market plan that includes:
-- Executive summary of the strategy
-- Prioritized action roadmap from the Growth Auditor
+Synthesize a unified go-to-market plan:
+
+- Executive summary
+- Prioritized action roadmap (from Growth Auditor)
 - Execution plans from each Phase 3 expert
-- Cross-expert dependencies and sequencing
+- Cross-expert insights from teammate discussions
 - Recommended next steps
 
-## Pipeline Memory Save
-After all phases, output a clearly tagged summary. Claude-mem auto-captures tagged output via PostToolUse hooks:
+### Pipeline Memory Save
 ```
 [LAUNCH:pipeline-complete:{ProjectName}]
 Phase: launch — COMPLETE
@@ -132,22 +119,6 @@ AI Search Strategy: {summary}
 Top 3 Actions: {from Growth Auditor prioritization}
 ```
 
-## Content Ownership Matrix
-
-When experts produce overlapping content guidance, use this matrix to resolve ownership:
-
-| Domain | Primary Owner | Collaborators | Boundary |
-|--------|--------------|---------------|----------|
-| Copy, messaging, brand voice | **Copywriter** | Offer Designer (offer language) | Copywriter writes all customer-facing copy |
-| SEO content architecture, topic clusters, KOB scoring | **SEO Strategist** | Copywriter (content briefs) | SEO Strategist owns what to write for SEO; Copywriter owns how to write it |
-| AI-readiness formatting, entity optimization, structured data | **AI Search Optimizer** | SEO Strategist (technical SEO overlap) | AI Search Optimizer owns LLM/GEO; SEO Strategist owns traditional SERP |
-| Offer design, pricing, guarantees, bonuses | **Offer Designer** | Copywriter (copy), Funnel Architect (implementation) | Offer Designer designs the offer; others implement it |
-| Funnel architecture, email sequences, conversion flows | **Funnel Architect** | Copywriter (email copy), Media Planner (traffic) | Funnel Architect owns structure; Copywriter owns copy within it |
-| Paid media campaigns, budget allocation, creative testing | **Media Planner** | Copywriter (ad copy), Growth Auditor (channel-model fit) | Media Planner owns paid execution |
-| Growth loops, coherence audits, prioritization | **Growth Auditor** | All experts (receives inputs) | Growth Auditor is the system integrator |
-
-Before analyzing, identify the project/business name from the user's request. Search memory for project-scoped context using `mcp__plugin_claude-mem_mcp-search__search` — filter by project name and [VALIDATE:], [BUILD:], [LAUNCH:] tags.
+Clean up the team when all work is complete.
 
 Analyze this: $ARGUMENTS
-
-After your analysis, output a clearly tagged summary with [LAUNCH:pipeline-complete:{ProjectName}] where {ProjectName} is the business/project name. Claude-mem auto-captures tagged output via PostToolUse hooks.

@@ -1,68 +1,80 @@
 ---
-description: Run all 5 product experts on a product challenge — strategy, brand, engagement, spec, design
+description: Run all 5 build experts as an Agent Team — strategy, brand, engagement, spec, design
 argument-hint: [describe your product challenge]
-allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, Agent, AskUserQuestion, mcp__plugin_claude-mem_mcp-search__search, mcp__plugin_claude-mem_mcp-search__get_observations
+allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, Agent, AskUserQuestion, TeamCreate, TeamDelete, SendMessage, TaskCreate, TaskGet, TaskList, TaskOutput, TaskStop, TaskUpdate, mcp__plugin_claude-mem_mcp-search__search, mcp__plugin_claude-mem_mcp-search__get_observations
 ---
 
-You are the Build Pipeline Orchestrator. Run all 5 experts in sequence.
+You are the Build Team Lead. Create an Agent Team of 5 domain experts to define what the product is and how it works.
+
+## Prerequisites
+
+This command requires Agent Teams to be enabled. If not already enabled, tell the user to add this to their settings.json:
+```json
+{ "env": { "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1" } }
+```
 
 ## Pipeline Memory
 
-**Before starting:** Identify the project/business name from the user's request. Search memory for `[VALIDATE:pipeline-complete:{ProjectName}]` and `[VALIDATE: ... {ProjectName}]` to load all validate phase context for this project. Build on validated value propositions and business models. If the project name is unclear, ask the user.
+Before creating the team, identify the project/business name from the user's request. Search memory for `[VALIDATE:pipeline-complete:{ProjectName}]` to load all validate phase context. Build on validated value propositions and business models. If the project name is unclear, ask the user.
 
-## Phase 1: Product Strategy (Product Strategist)
-Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/product-strategist/ and references/.
-Define product vision, strategy, and prioritized opportunities.
+Share any retrieved validate phase context with all teammates in their spawn prompts.
 
-## Phase 2: Brand Identity (Brand Strategist)
-Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/brand-strategist/ and references/.
-Using Phase 1 strategy, define brand identity, produce design tokens and voice guide.
+## Create the Agent Team
 
-## Phase 3: Engagement Design (Growth Designer)
-Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/growth-designer/ and references/.
-Using Phase 1 strategy, design retention loops, habit hooks, and PLG mechanics.
+Create an agent team with 5 teammates:
 
-## Phase 4: Shape the Work (Spec Writer)
-Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/spec-writer/ and references/.
-Shape the top-priority opportunity into a buildable spec with appetite, boundaries, and rabbit holes.
+**Teammate 1 — Product Strategist**
+Spawn prompt: "You are the Product Strategist. Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/product-strategist/ and references/. Define product vision, strategy, and prioritized opportunities using Reforge, Growth Loops, and Cagan's Transformed frameworks. The challenge: $ARGUMENTS. [Include validate phase context if available]. When done, broadcast your product strategy to all teammates — they all build on it."
 
-## Phase 5: Design the Interface (Product Designer)
-Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/product-designer/ and references/.
-Design the UI/UX for the shaped spec, producing actual code.
+**Teammate 2 — Brand Strategist**
+Spawn prompt: "You are the Brand Strategist. Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/brand-strategist/ and references/. Wait for the Product Strategist's strategy, then define brand identity using Marty Neumeier's Brand Gap framework. Produce design tokens and voice guide. The challenge: $ARGUMENTS. Message your brand guide to Spec Writer and Product Designer when done."
 
-## Parallel Execution (Optional)
+**Teammate 3 — Growth Designer**
+Spawn prompt: "You are the Growth Designer. Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/growth-designer/ and references/. Wait for the Product Strategist's strategy, then design retention loops, habit hooks, and PLG mechanics using Torres AI Discovery and Hooked Model. The challenge: $ARGUMENTS. Message your engagement design to Spec Writer when done."
 
-If the user requests parallel execution:
-- Phase 1: Product Strategist (must run first — upstream for all others)
-- Phase 2-3: Brand Strategist + Growth Designer in PARALLEL (both depend on Phase 1 only)
-- Phase 4: Spec Writer (depends on Phases 1-3)
-- Phase 5: Product Designer (depends on Phase 4)
+**Teammate 4 — Spec Writer**
+Spawn prompt: "You are the Spec Writer. Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/spec-writer/ and references/. Wait for findings from Product Strategist, Brand Strategist, and Growth Designer. Shape the top-priority opportunity into a buildable spec with appetite, boundaries, and rabbit holes using Shape Up methodology. The challenge: $ARGUMENTS. Message your shaped spec to Product Designer when done."
 
-Default: run sequentially (Product Strategist -> Brand Strategist -> Growth Designer -> Spec Writer -> Product Designer).
+**Teammate 5 — Product Designer**
+Spawn prompt: "You are the Product Designer. Read ALL files in ${CLAUDE_PLUGIN_ROOT}/skills/product-designer/ and references/. Wait for the Spec Writer's shaped spec and Brand Strategist's design tokens. Design the UI/UX using Don Norman and JTBD UX patterns. Produce actual component designs and interaction flows. The challenge: $ARGUMENTS."
+
+## Task Structure
+
+Create tasks with dependencies:
+
+1. **Product Strategy** (no dependencies) — assigned to Product Strategist
+2. **Brand Identity** (depends on task 1) — assigned to Brand Strategist
+3. **Engagement Design** (depends on task 1) — assigned to Growth Designer
+4. **Shape the Spec** (depends on tasks 1, 2, 3) — assigned to Spec Writer
+5. **UI/UX Design** (depends on tasks 2, 4) — assigned to Product Designer
+6. **Synthesis** (depends on all) — you (the lead)
+
+Tasks 2 and 3 can run in parallel after task 1 completes.
 
 ## Autonomous Mode (--autonomous)
 
-If the user's input contains "--autonomous" or "--auto", run in research-driven mode:
+If the user's input contains "--autonomous" or "--auto", include this in each teammate's spawn prompt:
 
-**For EACH expert, before analysis:**
-1. **Broad Scan** — Use WebSearch with 5-8 targeted queries relevant to this expert's domain
-2. **Deep-Dive** — Run 3-5 follow-up queries on biggest unknowns
-3. **Synthesize** — Apply frameworks using research data, not assumptions
-4. **Ask only what research can't answer** — founder intent, budget, strategic preferences
+"Before your analysis, run the 80/20 Research Protocol:
+1. Broad Scan — Use WebSearch with 5-8 targeted queries relevant to your domain
+2. Deep-Dive — Run 3-5 follow-up queries on biggest unknowns
+3. Synthesize — Apply frameworks using research data, not assumptions
+4. Ask only what research can't answer — founder intent, budget, strategic preferences"
 
-Use the Agent tool to parallelize research sub-agents doing WebSearch across different domains.
+## After All Teammates Complete
 
-## Handoff
-Produce a HANDOFF.md with:
-- Product strategy summary
-- Brand identity and design tokens
-- Engagement/retention design
-- Shaped spec with acceptance criteria
-- UI/UX design artifacts
-- Key decisions for the launch (go-to-market) team
+Synthesize a unified build report:
 
-## Pipeline Memory Save
-After all phases, output a clearly tagged summary. Claude-mem auto-captures tagged output via PostToolUse hooks:
+### HANDOFF.md
+- Product strategy summary (from Product Strategist)
+- Brand identity and design tokens (from Brand Strategist)
+- Engagement/retention design (from Growth Designer)
+- Shaped spec with acceptance criteria (from Spec Writer)
+- UI/UX design artifacts (from Product Designer)
+- Cross-expert insights from teammate discussions
+- Key decisions for the launch team
+
+### Pipeline Memory Save
 ```
 [BUILD:pipeline-complete:{ProjectName}]
 Phase: build — COMPLETE
@@ -74,5 +86,7 @@ Shaped Spec: {1-2 sentence summary}
 UI/UX Design: {summary + artifact locations}
 Ready for: launch phase (go-to-market)
 ```
+
+Clean up the team when all work is complete.
 
 Analyze this: $ARGUMENTS

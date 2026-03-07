@@ -55,7 +55,7 @@ const PLUGINS = [
     name: "pipeline",
     desc: "Pipeline orchestrator",
     experts: null,
-    agents: "Chains 15 strategy experts across validate > build > launch",
+    agents: "Chains 15 explore experts across validate > build > launch",
   },
 ];
 
@@ -237,18 +237,18 @@ async function main() {
     `  ${bold("validate")} ${dim("\u2500\u2500\u25b6")} ${bold("build")} ${dim("\u2500\u2500\u25b6")} ${bold("launch")}`,
     `  ${dim("3 experts")}    ${dim("5 experts")}   ${dim("7 experts")}`,
     "",
-  ], { title: "Strategy Pipeline", width: W }));
+  ], { title: "Explore", width: W }));
 
   console.log(box(chalk, [
     "",
     `  ${bold("craft")}    ${bold("document")}    ${bold("present")}    ${bold("studio")}`,
     `  ${dim("4 agents")}  ${dim("2 agents")}    ${dim("1 agent")}     ${dim("3 agents")}`,
     "",
-  ], { title: "Execution", width: W }));
+  ], { title: "Exploit", width: W }));
 
   console.log(box(chalk, [
     "",
-    `  ${bold("pipeline")} ${dim("\u2014 chains all 15 strategy experts")}`,
+    `  ${bold("pipeline")} ${dim("\u2014 chains all 15 explore experts")}`,
     "",
   ], { title: "Orchestration", width: W }));
 
@@ -259,13 +259,13 @@ async function main() {
   console.log(`  ${gradientText(chalk, "Select plugins to install:")}`);
   console.log();
 
-  console.log(`  ${dim("Strategy Pipeline:")}`);
+  console.log(`  ${dim("Explore:")}`);
   PLUGINS.slice(0, 3).forEach((p, i) => {
     console.log(`    ${cyan(`[${i + 1}]`)} ${bold(p.name)}  ${dim(`${p.experts} experts \u2014 ${p.agents}`)}`);
   });
 
   console.log();
-  console.log(`  ${dim("Execution:")}`);
+  console.log(`  ${dim("Exploit:")}`);
   PLUGINS.slice(3, 7).forEach((p, i) => {
     console.log(`    ${cyan(`[${i + 4}]`)} ${bold(p.name)}  ${dim(`${p.experts} agent${p.experts > 1 ? "s" : ""} \u2014 ${p.agents}`)}`);
   });
@@ -276,14 +276,14 @@ async function main() {
 
   console.log();
   console.log(`    ${green("[A]")} ${bold("All plugins")} ${dim("(recommended)")}`);
-  console.log(`    ${green("[S]")} ${bold("Strategy only")} ${dim("(validate + build + launch + pipeline)")}`);
+  console.log(`    ${green("[E]")} ${bold("Explore only")} ${dim("(validate + build + launch + pipeline)")}`);
   console.log();
 
   // ── User Selection ────────────────────────────────────────────────────
 
   const rl = createInterface({ input: process.stdin, output: process.stdout });
   const choice = await new Promise((resolve) => {
-    rl.question(`  ${cyan("\u276f")} Your choice (1-8, A, S, comma-separated): `, resolve);
+    rl.question(`  ${cyan("\u276f")} Your choice (1-8, A, E, comma-separated): `, resolve);
   });
   rl.close();
 
@@ -291,7 +291,7 @@ async function main() {
   const c = choice.trim().toLowerCase();
   if (c === "a" || c === "") {
     selected = PLUGINS;
-  } else if (c === "s") {
+  } else if (c === "e") {
     selected = PLUGINS.filter((p) =>
       ["validate", "build", "launch", "pipeline"].includes(p.name)
     );

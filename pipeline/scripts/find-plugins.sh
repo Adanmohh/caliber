@@ -16,12 +16,12 @@ LAUNCH_DIR=""
 
 # First check CLAUDE_PLUGIN_ROOT parent (organtic/plugins/) — this is the canonical location
 PLUGIN_PARENT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." 2>/dev/null && pwd)"
-CALIBER_PLUGINS="$(cd "$PLUGIN_PARENT/.." 2>/dev/null && pwd)"
+ORGANTIC_PLUGINS="$(cd "$PLUGIN_PARENT/.." 2>/dev/null && pwd)"
 
-if [[ -d "$CALIBER_PLUGINS" ]]; then
-  [[ -z "$VALIDATE_DIR" ]] && [[ -f "$CALIBER_PLUGINS/validate/.claude-plugin/plugin.json" ]] && VALIDATE_DIR="$CALIBER_PLUGINS/validate"
-  [[ -z "$BUILD_DIR" ]] && [[ -f "$CALIBER_PLUGINS/build/.claude-plugin/plugin.json" ]] && BUILD_DIR="$CALIBER_PLUGINS/build"
-  [[ -z "$LAUNCH_DIR" ]] && [[ -f "$CALIBER_PLUGINS/launch/.claude-plugin/plugin.json" ]] && LAUNCH_DIR="$CALIBER_PLUGINS/launch"
+if [[ -d "$ORGANTIC_PLUGINS" ]]; then
+  [[ -z "$VALIDATE_DIR" ]] && [[ -f "$ORGANTIC_PLUGINS/validate/.claude-plugin/plugin.json" ]] && VALIDATE_DIR="$ORGANTIC_PLUGINS/validate"
+  [[ -z "$BUILD_DIR" ]] && [[ -f "$ORGANTIC_PLUGINS/build/.claude-plugin/plugin.json" ]] && BUILD_DIR="$ORGANTIC_PLUGINS/build"
+  [[ -z "$LAUNCH_DIR" ]] && [[ -f "$ORGANTIC_PLUGINS/launch/.claude-plugin/plugin.json" ]] && LAUNCH_DIR="$ORGANTIC_PLUGINS/launch"
 fi
 
 # Fallback: standalone directories and legacy names

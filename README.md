@@ -2,49 +2,64 @@
 
 The AI-native organization. 25 experts from idea to launch.
 
-Organtic is a team of 25 AI experts that plug into Claude Code. Run them individually or chain all 15 strategy experts through an automated pipeline — a full consulting engagement from validation to go-to-market. Each expert applies named frameworks. Not generic advice.
+Organtic is a team of 25 AI experts that plug into Claude Code. Run them individually or as coordinated [Agent Teams](https://code.claude.com/docs/en/agent-teams) — multiple Claude Code instances working in parallel with shared task lists, inter-agent messaging, and a team lead that synthesizes results. Each expert applies named frameworks. Not generic advice.
 
 The name: **organic + agentic**. An organization that grows with your project.
 
-## The Team
+## The Organization
 
 ```
                               ORGANTIC
        ┌──────────────────────────────────────────────────────┐
-       │                   STRATEGY TEAM                      │
+       │                   EXPLORE TEAM                       │
        │                                                      │
        │  validate (3)  ──→  build (5)  ──→  launch (7)      │
        │  Is this worth      What are we      How do we       │
        │  building?          building?        bring it to     │
        │                                      market?         │
        ├──────────────────────────────────────────────────────┤
-       │                  EXECUTION TEAM                      │
+       │                  EXPLOIT TEAM                        │
        │                                                      │
        │  craft (4)    document (2)    present (1)  studio (3)│
        │  Build it     Write it up     Show it      Film it   │
        └──────────────────────────────────────────────────────┘
 
        ORCHESTRATION
-       pipeline — Chains all 15 strategy experts automatically
+       pipeline — Chains all 15 explore experts automatically
 ```
 
 ## How It Works
 
-Install Organtic plugins into Claude Code. Each plugin adds a team of domain experts to your workspace. You invoke them with slash commands — `/value-mapper`, `/offer-designer`, `/media-planner` — or run an entire team at once with `/validate:full-team`.
+Install Organtic plugins into Claude Code. Each plugin adds a team of domain experts. Run them three ways:
 
-Every expert reads your project context, applies specific frameworks (Osterwalder VPC, Hormozi Value Equation, Reforge Growth Loops — not vague "best practices"), asks clarifying questions, and produces structured deliverables. They work like senior consultants who happen to be available 24/7.
+1. **Individual expert** — `/value-mapper My idea` runs one expert
+2. **Agent Team** — `/validate:full-team My idea` spawns 3 teammates as separate Claude Code instances that coordinate via shared task lists and message each other
+3. **Pipeline** — `/pipeline:run My idea` chains all 15 explore experts across 5 phases with cross-session memory
 
-The pipeline chains all 15 strategy experts into an automated engagement. Phase outputs are tagged and stored in cross-session memory. Later phases retrieve earlier findings and build on them. You go from "I have an idea" to a complete go-to-market strategy without switching contexts.
+Agent Teams use Claude Code's [experimental Agent Teams feature](https://code.claude.com/docs/en/agent-teams). Each teammate is a full Claude Code session with its own context window. Unlike subagents (which just report results back), teammates share findings, challenge each other's assumptions, and coordinate independently.
+
+Every expert applies specific frameworks (Osterwalder VPC, Hormozi Value Equation, Reforge Growth Loops — not vague "best practices"), and produces structured deliverables.
 
 ## Quick Start
 
 ```bash
-# Add the marketplace and install plugins
+# Install from your terminal
+npx organtic
+
+# Or add the marketplace manually in Claude Code
 /plugin marketplace add Adanmohh/organtic
 /plugins   # select which teams to install
+```
 
-# Or install everything from your terminal
-npx organtic
+Enable Agent Teams (required for `:full-team` commands):
+
+```json
+// ~/.claude/settings.json
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  }
+}
 ```
 
 Run your first expert:
@@ -53,15 +68,31 @@ Run your first expert:
 /value-mapper AI tool that helps nurses track patient vitals
 ```
 
-Or run the full pipeline:
+Run a full Agent Team:
+
+```
+/validate:full-team BurnoutLab - AI-powered burnout recovery courses
+```
+
+Run the full pipeline:
 
 ```
 /pipeline:run BurnoutLab - AI-powered burnout recovery courses
 ```
 
+## Agent Teams vs Subagents vs Pipeline
+
+| | Individual Expert | Agent Team (`:full-team`) | Pipeline |
+|---|---|---|---|
+| **Sessions** | 1 | Multiple (1 lead + N teammates) | 1 per phase (sequential) |
+| **Communication** | None | Teammates message each other | Phase outputs saved to memory |
+| **Coordination** | None | Shared task list with dependencies | Stop-hook advances phases |
+| **Best for** | Quick single-domain analysis | Deep multi-expert collaboration | Full end-to-end engagement |
+| **Token cost** | Low | High (each teammate = separate instance) | Medium (sequential phases) |
+
 ## The Pipeline
 
-The pipeline orchestrator runs all 15 strategy experts automatically across 5 phases. Each phase saves findings to cross-session memory. Later phases retrieve and build on earlier work.
+The pipeline orchestrator runs all 15 explore experts automatically across 5 phases. Each phase saves findings to cross-session memory. Later phases retrieve and build on earlier work.
 
 ```
 Phase 1: validate           3 experts, sequential
@@ -125,7 +156,7 @@ With `--autonomous`, every expert follows the 80/20 Research Protocol before ana
 
 Sub-agents run searches in parallel across different research domains. The result: experts that come to you with findings instead of questions.
 
-## Strategy Team (15 experts)
+## Explore Team (15 experts)
 
 ### validate — Is this worth building?
 
@@ -157,7 +188,7 @@ Sub-agents run searches in parallel across different research domains. The resul
 | **SEO Strategist** | CXL Technical SEO + Search Intent Mapping + GEO |
 | **AI Search Optimizer** | CXL Entity SEO + LLM Visibility Optimization |
 
-## Execution Team (10 agents)
+## Exploit Team (10 agents)
 
 ### craft — Build it
 
@@ -199,7 +230,7 @@ Sub-agents run searches in parallel across different research domains. The resul
 /media-planner $3k/mo budget for Facebook and Google ads
 ```
 
-### Run a full plugin team
+### Run an Agent Team
 
 ```
 /validate:full-team My new SaaS idea for project management
@@ -207,7 +238,9 @@ Sub-agents run searches in parallel across different research domains. The resul
 /launch:full-team Go to market with the product strategy
 ```
 
-### Use execution agents
+Each `:full-team` command spawns an Agent Team where experts run as separate Claude Code instances, coordinate through a shared task list, and message each other directly.
+
+### Use exploit agents
 
 ```
 /landing-page Build a landing page from our launch outputs
@@ -235,6 +268,7 @@ Later phases search memory by date range and project name to build on validated 
 ## Requirements
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI
+- Agent Teams enabled (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`) for `:full-team` commands
 - Optional: [claude-mem](https://github.com/nicobailon/claude-mem) for cross-session memory (enables pipeline phase handoffs)
 
 ### For studio plugin
