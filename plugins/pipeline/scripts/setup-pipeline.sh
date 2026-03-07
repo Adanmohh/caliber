@@ -6,17 +6,19 @@
 set -euo pipefail
 
 # Parse arguments
-PROJECT_NAME=""
+# $ARGUMENTS from Claude Code commands arrives as a single quoted string,
+# so we extract flags with string matching rather than positional parsing.
+
+INPUT="$*"
+
 MODE="full-pipeline"
 START_PHASE="validate"
 AUTONOMOUS="false"
 FORCE="false"
-PROMPT_PARTS=()
 
-while [[ $# -gt 0 ]]; do
-  case $1 in
-    -h|--help)
-      cat << 'HELP_EOF'
+# Show help
+if [[ "$INPUT" == *"--help"* ]] || [[ "$INPUT" == *"-h"* ]]; then
+  cat << 'HELP_EOF'
 Organtic Pipeline - Full business analysis pipeline
 
 USAGE:
@@ -47,32 +49,36 @@ STOPPING:
   /pipeline:cancel    Cancel the active pipeline
   /pipeline:status    View current pipeline state
 HELP_EOF
-      exit 0
-      ;;
-    --mode)
-      MODE="$2"
-      shift 2
-      ;;
-    --start-phase)
-      START_PHASE="$2"
-      shift 2
-      ;;
-    --autonomous|--auto)
-      AUTONOMOUS="true"
-      shift
-      ;;
-    --force)
-      FORCE="true"
-      shift
-      ;;
-    *)
-      PROMPT_PARTS+=("$1")
-      shift
-      ;;
-  esac
-done
+  exit 0
+fi
 
-PROJECT_NAME="${PROMPT_PARTS[*]}"
+# Extract --autonomous / --auto flag
+if [[ "$INPUT" == *"--autonomous"* ]] || [[ "$INPUT" == *"--auto"* ]]; then
+  AUTONOMOUS="true"
+  INPUT="${INPUT//--autonomous/}"
+  INPUT="${INPUT//--auto/}"
+fi
+
+# Extract --force flag
+if [[ "$INPUT" == *"--force"* ]]; then
+  FORCE="true"
+  INPUT="${INPUT//--force/}"
+fi
+
+# Extract --start-phase <phase>
+if [[ "$INPUT" =~ --start-phase[[:space:]]+([a-zA-Z-]+) ]]; then
+  START_PHASE="${BASH_REMATCH[1]}"
+  INPUT="${INPUT/--start-phase ${BASH_REMATCH[1]}/}"
+fi
+
+# Extract --mode <mode>
+if [[ "$INPUT" =~ --mode[[:space:]]+([a-zA-Z-]+) ]]; then
+  MODE="${BASH_REMATCH[1]}"
+  INPUT="${INPUT/--mode ${BASH_REMATCH[1]}/}"
+fi
+
+# Trim whitespace from remaining input (that's the project name/description)
+PROJECT_NAME="$(echo "$INPUT" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
 
 if [[ -z "$PROJECT_NAME" ]]; then
   echo "Error: No project name provided" >&2
