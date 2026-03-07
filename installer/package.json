@@ -1,6 +1,6 @@
 {
   "name": "organtic",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "The AI-native organization. 25 experts from idea to launch. Strategy pipeline (validate > build > launch) + execution plugins (craft, document, present, studio). Claude Code plugin ecosystem.",
   "bin": {
     "organtic": "./index.mjs"
