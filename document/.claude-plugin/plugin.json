@@ -1,9 +1,9 @@
 {
   "name": "document",
   "version": "1.0.0",
-  "description": "Generate professional business documents: plans, pitch decks, SOPs, case studies. 2 AI writer agents. Part of the Caliber ecosystem.",
+  "description": "Generate professional business documents: plans, pitch decks, SOPs, case studies. 2 AI writer agents. Part of the Organtic ecosystem.",
   "author": {
-    "name": "Caliber",
+    "name": "Organtic",
     "email": "adan@neogrant.fi"
   },
   "commands": "./commands",

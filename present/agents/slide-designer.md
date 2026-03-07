@@ -27,7 +27,7 @@ Read the skill definition and reference files before responding:
 - ${CLAUDE_PLUGIN_ROOT}/skills/slide-designer/references/marp-reference.md
 
 ## Upstream Inputs
-- **From any Caliber agent:** Strategy outputs, analysis findings, business plans
+- **From any Organtic agent:** Strategy outputs, analysis findings, business plans
 - **From Pitch Deck Writer:** Structured pitch deck content
 - **From Business Writer:** Business plans, case studies
 

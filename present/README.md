@@ -1,15 +1,15 @@
 # Present Plugin
 
-Create professional slide presentations from strategy outputs. Part of the Caliber ecosystem.
+Create professional slide presentations from strategy outputs. Part of the Organtic ecosystem.
 
 ## What It Does
 
-Transforms content from any Caliber agent into polished Marp markdown presentations, ready to export as PDF, PPTX, or PNG.
+Transforms content from any Organtic agent into polished Marp markdown presentations, ready to export as PDF, PPTX, or PNG.
 
 ## Install
 
 ```bash
-claude plugin install present@Adanmohh/caliber
+claude plugin install present@Adanmohh/organtic
 ```
 
 ## Usage

@@ -32,7 +32,7 @@ TEST SUMMARY
 Project:        {Project Name}
 URL Tested:     {https://example.com}
 Date:           {YYYY-MM-DD}
-Tester:         Caliber Tester Agent
+Tester:         Organtic Tester Agent
 Browser:        Chromium (Playwright MCP)
 
 RESULTS OVERVIEW:

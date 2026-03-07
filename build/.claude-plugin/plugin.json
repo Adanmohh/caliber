@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Product vision and build. 5 AI experts: Product Strategist (Reforge + Cagan), Brand Strategist (Neumeier + AI-era branding), Growth Designer (Torres + Hooked + PLG), Spec Writer (Shape Up), Product Designer (Don Norman + JTBD UX). Part of the validate → build → launch pipeline.",
   "author": {
-    "name": "Caliber"
+    "name": "Organtic"
   },
   "commands": "./commands",
   "agents": "./agents"

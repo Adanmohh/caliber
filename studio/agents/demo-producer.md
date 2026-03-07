@@ -31,7 +31,7 @@ Read the skill definition and ALL reference files before responding:
 ## Upstream Inputs
 - **From Landing Page Builder:** Live URL to record
 - **From Copywriter:** Voiceover script, messaging hierarchy
-- **From any Caliber agent:** Product context for narration
+- **From any Organtic agent:** Product context for narration
 
 ## Phase 0: Discovery (MANDATORY)
 

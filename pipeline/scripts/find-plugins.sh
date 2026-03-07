@@ -10,11 +10,11 @@ BUILD_DIR=""
 LAUNCH_DIR=""
 
 # Check standard locations
-# Priority 1: caliber monorepo (canonical location)
+# Priority 1: organtic monorepo (canonical location)
 # Priority 2: standalone plugin directories (legacy)
 # Priority 3: original directory names (explore/product/exploit)
 
-# First check CLAUDE_PLUGIN_ROOT parent (caliber/plugins/) — this is the canonical location
+# First check CLAUDE_PLUGIN_ROOT parent (organtic/plugins/) — this is the canonical location
 PLUGIN_PARENT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." 2>/dev/null && pwd)"
 CALIBER_PLUGINS="$(cd "$PLUGIN_PARENT/.." 2>/dev/null && pwd)"
 

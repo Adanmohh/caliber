@@ -1,10 +1,10 @@
 ---
-description: "Run the full Caliber pipeline: validate > build > launch"
+description: "Run the full Organtic pipeline: validate > build > launch"
 argument-hint: "[project name and description]"
 allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, Agent, AskUserQuestion, TeamCreate, TeamDelete, SendMessage, TaskCreate, TaskList, TaskGet, TaskUpdate, mcp__plugin_claude-mem_mcp-search__search, mcp__plugin_claude-mem_mcp-search__get_observations, mcp__plugin_claude-mem_mcp-search__timeline
 ---
 
-# Caliber Pipeline
+# Organtic Pipeline
 
 Execute the setup script to initialize the pipeline:
 
@@ -85,7 +85,7 @@ If `Autonomous: false` (default), experts use AskUserQuestion freely to gather r
 
 ## Phase 1: Validate
 
-You are starting the Caliber pipeline. Your task is to run the full validate phase.
+You are starting the Organtic pipeline. Your task is to run the full validate phase.
 
 **Check for a brief file first.** Look at the setup script output above. If it says "Brief file detected: {path}", read that file immediately using the Read tool. This file contains the user's idea description, target audience, business context, and other details. Use this information to pre-fill your analysis — skip any AskUserQuestion calls where the brief already provides the answer. Only ask questions about information NOT covered in the brief.
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Caliber Pipeline Session Start Hook
+# Organtic Pipeline Session Start Hook
 # Checks for active pipeline state and injects context on session resume.
 
 set -euo pipefail
@@ -24,7 +24,7 @@ if [[ "$STATUS" == "complete" ]] || [[ "$STATUS" == "cancelled" ]]; then
   exit 0
 fi
 
-echo "Active Caliber pipeline detected:"
+echo "Active Organtic pipeline detected:"
 echo "  Project: $PROJECT_NAME"
 echo "  Mode: $MODE"
 echo "  Current phase: $CURRENT_PHASE"

@@ -3,8 +3,8 @@
 import { execSync } from "child_process";
 import { createInterface } from "readline";
 
-const MARKETPLACE_REPO = "Adanmohh/caliber";
-const MARKETPLACE_NAME = "caliber";
+const MARKETPLACE_REPO = "Adanmohh/organtic";
+const MARKETPLACE_NAME = "organtic";
 
 const PLUGINS = [
   {
@@ -56,7 +56,7 @@ function run(cmd) {
 async function main() {
   console.log(`
 ╔══════════════════════════════════════════════════╗
-║              Caliber Installer                   ║
+║             Organtic Installer                   ║
 ║     25 AI experts for business strategy          ║
 ║     validate > build > launch + execute          ║
 ╚══════════════════════════════════════════════════╝
@@ -72,7 +72,7 @@ async function main() {
   }
 
   // Step 1: Add marketplace
-  console.log("Adding Caliber marketplace...\n");
+  console.log("Adding Organtic marketplace...\n");
   if (!run(`claude plugin marketplace add ${MARKETPLACE_REPO}`)) {
     console.log(
       "Note: Marketplace may already be added, or add it manually:"

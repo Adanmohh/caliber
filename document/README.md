@@ -1,6 +1,6 @@
 # Document Plugin
 
-Professional business document generation for the Caliber ecosystem.
+Professional business document generation for the Organtic ecosystem.
 
 ## Agents
 

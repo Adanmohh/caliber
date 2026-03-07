@@ -1,9 +1,9 @@
 {
   "name": "studio",
   "version": "1.0.0",
-  "description": "Visual production studio. Product demos, social clips, branded content. Playwright recording + ElevenLabs voiceover + Remotion composition. 3 AI producer agents. Part of the Caliber ecosystem.",
+  "description": "Visual production studio. Product demos, social clips, branded content. Playwright recording + ElevenLabs voiceover + Remotion composition. 3 AI producer agents. Part of the Organtic ecosystem.",
   "author": {
-    "name": "Caliber",
+    "name": "Organtic",
     "email": "adan@neogrant.fi"
   },
   "commands": "./commands",

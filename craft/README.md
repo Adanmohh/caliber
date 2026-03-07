@@ -1,6 +1,6 @@
 # Craft Plugin
 
-Build production deliverables: landing pages, MVPs, UI components, and test products. 4 AI builder agents. Part of the Caliber ecosystem.
+Build production deliverables: landing pages, MVPs, UI components, and test products. 4 AI builder agents. Part of the Organtic ecosystem.
 
 ## Agents
 
@@ -14,7 +14,7 @@ Build production deliverables: landing pages, MVPs, UI components, and test prod
 ## Install
 
 ```bash
-claude plugin install craft@Adanmohh/caliber
+claude plugin install craft@Adanmohh/organtic
 ```
 
 ## Usage

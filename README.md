@@ -1,6 +1,6 @@
-# Caliber
+# Organtic
 
-Raise the caliber. 25 AI experts that take you from idea to shipped product. A Claude Code plugin ecosystem.
+25 AI experts from idea to launch. A Claude Code plugin ecosystem.
 
 ```
 STRATEGY                                       EXECUTION
@@ -101,7 +101,7 @@ Later phases search memory by date range and project name to build on validated 
 
 ### Step 1: Add the marketplace
 ```bash
-/plugin marketplace add Adanmohh/caliber
+/plugin marketplace add Adanmohh/organtic
 ```
 
 ### Step 2: Install plugins
@@ -110,20 +110,20 @@ Later phases search memory by date range and project name to build on validated 
 /plugins
 
 # Or install individually
-/plugin install validate@caliber
-/plugin install build@caliber
-/plugin install launch@caliber
-/plugin install craft@caliber
-/plugin install document@caliber
-/plugin install present@caliber
-/plugin install studio@caliber
-/plugin install pipeline@caliber
+/plugin install validate@organtic
+/plugin install build@organtic
+/plugin install launch@organtic
+/plugin install craft@organtic
+/plugin install document@organtic
+/plugin install present@organtic
+/plugin install studio@organtic
+/plugin install pipeline@organtic
 ```
 
 ### Alternative: npx installer
 Installs all plugins interactively from your terminal:
 ```bash
-npx caliberos
+npx organtic
 ```
 
 ## Strategy Plugins

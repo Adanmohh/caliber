@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Validate business ideas with 3 AI experts: Value Mapper (Osterwalder + JTBD), Business Modeler (Business Model Canvas + Blue Ocean), Experiment Designer (experiment design + prioritization). Part of the validate > build > launch pipeline.",
   "author": {
-    "name": "Caliber"
+    "name": "Organtic"
   },
   "commands": "./commands",
   "agents": "./agents"

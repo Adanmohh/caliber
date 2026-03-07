@@ -1,6 +1,6 @@
-# Caliber
+# Organtic
 
-> Most founders fail not from bad ideas, but from the gap between knowing what to build and actually building it. Caliber closes that gap.
+> Most founders fail not from bad ideas, but from the gap between knowing what to build and actually building it. Organtic closes that gap.
 
 **25 specialized AI agents organized into 8 independent plugins** that work alone or chain together into a complete idea-to-execution pipeline. Each agent brings deep framework expertise — not generic advice, but proven methodologies that top strategists and builders actually use.
 
@@ -15,7 +15,7 @@ That's 23 different disciplines. No solo founder or small team has all of them.
 ## The Solution
 
 ```
-npx caliberos
+npx organtic
 ```
 
 One command. Pick the plugins you need. Each one works independently — or chain them all together.
@@ -121,19 +121,19 @@ You can also run any single expert directly:
 ### Interactive (recommended)
 
 ```bash
-npx caliberos
+npx organtic
 ```
 
 ### Direct plugin install
 
 ```bash
 # Everything
-claude plugin install caliber@Adanmohh/caliber
+claude plugin install organtic@Adanmohh/organtic
 
 # Just what you need
-claude plugin install validate@Adanmohh/caliber
-claude plugin install launch@Adanmohh/caliber
-claude plugin install craft@Adanmohh/caliber
+claude plugin install validate@Adanmohh/organtic
+claude plugin install launch@Adanmohh/organtic
+claude plugin install craft@Adanmohh/organtic
 ```
 
 ## Requirements
@@ -144,6 +144,6 @@ claude plugin install craft@Adanmohh/caliber
 
 ## Links
 
-- [GitHub](https://github.com/Adanmohh/caliber) | [Issues](https://github.com/Adanmohh/caliber/issues)
+- [GitHub](https://github.com/Adanmohh/organtic) | [Issues](https://github.com/Adanmohh/organtic/issues)
 
 MIT License

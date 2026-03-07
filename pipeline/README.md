@@ -1,4 +1,4 @@
-# Caliber Pipeline
+# Organtic Pipeline
 
 Pipeline controller that chains the **validate > build > launch** plugins into an automated, multi-phase business strategy workflow. 14 AI experts run in sequence across 5 phases.
 

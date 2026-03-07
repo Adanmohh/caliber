@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Caliber Pipeline Setup Script
+# Organtic Pipeline Setup Script
 # Creates state file for the Stop hook to manage pipeline phases.
 
 set -euo pipefail
@@ -17,7 +17,7 @@ while [[ $# -gt 0 ]]; do
   case $1 in
     -h|--help)
       cat << 'HELP_EOF'
-Caliber Pipeline - Full business analysis pipeline
+Organtic Pipeline - Full business analysis pipeline
 
 USAGE:
   /pipeline:run [PROJECT_NAME] [OPTIONS]
@@ -141,7 +141,7 @@ EOF
 
 # Output activation message
 cat <<EOF
-Caliber Pipeline activated!
+Organtic Pipeline activated!
 
   Project: $PROJECT_NAME
   Mode: $MODE

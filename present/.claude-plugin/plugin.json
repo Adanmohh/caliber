@@ -1,9 +1,9 @@
 {
   "name": "present",
   "version": "1.0.0",
-  "description": "Create professional slide presentations from strategy outputs. Marp markdown to PDF/PPTX. 1 AI designer agent. Part of the Caliber ecosystem.",
+  "description": "Create professional slide presentations from strategy outputs. Marp markdown to PDF/PPTX. 1 AI designer agent. Part of the Organtic ecosystem.",
   "author": {
-    "name": "Caliber",
+    "name": "Organtic",
     "email": "adan@neogrant.fi"
   },
   "commands": "./commands",

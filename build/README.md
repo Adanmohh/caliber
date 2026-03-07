@@ -15,7 +15,7 @@ Product vision and build pipeline with 5 AI experts. Part of the validate > buil
 ## Installation
 
 ```bash
-claude plugin install Adanmohh/caliber build
+claude plugin install Adanmohh/organtic build
 # Or load locally:
 claude --plugin-dir ./build
 ```

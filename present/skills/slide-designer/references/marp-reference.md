@@ -131,7 +131,7 @@ style: |
 
 ### External Theme File
 ```css
-/* @theme caliber */
+/* @theme organtic */
 @import 'default';
 
 section {
@@ -290,7 +290,7 @@ export default defineConfig({
 Custom themes MUST include a `@theme` metadata comment:
 
 ```css
-/* @theme caliber-dark */
+/* @theme organtic-dark */
 @import "default";
 
 section {
@@ -322,7 +322,7 @@ blockquote {
 }
 ```
 
-Use with: `npx @marp-team/marp-cli --theme caliber-dark.css slides.md`
+Use with: `npx @marp-team/marp-cli --theme organtic-dark.css slides.md`
 
 ## Advanced CLI Options
 

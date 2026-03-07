@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Strategy and execution for go-to-market. 7 AI experts — Strategy: Offer Designer (Hormozi), Copywriter (Copyhackers + Ogilvy + Gary Vee), Funnel Architect (Brunson + Suby + AI-native), Growth Auditor (Reforge). Execution: Media Planner (Dennis Yu), SEO Strategist (CXL SEO), AI Search Optimizer (CXL AI SEO). Part of the validate → build → launch pipeline.",
   "author": {
-    "name": "Caliber"
+    "name": "Organtic"
   },
   "commands": "./commands",
   "agents": "./agents"

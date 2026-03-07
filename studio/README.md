@@ -1,6 +1,6 @@
 # Studio Plugin
 
-Visual production studio. Product demos, social clips, branded content. Part of the Caliber ecosystem.
+Visual production studio. Product demos, social clips, branded content. Part of the Organtic ecosystem.
 
 ## Agents
 

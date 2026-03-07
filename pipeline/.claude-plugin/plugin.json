@@ -1,9 +1,9 @@
 {
   "name": "pipeline",
   "version": "1.0.0",
-  "description": "Pipeline controller for the Caliber ecosystem. Chains validate > build > launch plugins using Stop hook loop pattern. Supports single expert, full plugin, or full pipeline execution.",
+  "description": "Pipeline controller for the Organtic ecosystem. Chains validate > build > launch plugins using Stop hook loop pattern. Supports single expert, full plugin, or full pipeline execution.",
   "author": {
-    "name": "Caliber"
+    "name": "Organtic"
   },
   "commands": "./commands",
   "hooks": "./hooks/hooks.json"

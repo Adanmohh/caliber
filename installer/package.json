@@ -1,9 +1,9 @@
 {
-  "name": "caliberos",
+  "name": "organtic",
   "version": "1.0.8",
   "description": "25 AI agents that take you from idea to shipped product. Strategy pipeline (validate > build > launch) + execution plugins (craft, document, present, studio). Each plugin works independently or chains together. For Claude Code.",
   "bin": {
-    "caliberos": "./index.mjs"
+    "organtic": "./index.mjs"
   },
   "type": "module",
   "license": "MIT",
@@ -12,13 +12,13 @@
     "email": "adan@neogrant.fi",
     "url": "https://github.com/Adanmohh"
   },
-  "homepage": "https://github.com/Adanmohh/caliber#readme",
+  "homepage": "https://github.com/Adanmohh/organtic#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Adanmohh/caliber.git"
+    "url": "git+https://github.com/Adanmohh/organtic.git"
   },
   "bugs": {
-    "url": "https://github.com/Adanmohh/caliber/issues"
+    "url": "https://github.com/Adanmohh/organtic/issues"
   },
   "keywords": [
     "claude-code",
@@ -37,7 +37,7 @@
     "growth",
     "validation",
     "anthropic",
-    "caliber"
+    "organtic"
   ],
   "engines": {
     "node": ">=18.0.0"

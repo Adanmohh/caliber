@@ -13,7 +13,7 @@ Business idea exploration, ideation, and validation. Part of the **validate > bu
 ## Installation
 
 ```bash
-claude plugin install validate@Adanmohh/caliber
+claude plugin install validate@Adanmohh/organtic
 ```
 
 ## Usage
@@ -48,7 +48,7 @@ The validate plugin validates whether an idea is worth building. Once key assump
 To run the full automated pipeline (validate > build > launch), install the **pipeline** plugin and use `/run`:
 
 ```bash
-claude plugin install pipeline@Adanmohh/caliber
+claude plugin install pipeline@Adanmohh/organtic
 > /pipeline:run My SaaS idea for freelancers
 ```
 

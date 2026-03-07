@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Caliber Pipeline Stop Hook
+# Organtic Pipeline Stop Hook
 # Intercepts session exit when a pipeline is active.
 # Checks pipeline state and re-injects the next phase prompt.
 # Inspired by Ralph Wiggum loop pattern.
@@ -97,7 +97,7 @@ case "$MODE" in
         NEXT_PROMPT="$(cat <<'PROMPT_EOF'
 ## Pipeline Phase 2: Build
 
-You are continuing the Caliber pipeline. The validate phase just completed.
+You are continuing the Organtic pipeline. The validate phase just completed.
 
 **CRITICAL: Before doing ANYTHING else, retrieve validate phase findings from claude-mem:**
 1. Call `mcp__plugin_claude-mem_mcp-search__search` with NO query — use filters only: `dateStart` set to PIPELINE_START_DATE, `limit` 20
@@ -145,7 +145,7 @@ PROMPT_EOF
         NEXT_PROMPT="$(cat <<'PROMPT_EOF'
 ## Pipeline Phase 3a: Launch Strategy (Offer + Copy + Funnel)
 
-You are continuing the Caliber pipeline. Validate and build phases are complete.
+You are continuing the Organtic pipeline. Validate and build phases are complete.
 
 **CRITICAL: Before doing ANYTHING else, retrieve prior phase findings from claude-mem:**
 1. Call `mcp__plugin_claude-mem_mcp-search__search` with NO query — use filters only: `dateStart` set to PIPELINE_START_DATE, `limit` 30
@@ -185,7 +185,7 @@ PROMPT_EOF
         NEXT_PROMPT="$(cat <<'PROMPT_EOF'
 ## Pipeline Phase 3b: Launch Coherence Audit (Growth Auditor)
 
-You are continuing the Caliber pipeline. The launch strategy sub-phase just completed.
+You are continuing the Organtic pipeline. The launch strategy sub-phase just completed.
 
 **CRITICAL: Before doing ANYTHING else, retrieve all prior phase findings from claude-mem:**
 1. Call `mcp__plugin_claude-mem_mcp-search__search` with NO query — use filters only: `dateStart` set to PIPELINE_START_DATE, `limit` 50
@@ -228,7 +228,7 @@ PROMPT_EOF
         NEXT_PROMPT="$(cat <<'PROMPT_EOF'
 ## Pipeline Phase 3c: Launch Execution (Ads + SEO + AI Search)
 
-You are continuing the Caliber pipeline. The Growth Auditor coherence audit just completed.
+You are continuing the Organtic pipeline. The Growth Auditor coherence audit just completed.
 
 **CRITICAL: Before doing ANYTHING else, retrieve all prior phase findings from claude-mem:**
 1. Call `mcp__plugin_claude-mem_mcp-search__search` with NO query — use filters only: `dateStart` set to PIPELINE_START_DATE, `limit` 50
