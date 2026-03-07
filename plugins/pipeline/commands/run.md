@@ -9,7 +9,7 @@ allowed-tools: Read, Glob, Grep, Bash, WebSearch, Write, Agent, AskUserQuestion,
 Execute the setup script to initialize the pipeline:
 
 ```!
-"${CLAUDE_PLUGIN_ROOT}/scripts/setup-pipeline.sh" $ARGUMENTS
+"${CLAUDE_PLUGIN_ROOT}/scripts/setup-pipeline.sh" "$ARGUMENTS"
 ```
 
 ## Execution Mode
