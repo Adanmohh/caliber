@@ -1,7 +1,7 @@
 {
   "name": "organtic",
-  "version": "1.0.8",
-  "description": "25 AI agents that take you from idea to shipped product. Strategy pipeline (validate > build > launch) + execution plugins (craft, document, present, studio). Each plugin works independently or chains together. For Claude Code.",
+  "version": "1.0.0",
+  "description": "The AI-native organization. 25 experts from idea to launch. Strategy pipeline (validate > build > launch) + execution plugins (craft, document, present, studio). Claude Code plugin ecosystem.",
   "bin": {
     "organtic": "./index.mjs"
   },
@@ -39,6 +39,10 @@
     "anthropic",
     "organtic"
   ],
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "ora": "^8.1.1"
+  },
   "engines": {
     "node": ">=18.0.0"
   }
