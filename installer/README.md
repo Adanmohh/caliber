@@ -1,149 +1,174 @@
 # Organtic
 
-> Most founders fail not from bad ideas, but from the gap between knowing what to build and actually building it. Organtic closes that gap.
+**The AI-native organization. 25 experts from idea to launch.**
 
-**25 specialized AI agents organized into 8 independent plugins** that work alone or chain together into a complete idea-to-execution pipeline. Each agent brings deep framework expertise — not generic advice, but proven methodologies that top strategists and builders actually use.
-
-## The Problem
-
-You have an idea. Now what?
-
-Validation needs value proposition mapping and jobs-to-be-done analysis. Product strategy needs growth loops and product operating models. Go-to-market needs offer design, conversion copywriting, funnel architecture, and paid media planning. Then you still need to build the landing page, write the pitch deck, design the slides, and record the demo.
-
-That's 23 different disciplines. No solo founder or small team has all of them.
-
-## The Solution
+Organtic plugs a team of specialized AI agents into [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Each agent applies named frameworks — Osterwalder VPC, Hormozi Value Equation, Reforge Growth Loops — not generic advice. Run them individually, as coordinated Agent Teams, or chain them into a full strategy pipeline.
 
 ```
 npx organtic
 ```
 
-One command. Pick the plugins you need. Each one works independently — or chain them all together.
-
 ```
-STRATEGY PIPELINE                              EXECUTION PLUGINS
-validate  >  build  >  launch                  craft | document | present | studio
-3 experts    4 experts   7 experts              4 agents  2 agents   1 agent   3 agents
+EXPLORE                                        EXPLOIT
+validate  >  build  >  launch                  craft  document  present  studio
+3 experts    5 experts   7 experts             4 agents  2 agents  1 agent  3 agents
 ```
 
-**Install one plugin** when you need a specific expert.
-**Install all eight** when you want the full pipeline from idea to shipped product.
-
-## Strategy Pipeline
-
-Three plugins that chain together. Each builds on the previous phase's findings.
-
-### validate — Is this idea worth building?
-
-3 experts that pressure-test your idea before you write a line of code.
-
-| Expert | What they do | Output |
-|--------|-------------|--------|
-| **Value Mapper** | Maps value propositions against customer jobs, pains, and gains | Value proposition canvas, customer segments |
-| **Business Modeler** | Designs revenue models, competitive positioning, and pricing strategy | Business model canvas, pricing model, blue ocean map |
-| **Experiment Designer** | Designs and prioritizes validation experiments | Prioritized experiment backlog, test designs |
-
-### build — What exactly should we ship?
-
-4 experts that turn a validated idea into a buildable product spec.
-
-| Expert | What they do | Output |
-|--------|-------------|--------|
-| **Product Strategist** | Defines product strategy, growth loops, and operating model | Product strategy doc, growth model |
-| **Growth Designer** | Designs retention loops, engagement triggers, and product-led growth | Habit loops, activation flows, retention curves |
-| **Spec Writer** | Shapes buildable specs with clear appetite and scope | Shaped pitches, fat-marker sketches, scope tables |
-| **Product Designer** | Creates accessible UI/UX driven by user jobs and AI interaction patterns | Wireframes, interaction design, component specs |
-
-### launch — How do we get customers?
-
-7 experts that build your complete go-to-market engine. Runs in three waves: strategy first, coherence audit, then execution.
-
-| Expert | What they do | Output |
-|--------|-------------|--------|
-| **Offer Designer** | Designs irresistible offers with pricing, guarantees, and bonuses | Offer stack, value equation score, pricing tiers |
-| **Copywriter** | Writes conversion copy from voice-of-customer research | Landing page copy, email sequences, ad copy |
-| **Funnel Architect** | Architects conversion funnels with AI-native qualification | Funnel blueprint, lead magnets, email flows |
-| **Growth Auditor** | Audits all strategies for coherence and prioritizes actions | Gap analysis, prioritized roadmap, growth loop map |
-| **Media Planner** | Plans paid media with budget allocation and creative testing | Channel plan, budget splits, ad creative briefs |
-| **SEO Strategist** | Designs search strategy with technical SEO and content architecture | Keyword map, content clusters, technical audit |
-| **AI Search Optimizer** | Optimizes visibility in AI-powered search and assistants | Entity map, structured data plan, citation strategy |
-
-## Execution Plugins
-
-Four plugins that turn strategy into tangible deliverables. Each works standalone.
-
-### craft — Build it
-
-| Agent | What it produces |
-|-------|-----------------|
-| **Landing Page Builder** | Deployable, conversion-optimized landing pages (React/HTML) |
-| **MVP Scaffolder** | Full-stack prototypes with auth, database, API, deployment |
-| **Component Designer** | Production-grade UI components with variants and accessibility |
-| **Tester** | Strategy-informed testing with Playwright (persona-based QA) |
-
-### document — Write it
-
-| Agent | What it produces |
-|-------|-----------------|
-| **Business Writer** | Business plans, SOPs, case studies, executive summaries |
-| **Pitch Deck Writer** | Investor pitch decks, sales proposals (Marp to PDF/PPTX) |
-
-### present — Show it
-
-| Agent | What it produces |
-|-------|-----------------|
-| **Slide Designer** | Professional presentations from any strategy output (Marp markdown) |
-
-### studio — Film it
-
-| Agent | What it produces |
-|-------|-----------------|
-| **Demo Producer** | Full product demo videos (browser recording + voiceover + composition) |
-| **Clip Maker** | Short social clips for Instagram Reels, TikTok, YouTube Shorts, LinkedIn |
-| **Content Creator** | Branded social media images and short-form videos |
-
-## Orchestration
-
-The **pipeline** plugin chains the strategy plugins into an automated workflow. Start it with `/run My business idea` and it walks you through all 14 strategy experts, each building on previous findings.
-
-You can also run any single expert directly:
-
-```
-/value-mapper AI tool that helps nurses track patient vitals
-/copywriter Write landing page copy for our course launch
-/landing-page Build from our strategy outputs
-/pitch-deck Create an investor pitch deck
-/product-demo Record a walkthrough of our web app
-```
+---
 
 ## Install
 
-### Interactive (recommended)
-
 ```bash
+# Interactive installer (recommended)
 npx organtic
+
+# Or add the marketplace directly in Claude Code
+/plugin marketplace add Adanmohh/organtic
 ```
 
-### Direct plugin install
+Then start Claude Code. Plugins auto-install on first launch.
+
+## Usage
 
 ```bash
-# Everything
-claude plugin install organtic@Adanmohh/organtic
+# Single expert
+/value-mapper AI tool that helps nurses track patient vitals
 
-# Just what you need
-claude plugin install validate@Adanmohh/organtic
-claude plugin install launch@Adanmohh/organtic
-claude plugin install craft@Adanmohh/organtic
+# Full Agent Team (experts run as parallel Claude Code instances)
+/validate:full-team My SaaS idea for project management
+
+# Full pipeline (chains all 15 explore experts)
+/pipeline:run BurnoutLab - AI-powered burnout recovery courses
 ```
+
+---
+
+## Explore: Strategy Pipeline
+
+Three plugins that chain together. Each phase builds on previous findings.
+
+### validate — Is this worth building?
+
+| Expert | Frameworks | Output |
+|--------|-----------|--------|
+| Value Mapper | Osterwalder VPC, Jobs-to-be-Done | Value proposition canvas, customer segments |
+| Business Modeler | Business Model Canvas, Blue Ocean Strategy | Revenue model, competitive positioning |
+| Experiment Designer | Strategyzer Testing, ICE/RICE | Prioritized experiment backlog |
+
+### build — What are we shipping?
+
+| Expert | Frameworks | Output |
+|--------|-----------|--------|
+| Product Strategist | Reforge, Cagan's Transformed | Product strategy, growth loops |
+| Brand Strategist | Neumeier Brand Gap, Design Tokens | Brand identity system |
+| Growth Designer | Torres Discovery, Hooked Model, PLG | Retention loops, activation flows |
+| Spec Writer | Shape Up methodology | Shaped pitches, scope tables |
+| Product Designer | Don Norman, JTBD UX, AI UX Patterns | Wireframes, interaction design |
+
+### launch — How do we get customers?
+
+| Expert | Frameworks | Output |
+|--------|-----------|--------|
+| Offer Designer | Hormozi Value Equation, Grand Slam Offer | Offer stack, pricing tiers |
+| Copywriter | Copyhackers, Ogilvy, Gary Vee | Landing page copy, email sequences |
+| Funnel Architect | Brunson Value Ladder, Suby 8-Phase | Funnel blueprint, lead magnets |
+| Growth Auditor | Reforge Racecar, Channel-Model Fit | Gap analysis, prioritized roadmap |
+| Media Planner | Dennis Yu Dollar-a-Day, 3x3 Grid | Channel plan, budget allocation |
+| SEO Strategist | CXL Technical SEO, Search Intent Mapping | Keyword map, content clusters |
+| AI Search Optimizer | CXL Entity SEO, LLM Visibility | Entity map, citation strategy |
+
+---
+
+## Exploit: Execution Plugins
+
+Four standalone plugins that turn strategy into deliverables.
+
+### craft — Build it
+
+| Agent | Output |
+|-------|--------|
+| Landing Page Builder | Conversion-optimized pages (React/HTML) |
+| MVP Scaffolder | Full-stack prototype with auth, DB, API |
+| Component Designer | Production UI components (React + Tailwind) |
+| Tester | Persona-based QA with Playwright |
+
+### document — Write it
+
+| Agent | Output |
+|-------|--------|
+| Business Writer | Business plans, SOPs, case studies |
+| Pitch Deck Writer | Investor decks, sales proposals (Marp to PDF) |
+
+### present — Show it
+
+| Agent | Output |
+|-------|--------|
+| Slide Designer | Professional decks from strategy outputs |
+
+### studio — Film it
+
+| Agent | Output |
+|-------|--------|
+| Demo Producer | Product demo videos (Playwright + ElevenLabs + Remotion) |
+| Clip Maker | Social clips for Reels, TikTok, Shorts, LinkedIn |
+| Content Creator | Branded social images and short-form video |
+
+---
+
+## Pipeline
+
+The pipeline orchestrator chains all 15 explore experts automatically:
+
+```
+Phase 1: validate         3 experts    Is this worth building?
+Phase 2: build            5 experts    What are we shipping?
+Phase 3: launch-strategy  3 experts    Offer + copy + funnels
+Phase 4: launch-audit     1 expert     Coherence check across all outputs
+Phase 5: launch-execution 3 experts    Media + SEO + AI search
+```
+
+```bash
+/pipeline:run MyProject - description of the idea
+/pipeline:run MyProject --start-phase build    # Resume from a phase
+/pipeline:run MyProject --autonomous           # Research-first mode
+/pipeline:status                               # Check progress
+/pipeline:cancel                               # Stop
+```
+
+---
+
+## Agent Teams
+
+Commands ending in `:full-team` spawn multiple Claude Code instances that coordinate through shared task lists and message each other directly.
+
+```bash
+/validate:full-team My idea
+/build:full-team Continue from validation
+/launch:full-team Go to market
+```
+
+Requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` in `~/.claude/settings.json`.
+
+---
+
+## Cross-Session Memory
+
+Each expert outputs project-scoped tags auto-captured by [claude-mem](https://github.com/thedotmack/claude-mem). Later phases search memory by project name to build on earlier findings — no manual copy-pasting between sessions.
+
+```bash
+/plugin install claude-mem@thedotmack
+```
+
+---
 
 ## Requirements
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI
-- Optional: [claude-mem](https://github.com/nicobailon/claude-mem) for cross-session memory
-- For studio plugin: Node.js, Playwright, Remotion, ffmpeg, ElevenLabs API key
+- Optional: [claude-mem](https://github.com/thedotmack/claude-mem) for cross-session memory
+- For studio: Node.js, Playwright, Remotion, ffmpeg, ElevenLabs API key
 
 ## Links
 
-- [GitHub](https://github.com/Adanmohh/organtic) | [Issues](https://github.com/Adanmohh/organtic/issues)
+[GitHub](https://github.com/Adanmohh/organtic) | [Issues](https://github.com/Adanmohh/organtic/issues)
 
 MIT License

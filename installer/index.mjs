@@ -170,7 +170,7 @@ function writeSettings(settings) {
   writeFileSync(getSettingsPath(), JSON.stringify(settings, null, 2) + "\n");
 }
 
-function installPlugins(selected) {
+function installPlugins(selected, enableAgentTeams = false) {
   const settings = readSettings();
 
   // Add marketplace
@@ -190,6 +190,14 @@ function installPlugins(selected) {
   }
   for (const plugin of selected) {
     settings.enabledPlugins[`${plugin.name}@${MARKETPLACE_NAME}`] = true;
+  }
+
+  // Enable Agent Teams
+  if (enableAgentTeams) {
+    if (!settings.env) {
+      settings.env = {};
+    }
+    settings.env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
   }
 
   writeSettings(settings);
@@ -310,6 +318,32 @@ async function main() {
 
   console.log();
 
+  // ── Agent Teams ─────────────────────────────────────────────────────
+
+  let enableAgentTeams = false;
+  const currentSettings = readSettings();
+  const alreadyEnabled = currentSettings.env?.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS === "1";
+
+  if (alreadyEnabled) {
+    console.log(`  ${green("\u2713")} ${dim("Agent Teams already enabled")}`);
+    console.log();
+  } else {
+    console.log(`  ${bold("Agent Teams")} ${dim("lets experts run as parallel Claude Code")}`);
+    console.log(`  ${dim("instances that coordinate and message each other.")}`);
+    console.log(`  ${dim("Required for")} ${bold(":full-team")} ${dim("commands (e.g. /validate:full-team).")}`);
+    console.log();
+
+    const rl2 = createInterface({ input: process.stdin, output: process.stdout });
+    const teamsChoice = await new Promise((resolve) => {
+      rl2.question(`  ${cyan("\u276f")} Enable Agent Teams? (Y/n): `, resolve);
+    });
+    rl2.close();
+
+    const tc = teamsChoice.trim().toLowerCase();
+    enableAgentTeams = tc === "" || tc === "y" || tc === "yes";
+    console.log();
+  }
+
   // ── Install ───────────────────────────────────────────────────────────
 
   const spinner = ora({
@@ -318,7 +352,7 @@ async function main() {
   }).start();
 
   try {
-    installPlugins(selected);
+    installPlugins(selected, enableAgentTeams);
     spinner.succeed(
       `${bold(`${selected.length} plugins`)} ${dim("registered in")} ${dim("~/.claude/settings.json")}`
     );
@@ -339,6 +373,10 @@ async function main() {
       ? `${plugin.experts} expert${plugin.experts > 1 ? "s" : ""}`
       : "orchestrator";
     console.log(`  ${green("\u2713")} ${bold(plugin.name)} ${dim(`\u2014 ${label}`)}`);
+  }
+
+  if (enableAgentTeams) {
+    console.log(`  ${green("\u2713")} ${bold("Agent Teams")} ${dim("\u2014 enabled")}`);
   }
 
   console.log();
