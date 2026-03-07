@@ -238,7 +238,7 @@ function cachePlugins(selected, commitSha) {
   const results = [];
 
   for (const plugin of selected) {
-    const srcDir = join(marketplacePath, plugin.name);
+    const srcDir = join(marketplacePath, "plugins", plugin.name);
     const version = getPluginVersion(srcDir);
     const versionSlug = commitSha.substring(0, 12);
     const destDir = join(cachePath, plugin.name, versionSlug);
