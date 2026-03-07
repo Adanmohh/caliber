@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-import { execSync } from "child_process";
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
+import { join } from "path";
+import { homedir } from "os";
 import { createInterface } from "readline";
 
 const MARKETPLACE_REPO = "Adanmohh/organtic";
@@ -144,44 +146,54 @@ function box(chalk, lines, { title = "", width = 48, borderColor = null } = {}) 
   return out.join("\n");
 }
 
-function divider(chalk, { title = "", width = 48, borderColor = null } = {}) {
-  const bc = borderColor || ((s) => gradientLine(chalk, s, width + 2));
-  const vert = bc("\u2502");
-  const leftT = bc("\u251c");
-  const rightT = bc("\u2524");
-  const horiz = (len) => bc("\u2500".repeat(len));
+// ---------------------------------------------------------------------------
+// Settings.json management
+// ---------------------------------------------------------------------------
 
-  if (title) {
-    const titleStr = ` ${title} `;
-    const remaining = width - titleStr.length;
-    return `  ${leftT}${horiz(1)}${bc(titleStr)}${horiz(remaining - 1)}${rightT}`;
-  }
-  return `  ${leftT}${horiz(width)}${rightT}`;
+function getSettingsPath() {
+  return join(homedir(), ".claude", "settings.json");
 }
 
-// ---------------------------------------------------------------------------
-// CLI helpers
-// ---------------------------------------------------------------------------
-
-const rl = createInterface({ input: process.stdin, output: process.stdout });
-const ask = (q) => new Promise((r) => rl.question(q, r));
-
-function runSilent(cmd) {
+function readSettings() {
+  const path = getSettingsPath();
+  if (!existsSync(path)) return {};
   try {
-    execSync(cmd, { stdio: "pipe" });
-    return true;
+    return JSON.parse(readFileSync(path, "utf-8"));
   } catch {
-    return false;
+    return {};
   }
 }
 
-function runVisible(cmd) {
-  try {
-    execSync(cmd, { stdio: "inherit" });
-    return true;
-  } catch {
-    return false;
+function writeSettings(settings) {
+  const dir = join(homedir(), ".claude");
+  if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+  writeFileSync(getSettingsPath(), JSON.stringify(settings, null, 2) + "\n");
+}
+
+function installPlugins(selected) {
+  const settings = readSettings();
+
+  // Add marketplace
+  if (!settings.extraKnownMarketplaces) {
+    settings.extraKnownMarketplaces = {};
   }
+  settings.extraKnownMarketplaces[MARKETPLACE_NAME] = {
+    source: {
+      source: "github",
+      repo: MARKETPLACE_REPO,
+    },
+  };
+
+  // Enable selected plugins
+  if (!settings.enabledPlugins) {
+    settings.enabledPlugins = {};
+  }
+  for (const plugin of selected) {
+    settings.enabledPlugins[`${plugin.name}@${MARKETPLACE_NAME}`] = true;
+  }
+
+  writeSettings(settings);
+  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -193,12 +205,10 @@ async function main() {
   const { default: ora } = await import("ora");
 
   const W = 48;
-  const g = (s) => gradientLine(chalk, s, W + 2);
   const dim = chalk.dim;
   const bold = chalk.bold.white;
   const green = chalk.rgb(16, 185, 129);
   const cyan = chalk.rgb(6, 182, 212);
-  const blue = chalk.rgb(59, 130, 246);
   const red = chalk.rgb(239, 68, 68);
 
   // ── Banner ──────────────────────────────────────────────────────────────
@@ -220,56 +230,28 @@ async function main() {
   console.log(banner);
   console.log();
 
-  // ── Check Claude CLI ────────────────────────────────────────────────────
-
-  const cliSpinner = ora({
-    text: "Checking Claude Code CLI...",
-    color: "cyan",
-  }).start();
-
-  try {
-    execSync("claude --version", { stdio: "pipe" });
-    cliSpinner.succeed(chalk.dim("Claude Code CLI found"));
-  } catch {
-    cliSpinner.fail(red("Claude Code CLI not found"));
-    console.log();
-    console.log(`  ${dim("Install it first:")}`);
-    console.log(`  ${bold("npm install -g @anthropic-ai/claude-code")}`);
-    console.log();
-    process.exit(1);
-  }
-
   // ── Pipeline Map ────────────────────────────────────────────────────────
 
-  const vert = g("\u2502");
-
-  const mapLines = [];
-
-  // Top: Strategy Pipeline
-  mapLines.push(box(chalk, [
+  console.log(box(chalk, [
     "",
     `  ${bold("validate")} ${dim("\u2500\u2500\u25b6")} ${bold("build")} ${dim("\u2500\u2500\u25b6")} ${bold("launch")}`,
     `  ${dim("3 experts")}    ${dim("5 experts")}   ${dim("7 experts")}`,
     "",
   ], { title: "Strategy Pipeline", width: W }));
 
-  // Divider line for Execution (we'll build a second box)
-  const execBox = [];
-  execBox.push("");
-  execBox.push(`  ${bold("craft")}    ${bold("document")}    ${bold("present")}    ${bold("studio")}`);
-  execBox.push(`  ${dim("4 agents")}  ${dim("2 agents")}    ${dim("1 agent")}     ${dim("3 agents")}`);
-  execBox.push("");
+  console.log(box(chalk, [
+    "",
+    `  ${bold("craft")}    ${bold("document")}    ${bold("present")}    ${bold("studio")}`,
+    `  ${dim("4 agents")}  ${dim("2 agents")}    ${dim("1 agent")}     ${dim("3 agents")}`,
+    "",
+  ], { title: "Execution", width: W }));
 
-  mapLines.push(box(chalk, execBox, { title: "Execution", width: W }));
-
-  // Orchestration
-  mapLines.push(box(chalk, [
+  console.log(box(chalk, [
     "",
     `  ${bold("pipeline")} ${dim("\u2014 chains all 15 strategy experts")}`,
     "",
   ], { title: "Orchestration", width: W }));
 
-  console.log(mapLines.join("\n"));
   console.log();
 
   // ── Selection Menu ──────────────────────────────────────────────────────
@@ -279,32 +261,30 @@ async function main() {
 
   console.log(`  ${dim("Strategy Pipeline:")}`);
   PLUGINS.slice(0, 3).forEach((p, i) => {
-    const num = cyan(`[${i + 1}]`);
-    const name = bold(p.name);
-    const experts = dim(`${p.experts} experts \u2014 ${p.agents}`);
-    console.log(`    ${num} ${name}  ${experts}`);
+    console.log(`    ${cyan(`[${i + 1}]`)} ${bold(p.name)}  ${dim(`${p.experts} experts \u2014 ${p.agents}`)}`);
   });
 
   console.log();
   console.log(`  ${dim("Execution:")}`);
   PLUGINS.slice(3, 7).forEach((p, i) => {
-    const num = cyan(`[${i + 4}]`);
-    const name = bold(p.name);
-    const experts = dim(`${p.experts} agent${p.experts > 1 ? "s" : ""} \u2014 ${p.agents}`);
-    console.log(`    ${num} ${name}  ${experts}`);
+    console.log(`    ${cyan(`[${i + 4}]`)} ${bold(p.name)}  ${dim(`${p.experts} agent${p.experts > 1 ? "s" : ""} \u2014 ${p.agents}`)}`);
   });
 
   console.log();
   console.log(`  ${dim("Orchestration:")}`);
-  const pNum = cyan("[8]");
-  console.log(`    ${pNum} ${bold("pipeline")}  ${dim(PLUGINS[7].agents)}`);
+  console.log(`    ${cyan("[8]")} ${bold("pipeline")}  ${dim(PLUGINS[7].agents)}`);
 
   console.log();
   console.log(`    ${green("[A]")} ${bold("All plugins")} ${dim("(recommended)")}`);
   console.log(`    ${green("[S]")} ${bold("Strategy only")} ${dim("(validate + build + launch + pipeline)")}`);
   console.log();
 
-  const choice = await ask(`  ${cyan("\u276f")} ${dim("Your choice (1-8, A, S, comma-separated):")} `);
+  // ── User Selection ────────────────────────────────────────────────────
+
+  const rl = createInterface({ input: process.stdin, output: process.stdout });
+  const choice = await new Promise((resolve) => {
+    rl.question(`  ${cyan("\u276f")} Your choice (1-8, A, S, comma-separated): `, resolve);
+  });
   rl.close();
 
   let selected;
@@ -324,81 +304,61 @@ async function main() {
   }
 
   if (selected.length === 0) {
-    console.log();
-    console.log(`  ${dim("No plugins selected. Exiting.")}`);
+    console.log(`\n  ${dim("No plugins selected. Exiting.")}`);
     process.exit(0);
   }
 
   console.log();
-  console.log(`  ${gradientText(chalk, `Installing ${selected.length} plugin${selected.length > 1 ? "s" : ""}...`)}`);
-  console.log();
 
-  // ── Add Marketplace ─────────────────────────────────────────────────────
+  // ── Install ───────────────────────────────────────────────────────────
 
-  const mpSpinner = ora({
-    text: "Adding Organtic marketplace...",
+  const spinner = ora({
+    text: `Installing ${selected.length} plugin${selected.length > 1 ? "s" : ""} to ~/.claude/settings.json...`,
     color: "cyan",
   }).start();
 
-  if (runSilent(`claude plugin marketplace add ${MARKETPLACE_REPO}`)) {
-    mpSpinner.succeed(dim("Marketplace added"));
-  } else {
-    mpSpinner.warn(chalk.yellow("Marketplace may already be added"));
+  try {
+    installPlugins(selected);
+    spinner.succeed(
+      `${bold(`${selected.length} plugins`)} ${dim("installed to")} ${dim("~/.claude/settings.json")}`
+    );
+  } catch (err) {
+    spinner.fail(red(`Failed: ${err.message}`));
+    console.log();
+    console.log(`  ${dim("Try manual install — add to ~/.claude/settings.json:")}`);
+    console.log(`  ${dim(`"extraKnownMarketplaces": { "${MARKETPLACE_NAME}": { "source": { "source": "github", "repo": "${MARKETPLACE_REPO}" } } }`)}`);
+    process.exit(1);
   }
 
   console.log();
 
-  // ── Install Plugins ─────────────────────────────────────────────────────
-
-  let installed = 0;
-  let failed = 0;
+  // ── Installed Plugins List ────────────────────────────────────────────
 
   for (const plugin of selected) {
-    const spinner = ora({
-      text: `Installing ${bold(plugin.name)}...`,
-      color: "cyan",
-    }).start();
-
-    const ok = runSilent(`claude plugin install ${plugin.name}@${MARKETPLACE_NAME}`);
-
-    if (ok) {
-      installed++;
-      spinner.succeed(`${bold(plugin.name)} ${dim("installed")}`);
-    } else {
-      failed++;
-      spinner.fail(`${red(plugin.name)} ${dim("failed \u2014")} ${dim(`claude plugin install ${plugin.name}@${MARKETPLACE_NAME}`)}`);
-    }
+    const label = plugin.experts
+      ? `${plugin.experts} expert${plugin.experts > 1 ? "s" : ""}`
+      : "orchestrator";
+    console.log(`  ${green("\u2713")} ${bold(plugin.name)} ${dim(`\u2014 ${label}`)}`);
   }
 
   console.log();
 
-  // ── Result Summary ──────────────────────────────────────────────────────
-
-  if (failed === 0) {
-    console.log(`  ${green("\u2714")} ${bold(`${installed}/${selected.length} plugins installed successfully`)}`);
-  } else {
-    console.log(`  ${green("\u2714")} ${installed} installed  ${red("\u2718")} ${failed} failed`);
-  }
-
-  console.log();
-
-  // ── Getting Started Card ────────────────────────────────────────────────
+  // ── Getting Started Card ──────────────────────────────────────────────
 
   const cyanBorder = (s) => cyan(s);
 
-  const startCard = box(chalk, [
+  console.log(box(chalk, [
     "",
     `  ${dim("Start Claude Code:")}     ${bold("claude")}`,
     `  ${dim("Run full pipeline:")}     ${bold("/pipeline:run")} ${dim("Idea")}`,
     `  ${dim("Autonomous mode:")}       ${bold("--autonomous")}`,
     `  ${dim("Single expert:")}         ${bold("/value-mapper")} ${dim("Idea")}`,
     "",
-    `  ${dim("Optional:")} ${bold("claude plugin install claude-mem")}`,
-    `  ${dim("(enables cross-session memory)")}`,
+    `  ${dim("Cross-session memory:")}`,
+    `  ${bold("/plugin install claude-mem@thedotmack")}`,
     "",
-  ], { title: "Getting Started", width: W, borderColor: cyanBorder });
+  ], { title: "Getting Started", width: W, borderColor: cyanBorder }));
 
-  console.log(startCard);
   console.log();
 }
 
