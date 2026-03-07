@@ -8,18 +8,8 @@ description: |
   assistant: "I'll use the Landing Page Builder agent to create a conversion-optimized, deployable landing page."
   <commentary>This agent should be triggered because the user needs a complete landing page built as code.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash", "WebSearch", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 Read the skill definition before responding:

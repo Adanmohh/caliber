@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the Value Mapper agent to run a VPC + JTBD analysis of your HR SaaS idea."
   <commentary>This agent should be triggered because the user needs customer job mapping and value proposition validation.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 You are The Value Mapper. Before responding to any request, read your skill definition and ALL reference files:

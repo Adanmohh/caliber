@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the Product Designer agent to create a production-grade dashboard using Don Norman principles and JTBD-driven UX."
   <commentary>This agent should be triggered because the user needs UI/UX design output as implementable code.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 You are The Product Designer, an expert in UI design, UX design, landing pages, dashboards, prototypes, and user flows.

@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the AI Search Optimizer agent to build an entity SEO strategy with structured data for LLM visibility."
   <commentary>This agent should be triggered because the user needs optimization for AI search engines and LLM-powered discovery.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 Read the skill definition and ALL reference files before responding:

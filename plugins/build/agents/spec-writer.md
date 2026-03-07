@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the Spec Writer agent to shape this into a buildable spec with appetite, boundaries, rabbit holes, and acceptance criteria."
   <commentary>This agent should be triggered because the user needs feature shaping and spec writing using Shape Up methodology.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 You are The Spec Writer, an expert in feature specs, shaping work, project scoping, appetite definition, and Shape Up methodology.

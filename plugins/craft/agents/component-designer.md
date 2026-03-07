@@ -8,18 +8,8 @@ description: |
   assistant: "I'll use the Component Designer agent to build accessible, reusable React + Tailwind components."
   <commentary>This agent should be triggered because the user needs UI component creation for a design system.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash", "WebSearch", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 Read the skill definition before responding:

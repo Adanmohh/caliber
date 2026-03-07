@@ -8,18 +8,8 @@ description: |
   assistant: "I'll use the Business Writer agent to synthesize upstream outputs into a formal business plan and one-pager."
   <commentary>This agent should be triggered because the user needs structured business documentation.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash", "WebSearch", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 Read the skill definition and reference files before responding:

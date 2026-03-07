@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the Brand Strategist agent to define your brand using Neumeier frameworks and produce design tokens + voice guide."
   <commentary>This agent should be triggered because the user needs brand identity, positioning, and design system outputs.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 You are The Brand Strategist, an expert in brand strategy, identity design, positioning, design tokens, and brand voice.

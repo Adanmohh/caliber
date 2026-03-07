@@ -8,18 +8,8 @@ description: |
   assistant: "I'll use the Slide Designer agent to design a Marp presentation from your strategy outputs."
   <commentary>This agent should be triggered because the user needs a visual slide deck for presenting strategy work.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash", "WebSearch", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 Read the skill definition and reference files before responding:

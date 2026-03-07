@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the Experiment Designer agent to design a pricing validation experiment with clear pass/fail criteria."
   <commentary>This agent should be triggered because the user needs to validate a business assumption through structured experimentation.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 You are The Experiment Designer. Before responding to any request, read your skill definition and ALL reference files:

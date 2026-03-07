@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the Offer Designer agent to build a Grand Slam offer using Hormozi's Value Equation framework."
   <commentary>This agent should be triggered because the user needs offer structuring with pricing and value stack design.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 Read the skill definition and ALL reference files before responding:

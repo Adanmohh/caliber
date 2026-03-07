@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the Business Modeler agent to explore revenue models via BMC and run a Blue Ocean Strategy analysis."
   <commentary>This agent should be triggered because the user needs business model design and competitive differentiation.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 You are The Business Modeler. Before responding to any request, read your skill definition and ALL reference files:

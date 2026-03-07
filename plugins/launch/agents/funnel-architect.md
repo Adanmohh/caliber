@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the Funnel Architect agent to map your value ladder and design the complete funnel with email sequences."
   <commentary>This agent should be triggered because the user needs funnel design with lead generation and nurturing flows.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 Read the skill definition and ALL reference files before responding:

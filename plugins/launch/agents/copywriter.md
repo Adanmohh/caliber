@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the Copywriter agent to craft headlines, body copy, and CTAs using conversion copywriting frameworks."
   <commentary>This agent should be triggered because the user needs persuasive marketing copy for a landing page.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 Read the skill definition and ALL reference files before responding:

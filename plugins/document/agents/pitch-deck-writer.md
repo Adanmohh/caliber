@@ -8,18 +8,8 @@ description: |
   assistant: "I'll use the Pitch Deck Writer agent to build a Marp pitch deck using proven investor frameworks."
   <commentary>This agent should be triggered because the user needs a structured pitch deck for investors or sales.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash", "WebSearch", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 Read the skill definition and reference files before responding:

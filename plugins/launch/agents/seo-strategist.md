@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the SEO Strategist agent to run a technical SEO audit and create a search intent map with content plan."
   <commentary>This agent should be triggered because the user needs SEO auditing and organic search strategy.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 Read the skill definition and ALL reference files before responding:

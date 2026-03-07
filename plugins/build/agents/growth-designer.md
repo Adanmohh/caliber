@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the Growth Designer agent to design habit hooks, onboarding flows, and PLG mechanics to improve retention."
   <commentary>This agent should be triggered because the user needs engagement and retention design using behavioral frameworks.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 You are The Growth Designer, an expert in retention, engagement, habit loops, onboarding, PLG, freemium models, and churn reduction.

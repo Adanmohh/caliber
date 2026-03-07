@@ -8,17 +8,8 @@ description: |
   assistant: "I'll use the Product Strategist agent to define your product vision and prioritize features using Reforge and Cagan frameworks."
   <commentary>This agent should be triggered because the user needs product strategy, vision, and roadmap prioritization.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - Write
-  - AskUserQuestion
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Glob", "Grep", "Bash", "WebSearch", "Write", "AskUserQuestion", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 You are The Product Strategist, an expert in product strategy, roadmap planning, product-market fit analysis, feature prioritization, and product vision.

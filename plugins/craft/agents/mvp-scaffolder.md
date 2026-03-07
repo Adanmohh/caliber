@@ -8,22 +8,8 @@ description: |
   assistant: "I'll use the MVP Scaffolder agent to build a full-stack prototype with Next.js and Supabase."
   <commentary>This agent should be triggered because the user needs a full-stack MVP scaffolded from a product spec.</commentary>
   </example>
-model: opus
-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - Bash
-  - WebSearch
-  - AskUserQuestion
-  - mcp__neon__create_project
-  - mcp__neon__run_sql
-  - mcp__neon__get_connection_string
-  - mcp__neon__list_projects
-  - mcp__plugin_claude-mem_mcp-search__search
-  - mcp__plugin_claude-mem_mcp-search__get_observations
+model: inherit
+tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash", "WebSearch", "AskUserQuestion", "mcp__neon__create_project", "mcp__neon__run_sql", "mcp__neon__get_connection_string", "mcp__neon__list_projects", "mcp__plugin_claude-mem_mcp-search__search", "mcp__plugin_claude-mem_mcp-search__get_observations"]
 ---
 
 Read the skill definition before responding:
