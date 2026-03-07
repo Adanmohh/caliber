@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
+import { readFileSync, writeFileSync, existsSync, mkdirSync, cpSync, readdirSync } from "fs";
 import { join } from "path";
 import { homedir } from "os";
 import { createInterface } from "readline";
+import { execSync } from "child_process";
 
 const MARKETPLACE_REPO = "Adanmohh/organtic";
 const MARKETPLACE_NAME = "organtic";
+const GITHUB_URL = `https://github.com/${MARKETPLACE_REPO}.git`;
 
 const PLUGINS = [
   {
@@ -147,31 +149,161 @@ function box(chalk, lines, { title = "", width = 48, borderColor = null } = {}) 
 }
 
 // ---------------------------------------------------------------------------
-// Settings.json management
+// Path helpers
 // ---------------------------------------------------------------------------
 
-function getSettingsPath() {
-  return join(homedir(), ".claude", "settings.json");
+function getClaudeDir() {
+  return join(homedir(), ".claude");
 }
 
-function readSettings() {
-  const path = getSettingsPath();
-  if (!existsSync(path)) return {};
+function getPluginsDir() {
+  return join(getClaudeDir(), "plugins");
+}
+
+function getSettingsPath() {
+  return join(getClaudeDir(), "settings.json");
+}
+
+function getKnownMarketplacesPath() {
+  return join(getPluginsDir(), "known_marketplaces.json");
+}
+
+function getInstalledPluginsPath() {
+  return join(getPluginsDir(), "installed_plugins.json");
+}
+
+function getMarketplacePath() {
+  return join(getPluginsDir(), "marketplaces", MARKETPLACE_NAME);
+}
+
+function getCachePath() {
+  return join(getPluginsDir(), "cache", MARKETPLACE_NAME);
+}
+
+// ---------------------------------------------------------------------------
+// JSON file helpers
+// ---------------------------------------------------------------------------
+
+function readJson(path) {
+  if (!existsSync(path)) return null;
   try {
     return JSON.parse(readFileSync(path, "utf-8"));
   } catch {
-    return {};
+    return null;
   }
 }
 
-function writeSettings(settings) {
-  const dir = join(homedir(), ".claude");
+function writeJson(path, data) {
+  const dir = join(path, "..");
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
-  writeFileSync(getSettingsPath(), JSON.stringify(settings, null, 2) + "\n");
+  writeFileSync(path, JSON.stringify(data, null, 2) + "\n");
 }
 
-function installPlugins(selected) {
-  const settings = readSettings();
+// ---------------------------------------------------------------------------
+// Installation logic
+// ---------------------------------------------------------------------------
+
+function cloneMarketplace() {
+  const marketplacePath = getMarketplacePath();
+
+  if (existsSync(marketplacePath)) {
+    // Pull latest
+    try {
+      execSync("git pull --ff-only", { cwd: marketplacePath, stdio: "pipe" });
+    } catch {
+      // If pull fails, remove and re-clone
+      execSync(`rm -rf "${marketplacePath}"`, { stdio: "pipe" });
+      mkdirSync(join(getPluginsDir(), "marketplaces"), { recursive: true });
+      execSync(`git clone "${GITHUB_URL}" "${marketplacePath}"`, { stdio: "pipe" });
+    }
+  } else {
+    mkdirSync(join(getPluginsDir(), "marketplaces"), { recursive: true });
+    execSync(`git clone "${GITHUB_URL}" "${marketplacePath}"`, { stdio: "pipe" });
+  }
+
+  // Get commit SHA
+  const sha = execSync("git rev-parse HEAD", { cwd: marketplacePath, encoding: "utf-8" }).trim();
+  return sha;
+}
+
+function getPluginVersion(pluginDir) {
+  const manifestPath = join(pluginDir, ".claude-plugin", "plugin.json");
+  const manifest = readJson(manifestPath);
+  return manifest?.version || "1.0.0";
+}
+
+function cachePlugins(selected, commitSha) {
+  const marketplacePath = getMarketplacePath();
+  const cachePath = getCachePath();
+  const results = [];
+
+  for (const plugin of selected) {
+    const srcDir = join(marketplacePath, plugin.name);
+    const version = getPluginVersion(srcDir);
+    const versionSlug = commitSha.substring(0, 12);
+    const destDir = join(cachePath, plugin.name, versionSlug);
+
+    mkdirSync(destDir, { recursive: true });
+    cpSync(srcDir, destDir, { recursive: true });
+
+    results.push({
+      name: plugin.name,
+      version,
+      versionSlug,
+      installPath: destDir,
+      commitSha,
+    });
+  }
+
+  return results;
+}
+
+function updateKnownMarketplaces() {
+  const path = getKnownMarketplacesPath();
+  const data = readJson(path) || {};
+
+  data[MARKETPLACE_NAME] = {
+    source: {
+      source: "github",
+      repo: MARKETPLACE_REPO,
+    },
+    installLocation: getMarketplacePath().replace(/\//g, "\\"),
+    lastUpdated: new Date().toISOString(),
+  };
+
+  writeJson(path, data);
+}
+
+function updateInstalledPlugins(cachedPlugins) {
+  const path = getInstalledPluginsPath();
+  const data = readJson(path) || { version: 2, plugins: {} };
+
+  if (!data.plugins) data.plugins = {};
+  if (!data.version) data.version = 2;
+
+  const now = new Date().toISOString();
+  const projectPath = homedir();
+
+  for (const plugin of cachedPlugins) {
+    const key = `${plugin.name}@${MARKETPLACE_NAME}`;
+    data.plugins[key] = [
+      {
+        scope: "project",
+        installPath: plugin.installPath.replace(/\//g, "\\"),
+        version: plugin.version,
+        installedAt: now,
+        lastUpdated: now,
+        gitCommitSha: plugin.commitSha,
+        projectPath: projectPath.replace(/\//g, "\\"),
+      },
+    ];
+  }
+
+  writeJson(path, data);
+}
+
+function updateSettings(selected) {
+  const settings = readJson(getSettingsPath()) || {};
 
   // Add marketplace
   if (!settings.extraKnownMarketplaces) {
@@ -192,7 +324,25 @@ function installPlugins(selected) {
     settings.enabledPlugins[`${plugin.name}@${MARKETPLACE_NAME}`] = true;
   }
 
-  writeSettings(settings);
+  writeJson(getSettingsPath(), settings);
+}
+
+function installPlugins(selected) {
+  // 1. Clone/update marketplace repo
+  const commitSha = cloneMarketplace();
+
+  // 2. Cache plugin files
+  const cachedPlugins = cachePlugins(selected, commitSha);
+
+  // 3. Register marketplace in known_marketplaces.json
+  updateKnownMarketplaces();
+
+  // 4. Register plugins in installed_plugins.json
+  updateInstalledPlugins(cachedPlugins);
+
+  // 5. Update settings.json (enabledPlugins + extraKnownMarketplaces)
+  updateSettings(selected);
+
   return true;
 }
 
@@ -313,14 +463,14 @@ async function main() {
   // ── Install ───────────────────────────────────────────────────────────
 
   const spinner = ora({
-    text: `Installing ${selected.length} plugin${selected.length > 1 ? "s" : ""} to ~/.claude/settings.json...`,
+    text: `Cloning marketplace and installing ${selected.length} plugin${selected.length > 1 ? "s" : ""}...`,
     color: "cyan",
   }).start();
 
   try {
     installPlugins(selected);
     spinner.succeed(
-      `${bold(`${selected.length} plugins`)} ${dim("installed to")} ${dim("~/.claude/settings.json")}`
+      `${bold(`${selected.length} plugins`)} ${dim("installed to")} ${dim("~/.claude/")}`
     );
   } catch (err) {
     spinner.fail(red(`Failed: ${err.message}`));
