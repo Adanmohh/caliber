@@ -6,6 +6,5 @@
     "name": "Organtic",
     "email": "adan@neogrant.fi"
   },
-  "commands": "./commands",
-  "agents": "./agents"
+  "commands": "./commands"
 }
